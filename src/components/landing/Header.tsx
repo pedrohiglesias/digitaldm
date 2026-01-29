@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
 const navLinks = [
   { href: "#como-funciona", label: "Como Funciona" },
@@ -32,11 +33,12 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <div className="text-2xl font-bold">
-              <span className="text-gradient">DIGITAL</span>{" "}
-              <span className="text-foreground">DM</span>
-            </div>
+          <a href="#" className="flex items-center">
+            <img 
+              src={logoDigitalDM} 
+              alt="Digital DM" 
+              className="h-8 md:h-10 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}

@@ -1,4 +1,5 @@
 import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
 const footerLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -21,10 +22,11 @@ export function Footer() {
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             {/* Brand */}
             <div>
-              <div className="text-2xl font-bold mb-4">
-                <span className="text-gradient">DIGITAL</span>{" "}
-                <span className="text-foreground">DM</span>
-              </div>
+              <img 
+                src={logoDigitalDM} 
+                alt="Digital DM" 
+                className="h-8 w-auto mb-4"
+              />
               <p className="text-muted-foreground text-sm mb-6">
                 Marketing digital estratégico com CRM inteligente. 
                 Transformamos seu funil em crescimento previsível.
