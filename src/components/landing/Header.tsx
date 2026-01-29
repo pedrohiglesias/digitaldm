@@ -37,7 +37,7 @@ export function Header() {
             <img 
               src={logoDigitalDM} 
               alt="Digital DM" 
-              className="h-8 md:h-10 w-auto"
+              className="h-6 md:h-8 w-auto"
             />
           </a>
 
