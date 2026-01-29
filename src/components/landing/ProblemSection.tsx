@@ -22,6 +22,10 @@ const problems = [
     icon: TrendingDown,
     text: "Você trabalha muito, mas não consegue estabilizar a agenda",
   },
+  {
+    icon: TrendingDown,
+    text: "Investimento entra, mas o retorno 'escorre' no meio do caminho",
+  },
 ];
 
 export function ProblemSection() {
