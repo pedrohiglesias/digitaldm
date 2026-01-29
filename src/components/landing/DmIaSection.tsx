@@ -1,4 +1,4 @@
-import { Bot, Filter, Zap, Clock, BarChart, RefreshCw, ArrowUpRight, TrendingUp, Users } from "lucide-react";
+import { Bot, Filter, Zap, Clock, BarChart, RefreshCw, ArrowUpRight, TrendingUp, Users, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
@@ -16,6 +16,11 @@ const features = [
     icon: Clock,
     title: "Follow-up Automático",
     description: "Mantém o contato ativo sem depender de alguém 'lembrar'",
+  },
+  {
+    icon: Bell,
+    title: "Alertas em Tempo Real",
+    description: "Notifica sua equipe quando um lead quente está pronto para fechar",
   },
   {
     icon: BarChart,
