@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, MessageSquare, TrendingDown, UserX } from "lucide-react";
+import { AlertTriangle, Clock, MessageSquare, TrendingDown, UserX, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const problems = [
@@ -23,7 +23,7 @@ const problems = [
     text: "Você trabalha muito, mas não consegue estabilizar a agenda",
   },
   {
-    icon: TrendingDown,
+    icon: DollarSign,
     text: "Investimento entra, mas o retorno 'escorre' no meio do caminho",
   },
 ];
