@@ -25,7 +25,7 @@ export function Footer() {
               <img 
                 src={logoDigitalDM} 
                 alt="Digital DM" 
-                className="h-8 w-auto mb-4"
+                className="h-6 w-auto mb-4"
               />
               <p className="text-muted-foreground text-sm mb-6">
                 Marketing digital estratégico com CRM inteligente. 
