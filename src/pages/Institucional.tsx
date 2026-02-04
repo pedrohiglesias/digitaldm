@@ -1,4 +1,4 @@
-import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, MessageSquare, AlertTriangle, Clock, UserX, PhoneOff, Check, X, Sparkles, ChevronDown, Users, Gauge, Shield, Rocket } from "lucide-react";
+import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, MessageSquare, AlertTriangle, Clock, UserX, PhoneOff, Check, X, Sparkles, ChevronDown, Users, Gauge, Shield, Rocket, ShoppingCart, MapPin, Stethoscope, Shirt } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
@@ -42,6 +42,33 @@ const benefits = [
   { icon: TrendingUp, title: "Resultados Reais", description: "Aumento médio de 42% nas vendas dos nossos clientes" },
   { icon: Shield, title: "Investimento Seguro", description: "Transparência total e acompanhamento de métricas" },
   { icon: BarChart3, title: "Decisões por Dados", description: "Ajustes semanais baseados em análise, não no achismo" },
+];
+
+const segments = [
+  { 
+    icon: ShoppingCart, 
+    title: "E-commerce", 
+    description: "Estratégias completas para lojas virtuais: desde captação até recompra. Automações que aumentam ticket médio e reduzem abandono de carrinho.",
+    highlights: ["Recuperação de carrinho", "Segmentação por comportamento", "Upsell automatizado"]
+  },
+  { 
+    icon: MapPin, 
+    title: "Negócios Locais", 
+    description: "Funis adaptados para atrair clientes da sua região. Tráfego local qualificado que gera visitas e agendamentos.",
+    highlights: ["Geolocalização", "Avaliações e reputação", "Agenda cheia"]
+  },
+  { 
+    icon: Stethoscope, 
+    title: "Clínicas", 
+    description: "Sistema especializado para área da saúde: triagem de pacientes, agendamento automático e follow-up respeitando a ética do setor.",
+    highlights: ["Triagem de perfil", "Agenda previsível", "Comunicação ética"]
+  },
+  { 
+    icon: Shirt, 
+    title: "Moda Feminina", 
+    description: "Expertise em lojas de moda: campanhas sazonais, lançamentos de coleção e relacionamento com clientes que geram recompra.",
+    highlights: ["Lançamentos", "Campanhas sazonais", "Fidelização"]
+  },
 ];
 
 const forWho = [
@@ -463,6 +490,58 @@ export default function Institucional() {
                 <p className="text-sm text-muted-foreground">{benefit.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEGMENTOS - Time dedicado */}
+      <section className="py-20 md:py-28 bg-card/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">SEGMENTOS ATENDIDOS</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Time dedicado para o <span className="text-gradient">seu segmento</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Cada mercado tem suas particularidades. Por isso, temos especialistas focados em entender 
+              as dores e oportunidades específicas do seu nicho.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {segments.map((segment, index) => (
+              <div key={index} className="glass-card rounded-2xl p-8 hover-lift group">
+                <div className="flex items-start gap-5">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <segment.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-xl mb-3">{segment.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{segment.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {segment.highlights.map((highlight, hIndex) => (
+                        <span 
+                          key={hIndex} 
+                          className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
+                        >
+                          {highlight}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
+            <Button variant="hero" size="lg" asChild>
+              <a href="#diagnostico" className="flex items-center gap-2">
+                Agendar Diagnóstico
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </section>
