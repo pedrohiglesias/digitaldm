@@ -129,8 +129,8 @@ export default function Institucional() {
               <a href="#dmia" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 DM IA
               </a>
-              <a href="#metodo" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
-                Método MIA
+              <a href="#segmentos" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                Segmentos
               </a>
               <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 Dúvidas
@@ -402,71 +402,6 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* SEÇÃO 3 - Método MIA (Imagem esquerda, texto direita) */}
-      <section id="metodo" className="py-20 md:py-28 bg-card/50">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Visual with Method illustration */}
-            <div className="relative order-2 lg:order-1">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 p-8 flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
-                  <div className="glass-card rounded-xl p-6 text-center">
-                    <Target className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <p className="font-bold text-lg">M</p>
-                    <p className="text-xs text-muted-foreground">Método</p>
-                  </div>
-                  <div className="glass-card rounded-xl p-6 text-center">
-                    <Bot className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <p className="font-bold text-lg">I</p>
-                    <p className="text-xs text-muted-foreground">Inteligência Artificial</p>
-                  </div>
-                  <div className="glass-card rounded-xl p-6 text-center col-span-2">
-                    <BarChart3 className="w-8 h-8 text-primary mx-auto mb-3" />
-                    <p className="font-bold text-lg">A</p>
-                    <p className="text-xs text-muted-foreground">Análise de Dados</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right - Text */}
-            <div className="order-1 lg:order-2">
-              <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">NOSSO MÉTODO</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Veja como o <span className="text-gradient">Método MIA</span> vai resolver o seu problema.
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Seu negócio não cresce com improviso. Cresce com rotina, métrica e melhoria contínua. 
-                O Método MIA é a engenharia de previsibilidade que organiza aquisição, conversão e retenção.
-              </p>
-
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Metodologia validada e testada</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Tecnologia que reduz custos operacionais</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Resultados que garantem recorrência</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary" />
-                  <span>Decisões por dados, não achismo</span>
-                </li>
-              </ul>
-
-              <Button variant="hero" size="lg" asChild>
-                <a href="#diagnostico">Quero Crescer com Método</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* BENEFÍCIOS - Grid de cards */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
@@ -495,7 +430,7 @@ export default function Institucional() {
       </section>
 
       {/* SEGMENTOS - Time dedicado */}
-      <section className="py-20 md:py-28 bg-card/50">
+      <section id="segmentos" className="py-20 md:py-28 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">SEGMENTOS ATENDIDOS</p>
