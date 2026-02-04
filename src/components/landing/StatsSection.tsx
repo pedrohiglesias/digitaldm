@@ -17,7 +17,7 @@ function AnimatedNumber({ value, label }: { value: string; label: string }) {
 
   return (
     <div ref={ref} className="text-center px-8">
-      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-2">
+      <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient mb-2">
         {displayValue}
       </div>
       <div className="text-sm md:text-base text-muted-foreground">
@@ -29,8 +29,19 @@ function AnimatedNumber({ value, label }: { value: string; label: string }) {
 
 export function StatsSection() {
   return (
-    <section className="py-16 md:py-20 bg-[hsl(220,20%,8%)]">
-      <div className="container mx-auto px-4">
+    <section className="relative py-16 md:py-20 overflow-hidden">
+      {/* Dark gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(220,25%,6%)] via-[hsl(220,30%,8%)] to-[hsl(220,25%,6%)]" />
+      
+      {/* Subtle glow effects */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      
+      {/* Subtle top and bottom borders */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16 lg:gap-24">
           {stats.map((stat, index) => (
             <AnimatedNumber key={index} value={stat.value} label={stat.label} />
