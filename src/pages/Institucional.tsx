@@ -1,6 +1,7 @@
 import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, MessageSquare, AlertTriangle, Clock, UserX, PhoneOff, Check, X, Sparkles, ChevronDown, Users, Gauge, Shield, Rocket, ShoppingCart, MapPin, Stethoscope, Shirt } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { AnimatedStat } from "@/components/landing/AnimatedStat";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 import ceoDeomir from "@/assets/ceo-deomir.png";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -225,15 +226,12 @@ export default function Institucional() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border/50">
             {stats.map((stat, index) => (
-              <div key={index} className="flex items-center gap-4 md:justify-center md:px-8">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              </div>
+              <AnimatedStat
+                key={index}
+                icon={stat.icon}
+                value={stat.value}
+                label={stat.label}
+              />
             ))}
           </div>
         </div>
