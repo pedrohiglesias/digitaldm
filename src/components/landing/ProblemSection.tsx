@@ -1,5 +1,6 @@
 import { AlertTriangle, Clock, MessageSquare, TrendingDown, UserX, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const problems = [
   {
@@ -29,6 +30,9 @@ const problems = [
 ];
 
 export function ProblemSection() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section id="como-funciona" className="py-24 relative overflow-hidden">
       {/* Background effect */}
@@ -37,7 +41,12 @@ export function ProblemSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
             <span className="text-primary text-sm font-semibold uppercase tracking-wider">
               O Problema
             </span>
@@ -52,11 +61,14 @@ export function ProblemSection() {
           </div>
 
           {/* Problem cards */}
-          <div className="grid md:grid-cols-2 gap-4 mb-12">
+          <div ref={cardsRef} className="grid md:grid-cols-2 gap-4 mb-12">
             {problems.map((problem, index) => (
               <div
                 key={index}
-                className="glass-card rounded-lg p-6 flex items-start gap-4 hover-lift"
+                className={`glass-card rounded-lg p-6 flex items-start gap-4 hover-lift transition-all duration-500 ${
+                  cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-10 h-10 rounded-lg bg-destructive/20 flex items-center justify-center flex-shrink-0">
                   <problem.icon className="w-5 h-5 text-destructive" />
