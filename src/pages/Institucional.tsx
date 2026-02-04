@@ -2,6 +2,7 @@ import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, Messa
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AnimatedStat } from "@/components/landing/AnimatedStat";
+import { WorkflowVisualization } from "@/components/landing/WorkflowVisualization";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 import ceoDeomir from "@/assets/ceo-deomir.png";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -202,21 +203,8 @@ export default function Institucional() {
               </div>
             </div>
 
-            {/* Right - Floating badges (visible on larger screens) */}
-            <div className="hidden lg:flex justify-center items-center relative">
-              <div className="absolute top-10 right-20 glass-card px-4 py-3 rounded-xl flex items-center gap-3 float">
-                <Zap className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Rápido</span>
-              </div>
-              <div className="absolute top-1/3 right-0 glass-card px-4 py-3 rounded-xl flex items-center gap-3 float" style={{ animationDelay: "2s" }}>
-                <Target className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Preciso</span>
-              </div>
-              <div className="absolute bottom-1/3 right-10 glass-card px-4 py-3 rounded-xl flex items-center gap-3 float" style={{ animationDelay: "4s" }}>
-                <Bot className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">Automatizado</span>
-              </div>
-            </div>
+            {/* Right - Interactive Workflow Visualization */}
+            <WorkflowVisualization />
           </div>
         </div>
       </section>
