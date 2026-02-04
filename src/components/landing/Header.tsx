@@ -54,8 +54,13 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="outline" size="lg" asChild>
+              <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                Entrar na DM IA
+              </a>
+            </Button>
             <Button variant="hero" size="lg" asChild>
               <a href="#diagnostico">Agendar Diagnóstico</a>
             </Button>
@@ -85,6 +90,11 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
+              <Button variant="outline" size="lg" className="mt-2" asChild>
+                <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                  Entrar na DM IA
+                </a>
+              </Button>
               <Button variant="hero" size="lg" className="mt-2" asChild>
                 <a href="#diagnostico">Agendar Diagnóstico</a>
               </Button>
