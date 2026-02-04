@@ -1,6 +1,7 @@
 import { ArrowRight, Users, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
+import ceoDeomir from "@/assets/ceo-deomir.png";
 
 const stats = [
   { value: "+200", label: "Clientes atendidos" },
@@ -214,9 +215,10 @@ export default function Institucional() {
       {/* About Section */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
+              {/* Text - Left aligned */}
+              <div className="text-left">
                 <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">Sobre Nós</p>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
                   Um ecossistema de{" "}
@@ -242,24 +244,42 @@ export default function Institucional() {
                   </li>
                 </ul>
               </div>
-              <div className="glass-card rounded-2xl p-8 gradient-border">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                  <span className="text-sm text-muted-foreground">Digital DM System</span>
-                  <span className="ml-auto text-xs text-primary border border-primary/30 px-2 py-1 rounded">Active</span>
+
+              {/* CEO Photo - Right side with decorative elements */}
+              <div className="relative flex justify-center">
+                {/* Background decorative elements */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 blur-2xl" />
                 </div>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <span className="text-sm">Leads Qualificados</span>
-                    <TrendingUp className="w-4 h-4 text-primary" />
+                <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-primary/30 blur-xl animate-pulse" />
+                <div className="absolute bottom-20 left-5 w-16 h-16 rounded-full bg-primary/20 blur-lg" />
+                
+                {/* Floating icons */}
+                <div className="absolute top-5 left-10 glass-card p-3 rounded-xl">
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                </div>
+                <div className="absolute bottom-32 right-5 glass-card p-3 rounded-xl">
+                  <Zap className="w-5 h-5 text-primary" />
+                </div>
+                <div className="absolute top-1/2 right-0 glass-card p-3 rounded-xl">
+                  <Target className="w-5 h-5 text-primary" />
+                </div>
+
+                {/* CEO Image container */}
+                <div className="relative z-10 text-center">
+                  <div className="relative">
+                    {/* Glow effect behind image */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent rounded-b-3xl blur-xl" />
+                    <img 
+                      src={ceoDeomir} 
+                      alt="Deomir Martinhago - CEO & Founder" 
+                      className="relative z-10 w-64 md:w-72 h-auto object-contain drop-shadow-2xl"
+                    />
                   </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <span className="text-sm">Automações Ativas</span>
-                    <Zap className="w-4 h-4 text-primary" />
-                  </div>
-                  <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <span className="text-sm">Clientes Satisfeitos</span>
-                    <Users className="w-4 h-4 text-primary" />
+                  {/* Name and title */}
+                  <div className="mt-4">
+                    <h3 className="font-bold text-lg text-foreground">Deomir Martinhago</h3>
+                    <p className="text-sm text-primary font-medium">CEO & Founder</p>
                   </div>
                 </div>
               </div>
