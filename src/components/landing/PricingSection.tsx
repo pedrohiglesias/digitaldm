@@ -137,16 +137,6 @@ export function PricingSection() {
                   {/* Divider */}
                   <div className="border-t border-border my-6" />
 
-                  {/* Price */}
-                  <div className="text-center mb-4">
-                    <p className="text-sm text-muted-foreground mb-2">Investimento mensal</p>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-sm text-muted-foreground">R$</span>
-                      <span className="text-4xl font-bold">{plan.price}</span>
-                      <span className="text-muted-foreground">/mês</span>
-                    </div>
-                  </div>
-
                   {/* Promo Banner */}
                   <div className="bg-primary/10 rounded-xl p-4 mb-6">
                     <div className="flex items-start gap-3">
