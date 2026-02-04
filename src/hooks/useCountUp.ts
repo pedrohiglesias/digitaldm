@@ -71,7 +71,7 @@ export function useCountUp({
   return { ref, displayValue, count };
 }
 
-// Parse a stat value like "+200", "42%", "24/7", "100%" into components
+// Parse a stat value like "+200", "42%", "24/7", "100%", "R$100M+" into components
 export function parseStatValue(value: string): { 
   prefix: string; 
   number: number; 
@@ -83,7 +83,18 @@ export function parseStatValue(value: string): {
     return { prefix: "", number: 24, suffix: "/7", isSpecial: true };
   }
 
-  // Match patterns like "+200", "42%", "100%"
+  // Handle currency format like "R$100M+"
+  const currencyMatch = value.match(/^(R\$|US\$|\$|€|£)(\d+)(.*)$/);
+  if (currencyMatch) {
+    return {
+      prefix: currencyMatch[1],
+      number: parseInt(currencyMatch[2], 10),
+      suffix: currencyMatch[3],
+      isSpecial: false
+    };
+  }
+
+  // Match patterns like "+200", "42%", "100%", "600+"
   const match = value.match(/^([+\-]?)(\d+)(.*)$/);
   
   if (match) {
