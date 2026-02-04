@@ -70,9 +70,16 @@ export default function Institucional() {
                 Resultados
               </a>
             </nav>
-            <Button variant="hero" size="lg" asChild>
-              <a href="#contato">Falar com Especialista</a>
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button variant="heroOutline" size="lg" asChild>
+                <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                  Entrar na DMIA
+                </a>
+              </Button>
+              <Button variant="hero" size="lg" asChild>
+                <a href="#contato">Falar com Especialista</a>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
