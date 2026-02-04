@@ -55,26 +55,30 @@ function VideoCard({
   testimonial: typeof videoTestimonials[0];
   onPlay: (videoId: string) => void;
 }) {
-  const thumbnailUrl = `https://img.youtube.com/vi/${testimonial.videoId}/maxresdefault.jpg`;
+  // Autoplay muted preview - loop silently
+  const previewSrc = `https://www.youtube.com/embed/${testimonial.videoId}?autoplay=1&mute=1&loop=1&playlist=${testimonial.videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
 
   return (
     <div className="glass-card rounded-2xl overflow-hidden hover-lift cursor-pointer group">
-      {/* Video Thumbnail */}
+      {/* Video Preview - Autoplay Muted */}
       <div 
         className="relative aspect-[9/16] overflow-hidden"
         onClick={() => onPlay(testimonial.videoId)}
       >
-        <img
-          src={thumbnailUrl}
-          alt={`Depoimento ${testimonial.company}`}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        <iframe
+          src={previewSrc}
+          title={`Preview ${testimonial.company}`}
+          className="w-full h-full pointer-events-none"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          loading="lazy"
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
         
-        {/* Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-destructive flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+        {/* Click overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+        
+        {/* Play Button - appears on hover */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="w-16 h-16 rounded-full bg-destructive flex items-center justify-center shadow-lg scale-90 group-hover:scale-100 transition-transform duration-300">
             <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
