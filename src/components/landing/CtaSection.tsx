@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, CheckCircle, ClipboardList, Search, Map } from "lucide-react";
+import { ArrowRight, ClipboardList, Search, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -32,6 +33,9 @@ const steps = [
 
 export function CtaSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: formRef, isVisible: formVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +56,12 @@ export function CtaSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-12 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Agende seu{" "}
               <span className="text-gradient">Diagnóstico Estratégico</span>
@@ -65,9 +74,15 @@ export function CtaSection() {
           </div>
 
           {/* Process steps */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div ref={stepsRef} className="grid md:grid-cols-3 gap-6 mb-16">
             {steps.map((step, index) => (
-              <div key={index} className="flex items-start gap-4">
+              <div 
+                key={index} 
+                className={`flex items-start gap-4 transition-all duration-500 ${
+                  stepsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
                 <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
                   <step.icon className="w-6 h-6 text-primary" />
                 </div>
@@ -80,7 +95,12 @@ export function CtaSection() {
           </div>
 
           {/* Form */}
-          <div className="glass-card rounded-2xl p-8 md:p-12 max-w-2xl mx-auto">
+          <div 
+            ref={formRef}
+            className={`glass-card rounded-2xl p-8 md:p-12 max-w-2xl mx-auto transition-all duration-700 ${
+              formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">

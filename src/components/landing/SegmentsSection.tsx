@@ -1,5 +1,6 @@
 import { ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const segments = [
   { 
@@ -29,10 +30,18 @@ const segments = [
 ];
 
 export function SegmentsSection() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section id="segmentos" className="py-20 md:py-28 bg-card/50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
           <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">SEGMENTOS ATENDIDOS</p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Time dedicado para o <span className="text-gradient">seu segmento</span>
@@ -43,9 +52,15 @@ export function SegmentsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div ref={cardsRef} className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {segments.map((segment, index) => (
-            <div key={index} className="glass-card rounded-2xl p-8 hover-lift group">
+            <div 
+              key={index} 
+              className={`glass-card rounded-2xl p-8 hover-lift group transition-all duration-500 ${
+                cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
               <div className="flex items-start gap-5">
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <segment.icon className="w-8 h-8 text-primary" />
