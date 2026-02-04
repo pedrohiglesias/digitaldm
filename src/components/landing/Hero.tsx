@@ -3,12 +3,6 @@ import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const stats = [
-  { value: "600+", label: "Negócios Atendidos" },
-  { value: "14+", label: "Anos de Experiência" },
-  { value: "R$100M+", label: "Gerados para Clientes" },
-];
-
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -115,20 +109,6 @@ export function Hero() {
             <Button variant="heroOutline" size="xl" asChild>
               <a href="#como-funciona">Ver Como Funciona</a>
             </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-gradient">
-                  {stat.value}
-                </div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
