@@ -93,10 +93,10 @@ export function CtaSection() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company">Empresa</Label>
+                  <Label htmlFor="instagram">Nome do Instagram</Label>
                   <Input
-                    id="company"
-                    placeholder="Nome da sua empresa"
+                    id="instagram"
+                    placeholder="@seuperfil"
                     required
                     className="bg-muted/50 border-border/50"
                   />
@@ -105,17 +105,18 @@ export function CtaSection() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="segment">Segmento</Label>
+                  <Label htmlFor="revenue">Faturamento Mensal</Label>
                   <Select required>
                     <SelectTrigger className="bg-muted/50 border-border/50">
                       <SelectValue placeholder="Selecione" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="ecommerce">E-commerce</SelectItem>
-                      <SelectItem value="clinica">Clínica / Saúde</SelectItem>
-                      <SelectItem value="local">Negócio Local</SelectItem>
-                      <SelectItem value="servicos">Prestação de Serviços</SelectItem>
-                      <SelectItem value="outro">Outro</SelectItem>
+                      <SelectItem value="40k-80k">R$ 40k - R$ 80k</SelectItem>
+                      <SelectItem value="80k-150k">R$ 80k - R$ 150k</SelectItem>
+                      <SelectItem value="150k-300k">R$ 150k - R$ 300k</SelectItem>
+                      <SelectItem value="300k-500k">R$ 300k - R$ 500k</SelectItem>
+                      <SelectItem value="500k-1m">R$ 500k - R$ 1 milhão</SelectItem>
+                      <SelectItem value="acima-1m">Acima de R$ 1 milhão</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
