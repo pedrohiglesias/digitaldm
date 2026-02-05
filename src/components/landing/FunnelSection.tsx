@@ -114,17 +114,11 @@ export function FunnelSection() {
                   
                   {/* GIF content */}
                   <div className="relative bg-card/50">
-                    {/* Top fade overlay to hide external logo */}
-                    <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-card via-card/80 to-transparent z-10" />
-                    
                     <img 
                       src={funnelGif}
                       alt="Visualização de funil de conversão"
                       className="w-full h-auto"
                     />
-                    
-                    {/* Bottom fade for aesthetics */}
-                    <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-card/90 to-transparent z-10" />
                   </div>
                 </div>
               </div>
