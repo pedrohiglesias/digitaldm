@@ -60,8 +60,11 @@ export default function DmIa() {
               className="relative max-w-3xl mx-auto mb-8 animate-scale-in"
               style={{ animationDelay: "0.4s", animationFillMode: "both" }}
             >
+              {/* Blue glow light behind video */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[150%] bg-gradient-radial from-primary/40 via-primary/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[100%] bg-gradient-radial from-secondary/30 via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
               
-              <div className="glass-card rounded-2xl p-2 gradient-border hover-lift">
+              <div className="relative glass-card rounded-2xl p-2 gradient-border hover-lift">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-card">
                   {/* Video placeholder - replace with actual video embed */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
