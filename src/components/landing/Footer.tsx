@@ -1,12 +1,25 @@
 import { Instagram, Linkedin, Mail } from "lucide-react";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
-const footerLinks = [
+const navigationLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
   { label: "DM IA", href: "#dm-ia" },
   { label: "Método MIA", href: "#metodo" },
   { label: "Resultados", href: "#resultados" },
-  { label: "Diagnóstico", href: "#diagnostico" },
+];
+
+const resourceLinks = [
+  { label: "Funil Estratégico", href: "#funil" },
+  { label: "Automação", href: "#automacao" },
+  { label: "Parceiros", href: "#parceiros" },
+  { label: "Depoimentos", href: "#depoimentos" },
+];
+
+const actionLinks = [
+  { label: "Diagnóstico Grátis", href: "#diagnostico" },
+  { label: "Planos e Preços", href: "#planos" },
+  { label: "Quem Somos", href: "#sobre" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const socialLinks = [
@@ -19,7 +32,7 @@ export function Footer() {
     <footer className="py-16 border-t border-border/50">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
             <div>
               <img 
@@ -28,7 +41,7 @@ export function Footer() {
                 className="h-6 w-auto mb-4"
               />
               <p className="text-muted-foreground text-sm mb-6">
-                Marketing digital estratégico com CRM inteligente. 
+                Marketing digital estratégico com CRM inteligente e IA. 
                 Transformamos seu funil em crescimento previsível.
               </p>
               <div className="flex gap-4">
@@ -47,11 +60,11 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Links */}
+            {/* Navegação */}
             <div>
-              <h4 className="font-semibold mb-4">Links Rápidos</h4>
-              <ul className="space-y-3">
-                {footerLinks.map((link) => (
+              <h4 className="font-semibold mb-4">Navegação</h4>
+              <ul className="space-y-2">
+                {navigationLinks.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
@@ -64,20 +77,45 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Contact */}
+            {/* Recursos */}
             <div>
-              <h4 className="font-semibold mb-4">Contato</h4>
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href="mailto:contato@digitaldm.com.br"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    <Mail className="w-4 h-4" />
-                    contato@digitaldm.com.br
-                  </a>
-                </li>
+              <h4 className="font-semibold mb-4">Recursos</h4>
+              <ul className="space-y-2">
+                {resourceLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
+            </div>
+
+            {/* Ações */}
+            <div>
+              <h4 className="font-semibold mb-4">Ações</h4>
+              <ul className="space-y-2">
+                {actionLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="mailto:contato@digitaldm.com.br"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm mt-4"
+              >
+                <Mail className="w-4 h-4" />
+                contato@digitaldm.com.br
+              </a>
             </div>
           </div>
 
