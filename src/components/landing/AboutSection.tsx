@@ -35,7 +35,7 @@ export function AboutSection() {
                 <p>
                   Somos especialistas em <strong className="text-primary">Inteligência Artificial aplicada a vendas</strong>,{" "}
                   <strong className="text-primary">engenharia de vendas</strong> e estratégias comerciais que geram 
-                  resultados reais — <strong className="text-foreground">sem perda de tempo</strong>.
+                  resultados reais, <strong className="text-foreground">sem perda de tempo</strong>.
                 </p>
 
                 <p>
