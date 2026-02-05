@@ -34,22 +34,19 @@ const Index = () => {
         <MechanismSection />
         <TrafficSection />
         <DmIaSection />
-        <FunnelSection />
-        
         <AutomationSection />
+        <FunnelSection />
         <MethodSection />
-        <AboutSection />
-        <MapSection />
-        <ResultsSection />
-        <PartnersSection />
-        <ProofSection />
-        <VideoTestimonialsSection />
         <EcommerceBenefitsSection />
         <EcommercePortfolioSection />
+        <ResultsSection />
+        <ProofSection />
+        <VideoTestimonialsSection />
         <EligibilitySection />
-        
-        <CtaSection />
+        <MapSection />
         <FaqSection />
+        <CtaSection />
+        <PartnersSection />
       </main>
       <Footer />
     </div>
