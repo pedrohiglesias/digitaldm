@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Bot, Filter, Zap, Clock, BarChart, RefreshCw, ArrowUpRight, TrendingUp, Users, Bell, LayoutGrid, MessageSquare, Calendar, Search, Link, Settings, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DashboardPreview } from "./DashboardPreview";
 import crmDashboard from "@/assets/crm-dashboard.png";
 import crmKanban from "@/assets/crm-kanban.png";
 
@@ -180,22 +181,8 @@ export function DmIaSection() {
                 </div>
               </div>
 
-              {/* Content Area */}
-              <div className="relative">
-                <img 
-                  src={currentContent.image}
-                  alt={currentContent.title}
-                  className="w-full h-auto transition-opacity duration-300"
-                />
-                
-                {/* Overlay with info on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
-                    <p className="text-muted-foreground">{currentContent.description}</p>
-                  </div>
-                </div>
-              </div>
+              {/* Content Area - Interactive Dashboard */}
+              <DashboardPreview />
             </div>
           </div>
 
