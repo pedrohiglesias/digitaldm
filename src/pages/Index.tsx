@@ -14,7 +14,7 @@ import { VideoTestimonialsSection } from "@/components/landing/VideoTestimonials
 import { EcommercePortfolioSection } from "@/components/landing/EcommercePortfolioSection";
 import { SegmentsSection } from "@/components/landing/SegmentsSection";
 import { EligibilitySection } from "@/components/landing/EligibilitySection";
-import { PricingSection } from "@/components/landing/PricingSection";
+
 import { CtaSection } from "@/components/landing/CtaSection";
 import { FaqSection } from "@/components/landing/FaqSection";
 import { Footer } from "@/components/landing/Footer";
@@ -44,7 +44,7 @@ const Index = () => {
         <EcommercePortfolioSection />
         <SegmentsSection />
         <EligibilitySection />
-        <PricingSection />
+        
         <CtaSection />
         <FaqSection />
       </main>
