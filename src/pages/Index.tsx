@@ -5,7 +5,6 @@ import { ProblemSection } from "@/components/landing/ProblemSection";
 import { MechanismSection } from "@/components/landing/MechanismSection";
 import { DmIaSection } from "@/components/landing/DmIaSection";
 import { FunnelSection } from "@/components/landing/FunnelSection";
-
 import { AutomationSection } from "@/components/landing/AutomationSection";
 import { MethodSection } from "@/components/landing/MethodSection";
 import { ResultsSection } from "@/components/landing/ResultsSection";
@@ -20,6 +19,7 @@ import { CtaSection } from "@/components/landing/CtaSection";
 import { FaqSection } from "@/components/landing/FaqSection";
 import { Footer } from "@/components/landing/Footer";
 import { AboutSection } from "@/components/landing/AboutSection";
+import { MapSection } from "@/components/landing/MapSection";
 
 const Index = () => {
   return (
@@ -36,6 +36,7 @@ const Index = () => {
         <AutomationSection />
         <MethodSection />
         <AboutSection />
+        <MapSection />
         <ResultsSection />
         <PartnersSection />
         <ProofSection />
