@@ -1,5 +1,8 @@
-import { Bot, Filter, Zap, Clock, BarChart, RefreshCw, ArrowUpRight, TrendingUp, Users, Bell } from "lucide-react";
+import { useState } from "react";
+import { Bot, Filter, Zap, Clock, BarChart, RefreshCw, ArrowUpRight, TrendingUp, Users, Bell, LayoutGrid, MessageSquare, Calendar, Search, Link, Settings, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import crmDashboard from "@/assets/crm-dashboard.png";
+import crmKanban from "@/assets/crm-kanban.png";
 
 const features = [
   {
@@ -40,19 +43,82 @@ const results = [
   { icon: ArrowUpRight, text: "Mais conversões com o mesmo volume" },
 ];
 
+const tabs = [
+  { id: "dashboard", label: "Dashboard", icon: LayoutGrid },
+  { id: "conversas", label: "Conversas", icon: MessageSquare },
+  { id: "agente", label: "Agente IA", icon: Bot },
+  { id: "crm", label: "CRM", icon: BarChart },
+  { id: "agenda", label: "Agenda", icon: Calendar },
+  { id: "prospectar", label: "Prospectar", icon: Search },
+  { id: "contatos", label: "Contatos", icon: Users },
+  { id: "conexao", label: "Conexão", icon: Link },
+  { id: "config", label: "Config", icon: Settings },
+];
+
+const tabContent: Record<string, { image: string; title: string; description: string }> = {
+  dashboard: {
+    image: crmDashboard,
+    title: "Dashboard Completo",
+    description: "Visão geral do seu negócio com métricas de vendas, conversões e performance em tempo real."
+  },
+  conversas: {
+    image: crmDashboard,
+    title: "Central de Conversas",
+    description: "Gerencie todas as conversas do WhatsApp em um único lugar com histórico completo."
+  },
+  agente: {
+    image: crmDashboard,
+    title: "Agente de IA",
+    description: "Configure seu agente de IA para responder automaticamente e qualificar leads 24/7."
+  },
+  crm: {
+    image: crmKanban,
+    title: "CRM Kanban",
+    description: "Visualize todo seu funil de vendas em colunas organizadas por etapa."
+  },
+  agenda: {
+    image: crmDashboard,
+    title: "Agendamentos",
+    description: "Integração completa com sua agenda para marcar reuniões automaticamente."
+  },
+  prospectar: {
+    image: crmDashboard,
+    title: "Prospecção Ativa",
+    description: "Encontre novos leads e inicie conversas com prospects qualificados."
+  },
+  contatos: {
+    image: crmDashboard,
+    title: "Base de Contatos",
+    description: "Gerencie todos os seus contatos com tags, filtros e segmentações."
+  },
+  conexao: {
+    image: crmDashboard,
+    title: "Conexões",
+    description: "Conecte seu WhatsApp e outras integrações em poucos cliques."
+  },
+  config: {
+    image: crmDashboard,
+    title: "Configurações",
+    description: "Personalize o sistema de acordo com as necessidades do seu negócio."
+  },
+};
+
 export function DmIaSection() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const currentContent = tabContent[activeTab];
+
   return (
     <section id="dm-ia" className="py-24 relative overflow-hidden">
       {/* Background glow effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-6">
               <Bot className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-semibold">Diferencial Central</span>
+              <span className="text-sm text-primary font-semibold">CRM Inteligente</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               <span className="text-gradient">DM IA:</span> o CRM com Inteligência Artificial
@@ -62,6 +128,75 @@ export function DmIaSection() {
               Enquanto sua equipe atende, a DM IA organiza o funil, faz triagem, acompanha e 
               prioriza — para seu time focar no que importa: fechar vendas.
             </p>
+          </div>
+
+          {/* CRM Showcase */}
+          <div className="mb-16">
+            {/* Disclaimer */}
+            <div className="flex items-center justify-center gap-2 mb-8 text-muted-foreground text-sm">
+              <Info className="w-4 h-4" />
+              <span>Esta é apenas uma demonstração visual do sistema. A interface real possui ainda mais recursos.</span>
+            </div>
+
+            {/* Tabs Navigation */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`
+                      flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
+                      transition-all duration-300 border
+                      ${isActive 
+                        ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25" 
+                        : "bg-card/50 text-muted-foreground border-border/50 hover:bg-card hover:text-foreground hover:border-border"
+                      }
+                    `}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="hidden sm:inline">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Browser Window Mockup */}
+            <div className="glass-card rounded-2xl overflow-hidden gradient-border">
+              {/* Browser Header */}
+              <div className="bg-card/80 border-b border-border/50 px-4 py-3 flex items-center gap-4">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-destructive/60" />
+                  <div className="w-3 h-3 rounded-full bg-accent/60" />
+                  <div className="w-3 h-3 rounded-full bg-secondary/60" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                  <div className="bg-muted/50 rounded-lg px-4 py-1.5 text-sm text-muted-foreground max-w-md w-full text-center">
+                    https://app.dmia.com.br
+                  </div>
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className="relative">
+                <img 
+                  src={currentContent.image}
+                  alt={currentContent.title}
+                  className="w-full h-auto transition-opacity duration-300"
+                />
+                
+                {/* Overlay with info on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="text-left">
+                    <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
+                    <p className="text-muted-foreground">{currentContent.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Features grid */}
