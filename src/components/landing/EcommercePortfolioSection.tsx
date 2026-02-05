@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, LayoutGrid, CreditCard, Search, Smartphone, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import portfolioAmazonas from "@/assets/portfolio-amazonas.jpg";
 import portfolioAnaSouza from "@/assets/portfolio-anasouza.png";
@@ -34,11 +34,11 @@ const portfolioSlides = [
 ];
 
 const features = [
-  "Layouts profissionais",
-  "Checkout rápido e intuitivo",
-  "Navegação agradável e busca eficiente",
-  "Design responsivo",
-  "Integração com meios de pagamento",
+  { icon: LayoutGrid, label: "Layouts profissionais" },
+  { icon: CreditCard, label: "Checkout rápido e intuitivo" },
+  { icon: Search, label: "Navegação agradável e busca eficiente" },
+  { icon: Smartphone, label: "Design responsivo" },
+  { icon: Wallet, label: "Integração com meios de pagamento" },
 ];
 
 export function EcommercePortfolioSection() {
@@ -166,9 +166,10 @@ export function EcommercePortfolioSection() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="p-4 rounded-xl bg-card border border-border/50 text-center hover:border-primary/50 transition-colors"
+                className="p-4 py-6 rounded-xl bg-card border border-border/50 text-center hover:border-primary/50 transition-colors flex flex-col items-center justify-center gap-3"
               >
-                <span className="text-sm font-medium text-foreground">{feature}</span>
+                <feature.icon className="w-6 h-6 text-primary" />
+                <span className="text-sm font-medium text-foreground">{feature.label}</span>
               </div>
             ))}
           </div>
