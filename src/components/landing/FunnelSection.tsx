@@ -86,21 +86,47 @@ export function FunnelSection() {
               </div>
             </div>
 
-            {/* Right - GIF with overlay */}
+            {/* Right - GIF with browser mockup and glow */}
             <div className="order-1 lg:order-2">
-              <div className="relative rounded-2xl overflow-hidden glass-card gradient-border">
-                {/* Top fade overlay to hide logo */}
-                <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-background via-background/90 to-transparent z-10" />
+              <div className="relative">
+                {/* Blue glow light behind */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-primary/40 via-primary/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-radial from-secondary/30 via-transparent to-transparent rounded-full blur-2xl pointer-events-none" />
                 
-                {/* GIF */}
-                <img 
-                  src={funnelGif}
-                  alt="Visualização de funil de conversão"
-                  className="w-full h-auto"
-                />
-                
-                {/* Bottom fade for aesthetics */}
-                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background/80 to-transparent z-10" />
+                {/* Browser mockup */}
+                <div className="relative glass-card rounded-xl overflow-hidden gradient-border hover-lift">
+                  {/* Browser header */}
+                  <div className="bg-card/90 border-b border-border/30 px-4 py-3 flex items-center gap-4">
+                    {/* Traffic lights */}
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    </div>
+                    {/* URL bar */}
+                    <div className="flex-1 flex justify-center">
+                      <div className="bg-muted/50 rounded-full px-4 py-1.5 text-xs text-muted-foreground max-w-xs w-full text-center">
+                        https://app.dmia.com.br/funil
+                      </div>
+                    </div>
+                    <div className="w-16" /> {/* Spacer for balance */}
+                  </div>
+                  
+                  {/* GIF content */}
+                  <div className="relative bg-card/50">
+                    {/* Top fade overlay to hide external logo */}
+                    <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-card via-card/80 to-transparent z-10" />
+                    
+                    <img 
+                      src={funnelGif}
+                      alt="Visualização de funil de conversão"
+                      className="w-full h-auto"
+                    />
+                    
+                    {/* Bottom fade for aesthetics */}
+                    <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-card/90 to-transparent z-10" />
+                  </div>
+                </div>
               </div>
               
               <p className="text-center text-xs text-muted-foreground mt-4">
