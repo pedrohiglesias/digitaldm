@@ -1,5 +1,6 @@
-import { ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight } from "lucide-react";
+import { ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const segments = [
@@ -42,7 +43,10 @@ export function SegmentsSection() {
             headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
-          <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">SEGMENTOS ATENDIDOS</p>
+          <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+            <Layers className="w-4 h-4 mr-2" />
+            Segmentos Atendidos
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Time dedicado para o <span className="text-gradient">seu segmento</span>
           </h2>

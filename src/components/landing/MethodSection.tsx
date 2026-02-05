@@ -1,5 +1,6 @@
-import { Target, MessageSquare, Bot, BarChart3, ArrowRight } from "lucide-react";
+import { Target, MessageSquare, Bot, BarChart3, ArrowRight, Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const steps = [
   {
@@ -51,9 +52,10 @@ export function MethodSection() {
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <Route className="w-4 h-4 mr-2" />
               O Método
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               Método <span className="text-gradient">MIA</span>: Método + IA + Análise
             </h2>
