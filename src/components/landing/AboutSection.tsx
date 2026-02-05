@@ -77,19 +77,20 @@ export function AboutSection() {
 
             {/* Right - Image */}
             <div className="order-1 lg:order-2 relative flex items-center justify-center">
-              {/* Glow behind image */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-radial from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+              {/* Intense blue glow behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/40 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-secondary/50 rounded-full blur-[60px] pointer-events-none" />
               
-              {/* Image without frame - blends with background */}
-              <div className="relative">
+              {/* Image with frame */}
+              <div className="relative p-2 rounded-2xl border-2 border-primary/40 bg-card/30 backdrop-blur-sm shadow-[0_0_60px_rgba(59,130,246,0.4)]">
                 <img 
                   src={ceoDeomir}
                   alt="Deomir - CEO & Founder da Digital DM"
-                  className="w-full h-auto max-w-md object-contain relative z-10"
+                  className="w-full h-auto max-w-md object-contain relative z-10 rounded-xl"
                 />
                 
                 {/* Floating badge */}
-                <div className="absolute -bottom-2 right-4 glass-card rounded-xl px-4 py-3 float border border-primary/20 z-20">
+                <div className="absolute -bottom-2 right-4 glass-card rounded-xl px-4 py-3 float border border-primary/30 z-20">
                   <p className="text-sm font-bold text-primary text-center">Deomir Martinhago</p>
                   <p className="text-xs text-muted-foreground text-center">CEO & Founder</p>
                 </div>
