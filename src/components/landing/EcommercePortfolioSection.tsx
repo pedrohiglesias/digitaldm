@@ -69,7 +69,7 @@ export function EcommercePortfolioSection() {
   }, []);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="portfolio" className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       

@@ -41,7 +41,7 @@ export function AutomationSection() {
   };
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
+    <section id="automacao" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
