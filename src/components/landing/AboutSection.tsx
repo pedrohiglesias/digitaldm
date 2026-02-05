@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import ceoDeomir from "@/assets/ceo-deomir.png";
 
 const stats = [
-  { icon: Users, value: "600+", label: "Lojistas Atendidos" },
+  { icon: Users, value: "600+", label: "Empresas Atendidas" },
   { icon: Award, value: "14+", label: "Anos de Experiência" },
   { icon: TrendingUp, value: "42%", label: "Aumento Médio em Vendas" },
 ];
@@ -20,32 +20,33 @@ export function AboutSection() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
             <div className="order-2 lg:order-1">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-                <span className="text-gradient italic">Quem somos nós?</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-center lg:text-left">
+                <span className="text-gradient">Quem somos nós?</span>
               </h2>
 
               <div className="space-y-6 text-foreground/90">
                 <p className="text-lg">
-                  Meu nome é <strong className="text-foreground">Deomir</strong> e sou dono da Digital DM, 
-                  temos mais de 14 anos de história, já transformamos a realidade de{" "}
-                  <strong className="text-foreground">600 lojistas</strong> que aceleraram seu crescimento 
-                  graças a nossa metodologia de trabalho.
+                  Meu nome é <strong className="text-foreground">Deomir</strong> e sou fundador da Digital DM. 
+                  Com mais de 14 anos de experiência, nossa empresa já transformou a realidade de{" "}
+                  <strong className="text-foreground">mais de 600 empresas</strong> que alcançaram{" "}
+                  <strong className="text-primary">crescimento exponencial</strong> através da nossa metodologia.
                 </p>
 
                 <p>
-                  Minha missão é ajudar novos lojistas a também acelerar os seus crescimentos, mas mais do que 
-                  isso, quero ver ele <strong className="text-primary">aumentando os seus lucros</strong> e{" "}
-                  <strong className="text-primary">expandindo seus e-commerces</strong> nos próximos meses.
+                  Somos especialistas em <strong className="text-primary">Inteligência Artificial aplicada a vendas</strong>,{" "}
+                  <strong className="text-primary">engenharia de vendas</strong> e estratégias comerciais que geram 
+                  resultados reais — <strong className="text-foreground">sem perda de tempo</strong>.
                 </p>
 
                 <p>
-                  Por isso, estou disposto a realizar uma reunião estratégica com eles e{" "}
-                  <strong className="text-foreground">apresentar meu Plano Personalizado para lojistas e atacadistas.</strong>
+                  Nossa missão é ajudar empresas a estruturar processos comerciais inteligentes, 
+                  automatizados e escaláveis, para que possam{" "}
+                  <strong className="text-foreground">vender mais com menos esforço operacional.</strong>
                 </p>
 
                 <p>
-                  Essa é a sua oportunidade de conversar comigo e ter em mãos{" "}
-                  <strong className="text-foreground">tudo que precisa para alavancar suas vendas.</strong>
+                  Essa é a sua oportunidade de conversar comigo e descobrir como aplicar{" "}
+                  <strong className="text-foreground">IA e automação para acelerar suas vendas.</strong>
                 </p>
               </div>
 
@@ -64,9 +65,9 @@ export function AboutSection() {
               </div>
 
               {/* CTA */}
-              <div className="mt-10">
+              <div className="mt-10 text-center lg:text-left">
                 <Button variant="hero" size="lg" asChild>
-                  <a href="#diagnostico" className="flex items-center gap-2">
+                  <a href="#diagnostico" className="inline-flex items-center gap-2">
                     Falar com Deomir
                     <ArrowRight className="w-5 h-5" />
                   </a>
