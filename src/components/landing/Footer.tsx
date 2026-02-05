@@ -1,7 +1,5 @@
-import { Instagram, Linkedin, Mail } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
-import metaPartner from "@/assets/meta-partner.png";
-import googlePartner from "@/assets/google-partner.png";
 
 const navigationLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -24,11 +22,6 @@ const actionLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const socialLinks = [
-  { icon: Instagram, href: "https://www.instagram.com/digitaldm.com.br/", label: "Instagram" },
-  { icon: Linkedin, href: "https://linkedin.com/company/digitaldm", label: "LinkedIn" },
-];
-
 export function Footer() {
   return (
     <footer className="py-16 border-t border-border/50">
@@ -46,20 +39,15 @@ export function Footer() {
                 Marketing digital estratégico com CRM inteligente e IA. 
                 Transformamos seu funil em crescimento previsível.
               </p>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
-              </div>
+              <a
+                href="https://www.instagram.com/digitaldm.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
 
             {/* Navegação */}
@@ -121,22 +109,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Partner Badges */}
-          <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-center items-center gap-6 mb-8">
-            <span className="text-sm text-muted-foreground">Certificações:</span>
-            <div className="flex items-center gap-6">
-              <img 
-                src={metaPartner} 
-                alt="Meta Business Partner" 
-                className="h-12 w-auto bg-white rounded-lg p-2"
-              />
-              <img 
-                src={googlePartner} 
-                alt="Google Ads Certified Partner" 
-                className="h-10 w-auto"
-              />
-            </div>
-          </div>
 
           {/* Bottom */}
           <div className="pt-6 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
