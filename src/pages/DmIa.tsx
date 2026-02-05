@@ -1,7 +1,7 @@
 import { Play, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
-import signalsGif from "@/assets/signals-attention.gif";
+
 
 const benefits = [
   "Triagem automática de leads",
@@ -60,12 +60,6 @@ export default function DmIa() {
               className="relative max-w-3xl mx-auto mb-8 animate-scale-in"
               style={{ animationDelay: "0.4s", animationFillMode: "both" }}
             >
-              {/* Attention GIF - Top Left */}
-              <img 
-                src={signalsGif} 
-                alt="" 
-                className="absolute -top-8 -left-8 md:-top-12 md:-left-12 w-16 h-16 md:w-24 md:h-24 z-20 pointer-events-none"
-              />
               
               <div className="glass-card rounded-2xl p-2 gradient-border hover-lift">
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-card">
