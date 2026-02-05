@@ -1,5 +1,7 @@
 import { Instagram, Linkedin, Mail } from "lucide-react";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
+import metaPartner from "@/assets/meta-partner.png";
+import googlePartner from "@/assets/google-partner.png";
 
 const navigationLinks = [
   { label: "Como Funciona", href: "#como-funciona" },
@@ -119,8 +121,25 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Partner Badges */}
+          <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-center items-center gap-6 mb-8">
+            <span className="text-sm text-muted-foreground">Certificações:</span>
+            <div className="flex items-center gap-6">
+              <img 
+                src={metaPartner} 
+                alt="Meta Business Partner" 
+                className="h-12 w-auto bg-white rounded-lg p-2"
+              />
+              <img 
+                src={googlePartner} 
+                alt="Google Ads Certified Partner" 
+                className="h-10 w-auto"
+              />
+            </div>
+          </div>
+
           {/* Bottom */}
-          <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-6 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Digital DM. Todos os direitos reservados.
             </p>
