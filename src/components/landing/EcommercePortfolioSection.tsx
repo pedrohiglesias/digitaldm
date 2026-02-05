@@ -1,21 +1,35 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import portfolioEcommerce1 from "@/assets/portfolio-ecommerce-1.png";
-import portfolioEcommerce2 from "@/assets/portfolio-ecommerce-2.png";
+import portfolioAmazonas from "@/assets/portfolio-amazonas.jpg";
+import portfolioAnaSouza from "@/assets/portfolio-anasouza.png";
+import portfolioFlexEstilo from "@/assets/portfolio-flexestilo.png";
+import portfolioDiulli from "@/assets/portfolio-diulli.png";
 
 const portfolioSlides = [
   {
     id: 1,
-    image: portfolioEcommerce1,
-    title: "Lojas E-commerce",
-    description: "Sites de vendas otimizados para conversão com design profissional",
+    image: portfolioAmazonas,
+    title: "Amazonas Fashion",
+    description: "E-commerce de moda com design moderno e navegação intuitiva",
   },
   {
     id: 2,
-    image: portfolioEcommerce2,
-    title: "Experiência Premium",
-    description: "Checkout intuitivo e navegação agradável para seus clientes",
+    image: portfolioAnaSouza,
+    title: "Ana Souza",
+    description: "Loja virtual elegante com experiência de compra premium",
+  },
+  {
+    id: 3,
+    image: portfolioFlexEstilo,
+    title: "Flex Estilo",
+    description: "E-commerce responsivo com foco em conversão e usabilidade",
+  },
+  {
+    id: 4,
+    image: portfolioDiulli,
+    title: "Diulli",
+    description: "Plataforma de vendas sofisticada com identidade visual marcante",
   },
 ];
 
