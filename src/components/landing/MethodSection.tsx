@@ -1,6 +1,7 @@
 import { Target, MessageSquare, Bot, BarChart3, ArrowRight, Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -46,12 +47,20 @@ const steps = [
 ];
 
 export function MethodSection() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section id="metodo" className="py-24 bg-card/50">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
               <Route className="w-4 h-4 mr-2" />
               O Método
@@ -66,11 +75,14 @@ export function MethodSection() {
           </div>
 
           {/* Steps grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div ref={cardsRef} className="grid md:grid-cols-2 gap-8 mb-16">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="glass-card rounded-xl p-8 hover-lift relative overflow-hidden"
+                className={`glass-card rounded-xl p-8 hover-lift relative overflow-hidden transition-all duration-500 ${
+                  cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Step number background */}
                 <div className="absolute top-4 right-4 text-6xl font-bold text-primary/10">

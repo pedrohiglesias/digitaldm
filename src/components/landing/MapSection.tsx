@@ -2,6 +2,7 @@ import { MapPin, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import brazilMap from "@/assets/brazil-map.png";
 import { useState, useEffect } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Location pins distributed across Brazil map - all inside the white map area
 const locationPins = [
@@ -60,6 +61,8 @@ export function MapSection() {
     40,
     500
   );
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: mapRef, isVisible: mapVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -70,7 +73,12 @@ export function MapSection() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
-            <div className="order-2 lg:order-1">
+            <div 
+              ref={contentRef}
+              className={`order-2 lg:order-1 transition-all duration-700 ${
+                contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight min-h-[180px] md:min-h-[160px]">
                 {displayedText.split("600 empresas").map((part, i, arr) => (
                   <span key={i}>
@@ -116,7 +124,12 @@ export function MapSection() {
             </div>
 
             {/* Right - Map */}
-            <div className="order-1 lg:order-2 relative">
+            <div 
+              ref={mapRef}
+              className={`order-1 lg:order-2 relative transition-all duration-700 ${
+                mapVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <div className="relative w-full aspect-square max-w-2xl mx-auto">
                 {/* Intense blue glow behind map */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/40 rounded-full blur-[80px] -z-10" />

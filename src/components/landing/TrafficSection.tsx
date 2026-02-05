@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Target, Database, TrendingUp, ArrowUpRight, Wallet } from "lucide-react";
 import { MetaAdsDashboard } from "./MetaAdsDashboard";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const phases = [
   {
@@ -31,6 +32,9 @@ const phases = [
 ];
 
 export const TrafficSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section id="trafego" className="py-24 relative overflow-hidden">
       {/* Background effects */}
@@ -40,12 +44,17 @@ export const TrafficSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
             <Target className="w-4 h-4 mr-2" />
             Tráfego Pago
           </Badge>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="text-foreground">Estratégia</span>{" "}
             <span className="text-gradient">Ultra Segmentada</span>
           </h2>
@@ -55,14 +64,21 @@ export const TrafficSection = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div 
+          ref={contentRef}
+          className={`grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto transition-all duration-700 ${
+            contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Left Column - Phases Infographic */}
           <div className="space-y-4">
             {phases.map((phase, index) => (
               <div
                 key={phase.number}
-                className="glass-card hover-lift rounded-xl p-5 relative overflow-hidden group"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`glass-card hover-lift rounded-xl p-5 relative overflow-hidden group transition-all duration-500 ${
+                  contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 {/* Background number */}
                 <span className="absolute top-2 right-4 text-6xl font-bold text-primary/10 select-none">
