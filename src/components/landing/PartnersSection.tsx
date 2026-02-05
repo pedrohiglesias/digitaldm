@@ -28,26 +28,63 @@ export function PartnersSection() {
       {/* Infinite scroll container */}
       <div className="relative">
         {/* Gradient masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
         
-        {/* Scrolling content */}
-        <div className="flex animate-scroll items-center">
-          {/* Triple the partners for seamless loop */}
-          {[...partners, ...partners, ...partners].map((partner, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
-            >
-              <img 
-                src={partner.logo} 
-                alt={partner.name}
-                className="h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity brightness-0 invert"
-              />
-            </div>
-          ))}
+        {/* Scrolling content - using CSS animation with will-change for smooth performance */}
+        <div className="flex items-center infinite-scroll-wrapper">
+          <div className="flex items-center infinite-scroll-content">
+            {partners.map((partner, index) => (
+              <div
+                key={`set1-${index}`}
+                className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
+              >
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name}
+                  className="h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity brightness-0 invert"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex items-center infinite-scroll-content" aria-hidden="true">
+            {partners.map((partner, index) => (
+              <div
+                key={`set2-${index}`}
+                className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
+              >
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name}
+                  className="h-8 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity brightness-0 invert"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .infinite-scroll-wrapper {
+          width: max-content;
+          animation: infinite-scroll 25s linear infinite;
+          will-change: transform;
+        }
+        
+        .infinite-scroll-content {
+          display: flex;
+          flex-shrink: 0;
+        }
+        
+        @keyframes infinite-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </section>
   );
 }
