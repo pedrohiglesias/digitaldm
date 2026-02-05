@@ -1,4 +1,4 @@
-import { Play, Clock, CheckCircle, ArrowRight, Bot, Zap, TrendingUp } from "lucide-react";
+import { Play, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
@@ -6,24 +6,6 @@ const benefits = [
   "Triagem automática de leads",
   "Follow-up inteligente 24/7",
   "Alertas de leads quentes",
-];
-
-const features = [
-  {
-    icon: Bot,
-    title: "Atendimento Automático",
-    description: "A IA responde e qualifica leads mesmo fora do horário comercial",
-  },
-  {
-    icon: Zap,
-    title: "Priorização Inteligente",
-    description: "Identifica quem está pronto para comprar e alerta sua equipe",
-  },
-  {
-    icon: TrendingUp,
-    title: "Mais Conversões",
-    description: "Aumente seu faturamento sem aumentar sua equipe",
-  },
 ];
 
 export default function DmIa() {
@@ -115,60 +97,6 @@ export default function DmIa() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 bg-card/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-              E se em uma semana você <span className="text-gradient">pudesse:</span>
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="glass-card rounded-xl p-6 text-center hover-lift gradient-border"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Second CTA Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-6">
-              <Bot className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-semibold">DM IA - CRM Inteligente</span>
-            </div>
-
-            <h2 className="text-2xl md:text-4xl font-bold mb-6">
-              Pare de perder leads por{" "}
-              <span className="text-gradient">demora no atendimento</span>
-            </h2>
-
-            <p className="text-muted-foreground text-lg mb-8">
-              A DM IA trabalha 24 horas por dia, 7 dias por semana, qualificando e 
-              priorizando seus leads enquanto você foca no que importa: fechar vendas.
-            </p>
-
-            <Button variant="hero" size="xl" asChild>
-              <a href="#diagnostico" className="flex items-center gap-2">
-                Quero Conhecer a DM IA
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-8 border-t border-border/30">
