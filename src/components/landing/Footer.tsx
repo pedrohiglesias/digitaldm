@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
 const footerLinks = [
@@ -10,7 +10,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/digitaldm", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/digitaldm.com.br/", label: "Instagram" },
   { icon: Linkedin, href: "https://linkedin.com/company/digitaldm", label: "LinkedIn" },
 ];
 
@@ -75,15 +75,6 @@ export function Footer() {
                   >
                     <Mail className="w-4 h-4" />
                     contato@digitaldm.com.br
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://wa.me/5596650200002"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm"
-                  >
-                    <Phone className="w-4 h-4" />
-                    WhatsApp
                   </a>
                 </li>
               </ul>
