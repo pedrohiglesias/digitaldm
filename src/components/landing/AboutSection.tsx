@@ -2,6 +2,7 @@ import { Users, Award, TrendingUp, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ceoDeomir from "@/assets/ceo-deomir.png";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stats = [
   { icon: Users, value: "600+", label: "Empresas Atendidas" },
@@ -10,6 +11,9 @@ const stats = [
 ];
 
 export function AboutSection() {
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section id="sobre" className="py-24 relative overflow-hidden">
       {/* Background effects */}
@@ -20,7 +24,12 @@ export function AboutSection() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
-            <div className="order-2 lg:order-1">
+            <div 
+              ref={contentRef}
+              className={`order-2 lg:order-1 transition-all duration-700 ${
+                contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
                 <Shield className="w-4 h-4 mr-2" />
                 Autoridade
@@ -81,7 +90,12 @@ export function AboutSection() {
             </div>
 
             {/* Right - Image */}
-            <div className="order-1 lg:order-2 relative flex items-center justify-center">
+            <div 
+              ref={imageRef}
+              className={`order-1 lg:order-2 relative flex items-center justify-center transition-all duration-700 ${
+                imageVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               {/* Intense blue glow behind image */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/40 rounded-full blur-[80px] pointer-events-none" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-secondary/50 rounded-full blur-[60px] pointer-events-none" />

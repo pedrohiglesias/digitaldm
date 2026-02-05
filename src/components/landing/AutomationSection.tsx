@@ -1,6 +1,7 @@
 import { useState, useRef, MouseEvent } from "react";
 import { Bot, Zap, Brain, MessageSquare, Search } from "lucide-react";
 import workflowImage from "@/assets/workflow-n8n.png";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const features = [
   {
@@ -29,6 +30,8 @@ export function AutomationSection() {
   const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
   const [isHovering, setIsHovering] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!imageRef.current) return;
@@ -47,7 +50,12 @@ export function AutomationSection() {
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div 
+          ref={headerRef}
+          className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Zap className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">Automação Inteligente</span>
@@ -66,13 +74,21 @@ export function AutomationSection() {
         </div>
 
         {/* Interactive Workflow */}
-        <div className="grid lg:grid-cols-5 gap-8 items-start">
+        <div 
+          ref={contentRef}
+          className={`grid lg:grid-cols-5 gap-8 items-start transition-all duration-700 ${
+            contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Features List */}
           <div className="lg:col-span-1 space-y-4 order-2 lg:order-1">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="glass-card rounded-xl p-4 hover-lift cursor-default"
+                className={`glass-card rounded-xl p-4 hover-lift cursor-default transition-all duration-500 ${
+                  contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">

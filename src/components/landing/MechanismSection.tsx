@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle, Zap, Filter, Clock, BarChart3, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const flowSteps = [
   { step: "1", text: "Capta o contato certo" },
@@ -24,12 +25,20 @@ const comparisons = [
 ];
 
 export function MechanismSection() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section className="py-24 bg-card/50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
               <Cog className="w-4 h-4 mr-2" />
               O Mecanismo
@@ -44,9 +53,20 @@ export function MechanismSection() {
           </div>
 
           {/* Flow steps */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
+          <div 
+            ref={contentRef}
+            className={`flex flex-wrap justify-center gap-4 mb-16 transition-all duration-700 ${
+              contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             {flowSteps.map((item, index) => (
-              <div key={index} className="flex items-center gap-2">
+              <div 
+                key={index} 
+                className={`flex items-center gap-2 transition-all duration-500 ${
+                  contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
                 <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary">
                   {item.step}
                 </div>

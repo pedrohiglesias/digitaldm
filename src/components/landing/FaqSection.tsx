@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { HelpCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const faqs = [
   {
@@ -41,12 +42,20 @@ const faqs = [
 ];
 
 export function FaqSection() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section className="py-24 bg-card/50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-12">
+          <div 
+            ref={headerRef}
+            className={`text-center mb-12 transition-all duration-700 ${
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
               <HelpCircle className="w-4 h-4 mr-2" />
               FAQ
@@ -57,22 +66,27 @@ export function FaqSection() {
           </div>
 
           {/* FAQ Accordion */}
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="glass-card rounded-xl px-6 border-none"
-              >
-                <AccordionTrigger className="text-left font-semibold hover:no-underline py-6">
+          <div ref={contentRef}>
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className={`glass-card rounded-xl px-6 border-none transition-all duration-500 ${
+                    contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                  }`}
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                  <AccordionContent className="text-muted-foreground pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </div>
     </section>
