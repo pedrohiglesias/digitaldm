@@ -1,13 +1,50 @@
+import { useState, useEffect } from "react";
 import { Play, Clock, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
-
 
 const benefits = [
   "Triagem automática de leads",
   "Follow-up inteligente 24/7",
   "Alertas de leads quentes",
 ];
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState({ hours: 23, minutes: 47, seconds: 32 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        let { hours, minutes, seconds } = prev;
+        
+        if (seconds > 0) {
+          seconds--;
+        } else if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else if (hours > 0) {
+          hours--;
+          minutes = 59;
+          seconds = 59;
+        } else {
+          return { hours: 23, minutes: 59, seconds: 59 };
+        }
+        
+        return { hours, minutes, seconds };
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const pad = (num: number) => num.toString().padStart(2, "0");
+
+  return (
+    <span className="font-mono font-bold text-primary-foreground bg-primary/80 px-2 py-0.5 rounded text-xs">
+      {pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
+    </span>
+  );
+}
 
 export default function DmIa() {
   return (
@@ -35,6 +72,7 @@ export default function DmIa() {
               style={{ animationDelay: "0.1s", animationFillMode: "both" }}
             >
               <Clock className="w-4 h-4 text-primary animate-pulse" />
+              <CountdownTimer />
               <span className="text-sm text-primary font-medium">Demonstração liberada por tempo limitado ✨</span>
             </div>
 
