@@ -3,6 +3,7 @@ import { Hero } from "@/components/landing/Hero";
 import { StatsSection } from "@/components/landing/StatsSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { MechanismSection } from "@/components/landing/MechanismSection";
+import { TrafficSection } from "@/components/landing/TrafficSection";
 import { DmIaSection } from "@/components/landing/DmIaSection";
 import { FunnelSection } from "@/components/landing/FunnelSection";
 import { AutomationSection } from "@/components/landing/AutomationSection";
@@ -30,6 +31,7 @@ const Index = () => {
         <StatsSection />
         <ProblemSection />
         <MechanismSection />
+        <TrafficSection />
         <DmIaSection />
         <FunnelSection />
         
