@@ -1,8 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Target, Database, TrendingUp, ArrowUpRight, Wallet } from "lucide-react";
-import macbookMockup from "@/assets/macbook-mockup.png";
-import metaAdsLibrary from "@/assets/meta-ads-library.png";
+import { MetaAdsDashboard } from "./MetaAdsDashboard";
 
 const phases = [
   {
@@ -92,29 +91,21 @@ export const TrafficSection = () => {
             ))}
           </div>
 
-          {/* Right Column - MacBook Mockup */}
+          {/* Right Column - Dashboard */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative float">
-              {/* Intense blue glow effect */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/50 rounded-full blur-[100px] pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-secondary/60 rounded-full blur-[60px] pointer-events-none" />
+            <div className="relative">
+              {/* Blue glow effect */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/40 rounded-full blur-[80px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-secondary/50 rounded-full blur-[50px] pointer-events-none" />
               
-              {/* MacBook container with frame */}
-              <div className="relative p-3 rounded-2xl border border-primary/30 bg-card/20 backdrop-blur-sm shadow-[0_0_80px_rgba(59,130,246,0.5)]">
-                <img
-                  src={macbookMockup}
-                  alt="MacBook com Meta Ads Library"
-                  className="relative z-10 w-full max-w-2xl drop-shadow-2xl rounded-lg"
-                />
-                
-                {/* Screen content overlay */}
-                <div className="absolute top-[8%] left-[13%] right-[13%] bottom-[30%] z-20 overflow-hidden rounded-sm">
-                  <img
-                    src={metaAdsLibrary}
-                    alt="Biblioteca de Anúncios Meta"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
+              {/* Floating badge */}
+              <div className="absolute -top-4 -right-4 z-30 glass-card px-4 py-2 rounded-full border border-primary/30 shadow-lg">
+                <span className="text-sm font-semibold text-primary">Meta ADS & Google ADS</span>
+              </div>
+              
+              {/* Dashboard container */}
+              <div className="relative z-10 rounded-2xl border border-primary/20 bg-card/10 backdrop-blur-sm p-2 shadow-[0_0_60px_rgba(59,130,246,0.4)]">
+                <MetaAdsDashboard />
               </div>
             </div>
           </div>
