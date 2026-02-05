@@ -70,7 +70,7 @@ export function MapSection() {
 
             {/* Right - Map */}
             <div className="order-1 lg:order-2 relative">
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
+              <div className="relative w-full aspect-square max-w-2xl mx-auto">
                 {/* Intense blue glow behind map */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-primary/40 rounded-full blur-[80px] -z-10" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-secondary/50 rounded-full blur-[50px] -z-10" />
