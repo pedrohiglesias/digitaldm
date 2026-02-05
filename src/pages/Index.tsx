@@ -12,6 +12,7 @@ import { ResultsSection } from "@/components/landing/ResultsSection";
 import { PartnersSection } from "@/components/landing/PartnersSection";
 import { ProofSection } from "@/components/landing/ProofSection";
 import { VideoTestimonialsSection } from "@/components/landing/VideoTestimonialsSection";
+import { EcommercePortfolioSection } from "@/components/landing/EcommercePortfolioSection";
 import { SegmentsSection } from "@/components/landing/SegmentsSection";
 import { EligibilitySection } from "@/components/landing/EligibilitySection";
 import { PricingSection } from "@/components/landing/PricingSection";
@@ -37,6 +38,7 @@ const Index = () => {
         <PartnersSection />
         <ProofSection />
         <VideoTestimonialsSection />
+        <EcommercePortfolioSection />
         <SegmentsSection />
         <EligibilitySection />
         <PricingSection />
