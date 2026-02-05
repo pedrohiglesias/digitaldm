@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
 const navLinks = [
-  { href: "#como-funciona", label: "Como Funciona" },
+  { href: "#sobre", label: "Quem Somos" },
+  { href: "#trafego", label: "Tráfego Pago" },
+  { href: "#portfolio", label: "Criação de E-commerce" },
+  { href: "#automacao", label: "Cadência Infinita" },
   { href: "#dm-ia", label: "DM IA" },
-  { href: "#metodo", label: "Método MIA" },
-  { href: "#resultados", label: "Resultados" },
 ];
 
 export function Header() {
