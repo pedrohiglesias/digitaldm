@@ -36,9 +36,9 @@ const portfolioSlides = [
 const features = [
   { icon: LayoutGrid, label: "Layouts profissionais" },
   { icon: CreditCard, label: "Checkout rápido e intuitivo" },
-  { icon: Search, label: "Navegação agradável e busca eficiente" },
+  { icon: Search, label: "Busca Eficiente" },
   { icon: Smartphone, label: "Design responsivo" },
-  { icon: Wallet, label: "Integração com meios de pagamento" },
+  { icon: Wallet, label: "Integração de pagamento" },
 ];
 
 export function EcommercePortfolioSection() {
