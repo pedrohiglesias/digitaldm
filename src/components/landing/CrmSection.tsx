@@ -1,55 +1,85 @@
-import { useState, useRef } from "react";
-import { LayoutGrid, Users, Filter, Bell, BarChart3, Calendar, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { 
+  LayoutGrid, 
+  MessageSquare, 
+  Bot, 
+  BarChart3, 
+  Calendar, 
+  Search,
+  Users,
+  Link,
+  Settings,
+  ArrowUpRight,
+  Info
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import crmImage from "@/assets/crm-dmia.png";
+import crmDashboard from "@/assets/crm-dashboard.png";
+import crmKanban from "@/assets/crm-kanban.png";
 
-const features = [
-  {
-    icon: LayoutGrid,
-    title: "Kanban Visual",
-    description: "Visualize todo seu funil em colunas organizadas por etapa",
-  },
-  {
-    icon: Filter,
-    title: "Filtros Avançados",
-    description: "Encontre leads por período, tags, fontes e departamentos",
-  },
-  {
-    icon: Users,
-    title: "Gestão de Leads",
-    description: "Acompanhe cada negociação do primeiro contato ao fechamento",
-  },
-  {
-    icon: Bell,
-    title: "Follow-ups",
-    description: "Nunca perca o timing certo com lembretes automáticos",
-  },
-  {
-    icon: Calendar,
-    title: "Agendamentos",
-    description: "Integração completa com sua agenda de reuniões",
-  },
-  {
-    icon: BarChart3,
-    title: "Métricas em Tempo Real",
-    description: "Veja o valor total e quantidade de leads por etapa",
-  },
+const tabs = [
+  { id: "dashboard", label: "Dashboard", icon: LayoutGrid },
+  { id: "conversas", label: "Conversas", icon: MessageSquare },
+  { id: "agente", label: "Agente IA", icon: Bot },
+  { id: "crm", label: "CRM", icon: BarChart3 },
+  { id: "agenda", label: "Agenda", icon: Calendar },
+  { id: "prospectar", label: "Prospectar", icon: Search },
+  { id: "contatos", label: "Contatos", icon: Users },
+  { id: "conexao", label: "Conexão", icon: Link },
+  { id: "config", label: "Config", icon: Settings },
 ];
 
-export function CrmSection() {
-  const [isHovering, setIsHovering] = useState(false);
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
-  const imageRef = useRef<HTMLDivElement>(null);
+const tabContent: Record<string, { image: string; title: string; description: string }> = {
+  dashboard: {
+    image: crmDashboard,
+    title: "Dashboard Completo",
+    description: "Visão geral do seu negócio com métricas de vendas, conversões e performance em tempo real."
+  },
+  conversas: {
+    image: crmDashboard,
+    title: "Central de Conversas",
+    description: "Gerencie todas as conversas do WhatsApp em um único lugar com histórico completo."
+  },
+  agente: {
+    image: crmDashboard,
+    title: "Agente de IA",
+    description: "Configure seu agente de IA para responder automaticamente e qualificar leads 24/7."
+  },
+  crm: {
+    image: crmKanban,
+    title: "CRM Kanban",
+    description: "Visualize todo seu funil de vendas em colunas organizadas por etapa."
+  },
+  agenda: {
+    image: crmDashboard,
+    title: "Agendamentos",
+    description: "Integração completa com sua agenda para marcar reuniões automaticamente."
+  },
+  prospectar: {
+    image: crmDashboard,
+    title: "Prospecção Ativa",
+    description: "Encontre novos leads e inicie conversas com prospects qualificados."
+  },
+  contatos: {
+    image: crmDashboard,
+    title: "Base de Contatos",
+    description: "Gerencie todos os seus contatos com tags, filtros e segmentações."
+  },
+  conexao: {
+    image: crmDashboard,
+    title: "Conexões",
+    description: "Conecte seu WhatsApp e outras integrações em poucos cliques."
+  },
+  config: {
+    image: crmDashboard,
+    title: "Configurações",
+    description: "Personalize o sistema de acordo com as necessidades do seu negócio."
+  },
+};
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!imageRef.current) return;
-    
-    const rect = imageRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    
-    setZoomPosition({ x, y });
-  };
+export function CrmSection() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+
+  const currentContent = tabContent[activeTab];
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -60,7 +90,7 @@ export function CrmSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-secondary/30 bg-secondary/10 mb-6">
               <LayoutGrid className="w-4 h-4 text-secondary" />
               <span className="text-sm text-secondary font-semibold">CRM Inteligente</span>
@@ -74,86 +104,83 @@ export function CrmSection() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Interactive CRM preview */}
-            <div className="space-y-6">
-              <div 
-                ref={imageRef}
-                className="relative glass-card rounded-2xl p-2 overflow-hidden cursor-crosshair gradient-border"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-                onMouseMove={handleMouseMove}
-              >
-                <img 
-                  src={crmImage} 
-                  alt="CRM DM IA - Funil de Vendas Kanban"
-                  className="w-full h-auto rounded-xl"
-                />
-                
-                {/* Zoom lens indicator */}
-                {isHovering && (
-                  <div 
-                    className="absolute w-24 h-24 border-2 border-secondary rounded-full pointer-events-none transition-opacity duration-200"
-                    style={{
-                      left: `calc(${zoomPosition.x}% - 48px)`,
-                      top: `calc(${zoomPosition.y}% - 48px)`,
-                      background: 'rgba(0, 200, 255, 0.1)',
-                    }}
-                  />
-                )}
-              </div>
+          {/* Disclaimer */}
+          <div className="flex items-center justify-center gap-2 mb-8 text-muted-foreground text-sm">
+            <Info className="w-4 h-4" />
+            <span>Esta é apenas uma demonstração visual do sistema. A interface real possui ainda mais recursos.</span>
+          </div>
 
-              {/* Zoom preview */}
-              <div className={`glass-card rounded-xl overflow-hidden transition-all duration-300 ${isHovering ? 'opacity-100 scale-100' : 'opacity-50 scale-95'}`}>
-                <div className="p-3 border-b border-border/50">
-                  <span className="text-sm text-muted-foreground flex items-center gap-2">
-                    <LayoutGrid className="w-4 h-4 text-secondary" />
-                    {isHovering ? 'Área ampliada do CRM' : 'Passe o mouse na imagem para ampliar'}
-                  </span>
+          {/* Tabs Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`
+                    flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
+                    transition-all duration-300 border
+                    ${isActive 
+                      ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25" 
+                      : "bg-card/50 text-muted-foreground border-border/50 hover:bg-card hover:text-foreground hover:border-border"
+                    }
+                  `}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Browser Window Mockup */}
+          <div className="glass-card rounded-2xl overflow-hidden gradient-border mb-8">
+            {/* Browser Header */}
+            <div className="bg-card/80 border-b border-border/50 px-4 py-3 flex items-center gap-4">
+            <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-destructive/60" />
+                <div className="w-3 h-3 rounded-full bg-accent/60" />
+                <div className="w-3 h-3 rounded-full bg-secondary/60" />
+              </div>
+              <div className="flex-1 flex justify-center">
+                <div className="bg-muted/50 rounded-lg px-4 py-1.5 text-sm text-muted-foreground max-w-md w-full text-center">
+                  app.suamarca.com.br
                 </div>
-                <div 
-                  className="h-48 bg-cover bg-no-repeat"
-                  style={{
-                    backgroundImage: `url(${crmImage})`,
-                    backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                    backgroundSize: '350%',
-                  }}
-                />
               </div>
             </div>
 
-            {/* Features grid */}
-            <div className="space-y-6">
-              <div className="grid gap-4">
-                {features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="glass-card rounded-xl p-4 hover-lift flex items-start gap-4"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{feature.title}</h3>
-                      <p className="text-muted-foreground text-sm">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <div className="pt-4">
-                <Button variant="hero" size="lg" asChild className="w-full">
-                  <a href="#diagnostico" className="flex items-center justify-center gap-2">
-                    Quero Conhecer o CRM
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
-                </Button>
-                <p className="text-sm text-muted-foreground mt-3 text-center">
-                  Veja como organizar seu funil e nunca perder um lead.
-                </p>
+            {/* Content Area */}
+            <div className="relative">
+              <img 
+                src={currentContent.image}
+                alt={currentContent.title}
+                className="w-full h-auto transition-opacity duration-300"
+              />
+              
+              {/* Overlay with info on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div className="text-left">
+                  <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
+                  <p className="text-muted-foreground">{currentContent.description}</p>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Button variant="hero" size="lg" asChild>
+              <a href="#diagnostico" className="flex items-center justify-center gap-2">
+                Quero Conhecer o CRM
+                <ArrowUpRight className="w-5 h-5" />
+              </a>
+            </Button>
+            <p className="text-sm text-muted-foreground mt-3">
+              Veja como organizar seu funil e nunca perder um lead.
+            </p>
           </div>
         </div>
       </div>
