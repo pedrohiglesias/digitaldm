@@ -98,10 +98,7 @@ export function DashboardPreview() {
       {/* Sidebar */}
       <aside className="w-56 bg-gradient-to-b from-[#0b1426] to-[#0e1a33] text-[#dbe6ff] p-3 flex flex-col shrink-0">
         {/* Brand */}
-        <div className="flex items-center gap-2 px-2 py-2 mb-2">
-          <div className="w-8 h-8 rounded-lg bg-[#ffcf5a] text-[#1f2a44] flex items-center justify-center">
-            <Zap className="w-4 h-4" />
-          </div>
+        <div className="flex items-center justify-center px-2 py-3 mb-2">
           <img src={logoDigitalDM} alt="DigitalDM" className="h-5 w-auto" />
         </div>
 
