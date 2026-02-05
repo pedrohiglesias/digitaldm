@@ -91,7 +91,7 @@ export function AboutSection() {
                 </div>
                 
                 {/* Floating badge */}
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-card rounded-xl px-4 py-3 float border border-primary/20">
+                <div className="absolute -bottom-4 -right-4 glass-card rounded-xl px-4 py-3 float border border-primary/20">
                   <p className="text-sm font-bold text-primary text-center">Deomir Martinhago</p>
                   <p className="text-xs text-muted-foreground text-center">CEO & Founder</p>
                 </div>
