@@ -3,27 +3,25 @@ import { Button } from "@/components/ui/button";
 import brazilMap from "@/assets/brazil-map.png";
 import { useState, useEffect } from "react";
 
-// Location pins distributed across Brazil map (reduced by 15% toward center)
+// Location pins distributed across Brazil map - all inside the white map area
 const locationPins = [
-  // Norte (Amazonas, Pará, Roraima, Amapá)
-  { x: 30, y: 30 }, { x: 35, y: 33 }, { x: 40, y: 28 },
-  { x: 44, y: 23 }, { x: 50, y: 26 },
-  // Nordeste
-  { x: 65, y: 22 }, { x: 70, y: 25 }, { x: 73, y: 30 },
-  { x: 67, y: 33 }, { x: 71, y: 36 }, { x: 75, y: 33 },
-  { x: 70, y: 40 }, { x: 73, y: 43 }, { x: 68, y: 46 },
+  // Norte (Amazonas, Pará, Roraima, Amapá) - mais centralizados
+  { x: 32, y: 28 }, { x: 38, y: 30 }, { x: 44, y: 26 },
+  { x: 48, y: 22 }, { x: 54, y: 24 },
+  // Nordeste - ajustado para dentro do mapa
+  { x: 62, y: 24 }, { x: 66, y: 28 }, { x: 70, y: 32 },
+  { x: 64, y: 35 }, { x: 68, y: 38 }, { x: 72, y: 35 },
+  { x: 66, y: 42 }, { x: 70, y: 45 }, { x: 64, y: 48 },
   // Centro-Oeste (Mato Grosso, Goiás)
-  { x: 40, y: 40 }, { x: 45, y: 44 }, { x: 38, y: 46 },
-  { x: 48, y: 49 }, { x: 43, y: 51 }, { x: 50, y: 45 },
-  { x: 52, y: 51 },
+  { x: 40, y: 42 }, { x: 45, y: 46 }, { x: 42, y: 50 },
+  { x: 48, y: 52 }, { x: 44, y: 55 }, { x: 50, y: 48 },
   // Sudeste (SP, RJ, MG, ES)
-  { x: 56, y: 54 }, { x: 60, y: 57 }, { x: 64, y: 54 },
-  { x: 58, y: 62 }, { x: 62, y: 65 }, { x: 66, y: 59 },
-  { x: 69, y: 56 }, { x: 60, y: 68 },
-  // Sul (PR, SC, RS)
-  { x: 50, y: 65 }, { x: 54, y: 68 }, { x: 48, y: 70 },
-  { x: 45, y: 73 }, { x: 50, y: 76 }, { x: 47, y: 78 },
-  { x: 53, y: 72 }, { x: 43, y: 76 },
+  { x: 54, y: 56 }, { x: 58, y: 58 }, { x: 62, y: 55 },
+  { x: 56, y: 62 }, { x: 60, y: 64 }, { x: 64, y: 60 },
+  { x: 58, y: 68 },
+  // Sul (PR, SC, RS) - ajustado para cima
+  { x: 50, y: 68 }, { x: 54, y: 72 }, { x: 48, y: 74 },
+  { x: 52, y: 78 }, { x: 56, y: 76 },
 ];
 
 // Typing animation hook
