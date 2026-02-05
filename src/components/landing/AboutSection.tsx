@@ -77,21 +77,19 @@ export function AboutSection() {
 
             {/* Right - Image */}
             <div className="order-1 lg:order-2 relative flex items-center justify-center">
-              {/* Glow behind frame */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-gradient-radial from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+              {/* Glow behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-gradient-radial from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl pointer-events-none" />
               
-              {/* Frame container */}
-              <div className="relative p-2 rounded-2xl bg-gradient-to-br from-primary/20 via-border/30 to-primary/10 shadow-xl">
-                <div className="rounded-xl overflow-hidden bg-background/50 backdrop-blur-sm">
-                  <img 
-                    src={ceoDeomir}
-                    alt="Deomir - CEO & Founder da Digital DM"
-                    className="w-full h-auto max-w-lg object-contain"
-                  />
-                </div>
+              {/* Image without frame - blends with background */}
+              <div className="relative">
+                <img 
+                  src={ceoDeomir}
+                  alt="Deomir - CEO & Founder da Digital DM"
+                  className="w-full h-auto max-w-md object-contain relative z-10"
+                />
                 
                 {/* Floating badge */}
-                <div className="absolute -bottom-4 -right-4 glass-card rounded-xl px-4 py-3 float border border-primary/20">
+                <div className="absolute -bottom-2 right-4 glass-card rounded-xl px-4 py-3 float border border-primary/20 z-20">
                   <p className="text-sm font-bold text-primary text-center">Deomir Martinhago</p>
                   <p className="text-xs text-muted-foreground text-center">CEO & Founder</p>
                 </div>
