@@ -182,7 +182,15 @@ export function DmIaSection() {
               </div>
 
               {/* Content Area - Interactive Dashboard */}
-              <DashboardPreview />
+              <div className="relative">
+                <DashboardPreview />
+                
+                {/* Info overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/95 to-transparent p-6 pt-12">
+                  <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
+                  <p className="text-muted-foreground">{currentContent.description}</p>
+                </div>
+              </div>
             </div>
           </div>
 
