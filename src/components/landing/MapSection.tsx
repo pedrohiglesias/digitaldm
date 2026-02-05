@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 // Location pins distributed across Brazil map (reduced by 15% toward center)
 const locationPins = [
   // Norte (Amazonas, Pará, Roraima, Amapá)
-  { x: 26, y: 22 }, { x: 32, y: 25 }, { x: 38, y: 20 },
   { x: 30, y: 30 }, { x: 35, y: 33 }, { x: 40, y: 28 },
   { x: 44, y: 23 }, { x: 50, y: 26 },
   // Nordeste
