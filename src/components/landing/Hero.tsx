@@ -1,6 +1,5 @@
-import { ArrowRight, CheckCircle2, Play } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export function Hero() {
@@ -36,44 +35,6 @@ export function Hero() {
             <span className="text-gradient">crescimento previsível</span>
           </h1>
 
-          {/* VSL Video Player */}
-          <div className="max-w-3xl mx-auto mb-8 animate-fade-in">
-            <div className="glass-card rounded-2xl p-2 gradient-border">
-              <AspectRatio ratio={16 / 9}>
-                <div className="relative w-full h-full bg-card rounded-xl overflow-hidden group cursor-pointer">
-                  {/* Video Thumbnail/Placeholder */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-br from-primary/20 via-card to-secondary/20"
-                    style={{
-                      backgroundImage: `url(${heroBg})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-background/60" />
-                  </div>
-                  
-                  {/* Play Button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-primary transition-all duration-300 pulse-glow">
-                      <Play className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground ml-1" fill="currentColor" />
-                    </div>
-                  </div>
-
-                  {/* Demo Label */}
-                  <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                    <span className="px-3 py-1 bg-primary/80 rounded-full text-xs font-semibold text-primary-foreground">
-                      DEMO
-                    </span>
-                    <span className="text-sm text-foreground/80">Veja como funciona em 2 min</span>
-                  </div>
-                </div>
-              </AspectRatio>
-            </div>
-            <p className="text-sm text-muted-foreground mt-3 text-center">
-              Assista a demonstração e entenda como a Digital DM transforma leads em clientes
-            </p>
-          </div>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in">
