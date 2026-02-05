@@ -1,5 +1,6 @@
 import { AlertTriangle, Clock, MessageSquare, TrendingDown, UserX, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const problems = [
@@ -47,9 +48,10 @@ export function ProblemSection() {
               headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <AlertTriangle className="w-4 h-4 mr-2" />
               O Problema
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               Se você depende de picos,{" "}
               <span className="text-gradient">não tem previsibilidade — tem sorte</span>

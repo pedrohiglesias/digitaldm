@@ -1,5 +1,6 @@
-import { ArrowRight, CheckCircle, Zap, Filter, Clock, BarChart3 } from "lucide-react";
+import { ArrowRight, CheckCircle, Zap, Filter, Clock, BarChart3, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const flowSteps = [
   { step: "1", text: "Capta o contato certo" },
@@ -29,9 +30,10 @@ export function MechanismSection() {
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <Cog className="w-4 h-4 mr-2" />
               O Mecanismo
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               O problema não é o anúncio.{" "}
               <span className="text-gradient">É não ter um sistema de conversão.</span>

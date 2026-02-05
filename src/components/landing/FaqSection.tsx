@@ -4,6 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
+import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -45,9 +47,10 @@ export function FaqSection() {
         <div className="max-w-3xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-12">
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <HelpCircle className="w-4 h-4 mr-2" />
               FAQ
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4">
               Perguntas <span className="text-gradient">Frequentes</span>
             </h2>

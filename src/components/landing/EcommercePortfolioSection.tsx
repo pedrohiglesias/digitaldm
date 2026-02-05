@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ExternalLink, LayoutGrid, CreditCard, Search, Smartphone, Wallet } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, LayoutGrid, CreditCard, Search, Smartphone, Wallet, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import portfolioAmazonas from "@/assets/portfolio-amazonas.jpg";
 import portfolioAnaSouza from "@/assets/portfolio-anasouza.png";
 import portfolioFlexEstilo from "@/assets/portfolio-flexestilo.png";
@@ -76,9 +77,10 @@ export function EcommercePortfolioSection() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <Briefcase className="w-4 h-4 mr-2" />
               Portfólio
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Confira algumas das{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">

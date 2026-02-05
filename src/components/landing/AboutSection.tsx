@@ -1,5 +1,6 @@
-import { Users, Award, TrendingUp, ArrowRight } from "lucide-react";
+import { Users, Award, TrendingUp, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import ceoDeomir from "@/assets/ceo-deomir.png";
 
 const stats = [
@@ -20,6 +21,10 @@ export function AboutSection() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
             <div className="order-2 lg:order-1">
+              <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+                <Shield className="w-4 h-4 mr-2" />
+                Autoridade
+              </Badge>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-center lg:text-left">
                 <span className="text-gradient">Quem somos nós?</span>
               </h2>
