@@ -147,7 +147,7 @@ export function CrmSection() {
               </div>
               <div className="flex-1 flex justify-center">
                 <div className="bg-muted/50 rounded-lg px-4 py-1.5 text-sm text-muted-foreground max-w-md w-full text-center">
-                  app.suamarca.com.br
+                  https://app.dmia.com.br
                 </div>
               </div>
             </div>
