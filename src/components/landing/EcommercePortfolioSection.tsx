@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, LayoutGrid, CreditCard, Search, Smartphone, Wallet, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import portfolioAmazonas from "@/assets/portfolio-amazonas-new.png";
 import portfolioHyorrana from "@/assets/portfolio-hyorrana.png";
 import portfolioDonnaMoca from "@/assets/portfolio-donnamoca.png";
 import portfolioCalcadosInfantil from "@/assets/portfolio-calcados-infantil.png";
@@ -14,9 +13,9 @@ import portfolioLustShoes from "@/assets/portfolio-lustshoes.png";
 const portfolioSlides = [
   {
     id: 1,
-    image: portfolioAmazonas,
-    title: "Amazonas Fashion",
-    description: "E-commerce de moda com design moderno e navegação intuitiva",
+    image: portfolioHyorrana,
+    title: "Hyorrana",
+    description: "Loja virtual elegante com experiência de compra premium",
   },
   {
     id: 2,
