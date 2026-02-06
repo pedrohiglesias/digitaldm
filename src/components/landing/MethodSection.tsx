@@ -109,15 +109,15 @@ export function MethodSection() {
           </div>
 
           {/* Bottom banner */}
-          <div className="bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl p-8 text-center">
-            <h3 className="text-xl font-bold mb-4">
+          <div className="bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl sm:rounded-2xl p-4 sm:p-8 text-center mx-2 sm:mx-0">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
               Dependência do "chutômetro" vira passado
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6 max-w-xl mx-auto">
               Com o MIA você escala com segurança, entendendo exatamente o que funciona 
               e replicando o sucesso.
             </p>
-            <Button variant="hero" size="lg" asChild>
+            <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
               <a href="#diagnostico">Quero Crescer com Método</a>
             </Button>
           </div>

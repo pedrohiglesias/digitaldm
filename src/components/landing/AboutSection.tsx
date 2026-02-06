@@ -65,25 +65,25 @@ export function AboutSection() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mt-10">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8 sm:mt-10">
                 {stats.map((stat, index) => (
                   <div 
                     key={index} 
-                    className="glass-card rounded-xl p-4 text-center hover:bg-primary/10 transition-colors"
+                    className="glass-card rounded-lg sm:rounded-xl p-2 sm:p-4 text-center hover:bg-primary/10 transition-colors"
                   >
-                    <stat.icon className="w-6 h-6 text-primary mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-1 sm:mb-2" />
+                    <p className="text-lg sm:text-2xl font-bold text-foreground">{stat.value}</p>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{stat.label}</p>
                   </div>
                 ))}
               </div>
 
               {/* CTA */}
-              <div className="mt-10 text-center lg:text-left">
-                <Button variant="hero" size="lg" asChild>
-                  <a href="#diagnostico" className="inline-flex items-center gap-2">
+              <div className="mt-8 sm:mt-10 text-center lg:text-left px-4 sm:px-0">
+                <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
+                  <a href="#diagnostico" className="inline-flex items-center justify-center gap-2">
                     Falar com Deomir
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </a>
                 </Button>
               </div>
