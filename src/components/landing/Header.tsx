@@ -6,7 +6,7 @@ import logoDigitalDM from "@/assets/logo-digitaldm.png";
 const navLinks = [
   { href: "#sobre", label: "Quem Somos" },
   { href: "#trafego", label: "Tráfego Pago" },
-  { href: "#portfolio", label: "Criação de E-commerce" },
+  { href: "#ecommerce", label: "Criação de E-commerce" },
   { href: "#automacao", label: "Cadência Infinita" },
   { href: "#dm-ia", label: "DM IA" },
 ];
