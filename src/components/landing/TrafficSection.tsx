@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Target, Database, TrendingUp, ArrowUpRight, Wallet, ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight, X } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
+import { TrafficResultsShowcase } from "./TrafficResultsShowcase";
 const phases = [
   {
     number: "01",
@@ -238,6 +238,9 @@ export const TrafficSection = () => {
             ))}
           </div>
         </div>
+
+        {/* Results Showcase */}
+        <TrafficResultsShowcase />
 
         {/* CTA */}
         <div className="text-center mt-16">
