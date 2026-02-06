@@ -46,7 +46,7 @@ const segments = [
   },
   { 
     icon: Stethoscope, 
-    title: "Clínicas", 
+    title: "Consultórios Médicos", 
     description: "Sistema especializado para área da saúde com triagem e agendamento.",
     highlights: ["Triagem de perfil", "Comunicação ética"]
   },
