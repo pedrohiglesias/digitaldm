@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Target, Database, TrendingUp, ArrowUpRight, Wallet } from "lucide-react";
+import { Target, Database, TrendingUp, ArrowUpRight, Wallet, ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight } from "lucide-react";
 import { MetaAdsDashboard } from "./MetaAdsDashboard";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -31,9 +31,37 @@ const phases = [
   },
 ];
 
+const segments = [
+  { 
+    icon: ShoppingCart, 
+    title: "E-commerce", 
+    description: "Estratégias completas para lojas virtuais: desde captação até recompra.",
+    highlights: ["Recuperação de carrinho", "Segmentação por comportamento"]
+  },
+  { 
+    icon: MapPin, 
+    title: "Negócios Locais", 
+    description: "Funis adaptados para atrair clientes da sua região.",
+    highlights: ["Geolocalização", "Agenda cheia"]
+  },
+  { 
+    icon: Stethoscope, 
+    title: "Clínicas", 
+    description: "Sistema especializado para área da saúde com triagem e agendamento.",
+    highlights: ["Triagem de perfil", "Comunicação ética"]
+  },
+  { 
+    icon: Shirt, 
+    title: "Moda Feminina", 
+    description: "Expertise em lojas de moda: campanhas sazonais e fidelização.",
+    highlights: ["Lançamentos", "Campanhas sazonais"]
+  },
+];
+
 export const TrafficSection = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: segmentsRef, isVisible: segmentsVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <section id="trafego" className="py-24 relative overflow-hidden">
@@ -57,12 +85,12 @@ export const TrafficSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="text-gradient">Gestão profissional de Tráfego Pago</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Gestão orçamentária inteligente focada em maximizar seu ROAS e lucro operacional
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Time dedicado para o seu segmento com gestão orçamentária inteligente focada em maximizar seu ROAS e lucro operacional
           </p>
         </div>
 
-        {/* Content Grid */}
+        {/* Content Grid - Phases + Dashboard */}
         <div 
           ref={contentRef}
           className={`grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto transition-all duration-700 ${
@@ -126,11 +154,58 @@ export const TrafficSection = () => {
           </div>
         </div>
 
+        {/* Segments Section */}
+        <div 
+          ref={segmentsRef}
+          className={`mt-20 transition-all duration-700 ${
+            segmentsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Especialistas por <span className="text-gradient">segmento</span>
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Cada mercado tem suas particularidades. Por isso, temos especialistas focados nas dores e oportunidades do seu nicho.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {segments.map((segment, index) => (
+              <div 
+                key={index} 
+                className={`glass-card rounded-xl p-6 hover-lift group transition-all duration-500 ${
+                  segmentsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <segment.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-lg mb-2">{segment.title}</h4>
+                <p className="text-muted-foreground text-sm mb-4">{segment.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {segment.highlights.map((highlight, hIndex) => (
+                    <span 
+                      key={hIndex} 
+                      className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
+                    >
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA */}
         <div className="text-center mt-16">
+          <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
           <Button variant="hero" size="lg" asChild>
-            <a href="#diagnostico">
+            <a href="#diagnostico" className="flex items-center gap-2">
               Quero Escalar com Estratégia
+              <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
         </div>
