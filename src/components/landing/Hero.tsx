@@ -31,8 +31,7 @@ export function Hero() {
 
           {/* Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in text-shadow">
-            Somos especialistas em{" "}
-            <span className="text-gradient">resultados reais</span>
+            Somos <span className="text-gradient">especialistas</span> em
           </h1>
 
           {/* Specialties Grid */}
