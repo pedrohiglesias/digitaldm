@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Target, Database, TrendingUp, ArrowUpRight, Wallet, ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight } from "lucide-react";
-import { MetaAdsDashboard } from "./MetaAdsDashboard";
+import { Target, Database, TrendingUp, ArrowUpRight, Wallet, ShoppingCart, MapPin, Stethoscope, Shirt, ArrowRight, X } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const phases = [
@@ -59,9 +59,13 @@ const segments = [
 ];
 
 export const TrafficSection = () => {
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.1 });
   const { ref: segmentsRef, isVisible: segmentsVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  const videoId = "8XcFKcsncno";
+  const previewSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
 
   return (
     <section id="trafego" className="py-24 relative overflow-hidden">
@@ -134,7 +138,7 @@ export const TrafficSection = () => {
             ))}
           </div>
 
-          {/* Right Column - Dashboard */}
+          {/* Right Column - Video Shorts Style */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Blue glow effect */}
@@ -146,9 +150,49 @@ export const TrafficSection = () => {
                 <span className="text-sm font-semibold text-primary">Meta ADS & Google ADS</span>
               </div>
               
-              {/* Dashboard container */}
-              <div className="relative z-10 rounded-2xl border border-primary/20 bg-card/10 backdrop-blur-sm p-2 shadow-[0_0_60px_rgba(59,130,246,0.4)]">
-                <MetaAdsDashboard />
+              {/* Video container - Shorts style */}
+              <div 
+                className="relative z-10 rounded-2xl border border-primary/20 bg-card/10 backdrop-blur-sm overflow-hidden shadow-[0_0_60px_rgba(59,130,246,0.4)] cursor-pointer group w-[280px] aspect-[9/16]"
+                onClick={() => setShowVideoModal(true)}
+              >
+                <iframe
+                  src={previewSrc}
+                  title="Gestão de Tráfego Pago"
+                  className="w-full h-full pointer-events-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  loading="lazy"
+                />
+                
+                {/* Click overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                
+                {/* Play Button - appears on hover */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-16 h-16 rounded-full bg-destructive flex items-center justify-center shadow-lg scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Top Label */}
+                <div className="absolute top-3 left-3 right-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs text-foreground/80">
+                      tráfego-pago
+                    </span>
+                  </div>
+                </div>
+
+                {/* YouTube branding */}
+                <div className="absolute bottom-3 right-3">
+                  <div className="flex items-center gap-1 text-white/80">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                    <span className="text-xs font-medium">YouTube</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -210,6 +254,35 @@ export const TrafficSection = () => {
           </Button>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm"
+          onClick={() => setShowVideoModal(false)}
+        >
+          <div 
+            className="relative w-full max-w-md mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowVideoModal(false)}
+              className="absolute -top-12 right-0 p-2 rounded-full bg-card/80 text-foreground hover:bg-card transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-card">
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1`}
+                title="Gestão de Tráfego Pago"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
