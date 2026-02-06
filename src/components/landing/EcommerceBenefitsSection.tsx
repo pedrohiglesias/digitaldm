@@ -66,7 +66,7 @@ export function EcommerceBenefitsSection() {
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              Aqui o e-commerce é totalmente seu!
+              Criação de E-Commerce profissional
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
