@@ -1,21 +1,21 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroCeoBg from "@/assets/hero-ceo-bg.png";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-end justify-center overflow-hidden pb-16 pt-20">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${heroBg})`,
+          backgroundImage: `url(${heroCeoBg})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center top",
         }}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
+        {/* Overlay - stronger gradient at bottom for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
       </div>
 
       {/* Content */}
