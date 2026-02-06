@@ -193,7 +193,9 @@ export function EcommercePortfolioSection() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="p-4 py-6 rounded-xl bg-card border border-border/50 text-center hover:border-primary/50 transition-colors flex flex-col items-center justify-center gap-3"
+                className={`p-4 py-6 rounded-xl bg-card border border-border/50 text-center hover:border-primary/50 transition-colors flex flex-col items-center justify-center gap-3 ${
+                  index === features.length - 1 ? "col-span-2 md:col-span-1 max-w-[50%] mx-auto md:max-w-none" : ""
+                }`}
               >
                 <feature.icon className="w-6 h-6 text-primary" />
                 <span className="text-sm font-medium text-foreground">{feature.label}</span>
