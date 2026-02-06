@@ -113,7 +113,7 @@ export default function DmIa() {
               style={{ animationDelay: "0.7s", animationFillMode: "both" }}
             >
               <Button variant="hero" size="xl" asChild className="group">
-                <a href="#diagnostico" className="flex items-center gap-2">
+                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   Agendar Diagnóstico Gratuito
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </a>

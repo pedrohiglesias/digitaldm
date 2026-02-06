@@ -81,7 +81,7 @@ export function AboutSection() {
               {/* CTA */}
               <div className="mt-8 sm:mt-10 text-center lg:text-left px-4 sm:px-0">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-                  <a href="#diagnostico" className="inline-flex items-center justify-center gap-2">
+                  <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2">
                     Falar com Deomir
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </a>

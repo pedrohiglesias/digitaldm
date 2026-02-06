@@ -83,7 +83,7 @@ export function ProblemSection() {
           {/* CTA */}
           <div className="text-center">
             <Button variant="hero" size="lg" asChild>
-              <a href="#diagnostico">Quero Corrigir Meu Funil</a>
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Quero Corrigir Meu Funil</a>
             </Button>
             <p className="text-sm text-muted-foreground mt-3">
               Em 30-40 min você sai com clareza do gargalo principal.

@@ -16,7 +16,7 @@ const resourceLinks = [
 ];
 
 const actionLinks = [
-  { label: "Diagnóstico Grátis", href: "#diagnostico" },
+  { label: "Diagnóstico Grátis", href: "https://wzap.me/9665020002" },
   { label: "Planos e Preços", href: "#planos" },
   { label: "Quem Somos", href: "#sobre" },
   { label: "FAQ", href: "#faq" },

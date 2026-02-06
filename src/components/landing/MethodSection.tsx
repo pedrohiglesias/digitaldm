@@ -118,7 +118,7 @@ export function MethodSection() {
               e replicando o sucesso.
             </p>
             <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-              <a href="#diagnostico">Quero Crescer com Método</a>
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Quero Crescer com Método</a>
             </Button>
           </div>
         </div>

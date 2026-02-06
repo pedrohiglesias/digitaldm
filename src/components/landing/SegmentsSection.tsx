@@ -91,7 +91,7 @@ export function SegmentsSection() {
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
           <Button variant="hero" size="lg" asChild>
-            <a href="#diagnostico" className="flex items-center gap-2">
+            <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               Agendar Diagnóstico
               <ArrowRight className="w-4 h-4" />
             </a>

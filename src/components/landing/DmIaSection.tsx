@@ -228,7 +228,7 @@ export function DmIaSection() {
           {/* CTA */}
           <div className="text-center px-4 sm:px-0">
             <Button variant="hero" size="lg" className="w-full sm:w-auto sm:px-10" asChild>
-              <a href="#diagnostico" className="flex items-center justify-center gap-2">
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                 Quero Meu CRM Inteligente
                 <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>

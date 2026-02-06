@@ -64,7 +64,7 @@ export function Header() {
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
-              <a href="#diagnostico">Fale conosco</a>
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Fale conosco</a>
             </Button>
           </div>
         </div>
@@ -116,7 +116,7 @@ export function Header() {
                     </a>
                   </Button>
                   <Button variant="hero" size="lg" className="w-full rounded-xl" asChild>
-                    <a href="#diagnostico">Fale conosco</a>
+                    <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Fale conosco</a>
                   </Button>
                 </div>
               </nav>

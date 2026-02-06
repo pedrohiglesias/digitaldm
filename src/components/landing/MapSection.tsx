@@ -116,7 +116,7 @@ export function MapSection() {
               </div>
 
               <Button variant="hero" size="lg" asChild>
-                <a href="#diagnostico" className="inline-flex items-center gap-2">
+                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
                   Quero Acelerar Minhas Vendas
                   <ArrowUpRight className="w-5 h-5" />
                 </a>
