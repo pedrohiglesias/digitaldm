@@ -43,6 +43,7 @@ const Index = () => {
         <ProofSection />
         <VideoTestimonialsSection />
         <EligibilitySection />
+        <AboutSection />
         <MapSection />
         <FaqSection />
         <CtaSection />
