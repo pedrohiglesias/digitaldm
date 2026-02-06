@@ -81,7 +81,7 @@ export function ResultsSection() {
           <div className="text-center">
             <Button variant="hero" size="xl" asChild>
               <a href="#diagnostico" className="flex items-center gap-2">
-                Quero Meu Plano de Previsibilidade
+                Quero Resultados Como Esses
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>

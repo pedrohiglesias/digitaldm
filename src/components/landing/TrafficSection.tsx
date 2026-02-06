@@ -204,7 +204,7 @@ export const TrafficSection = () => {
           <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
           <Button variant="hero" size="lg" asChild>
             <a href="#diagnostico" className="flex items-center gap-2">
-              Quero Escalar com Estratégia
+              Quero Tráfego Pago Agora
               <ArrowRight className="w-4 h-4" />
             </a>
           </Button>
