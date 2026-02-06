@@ -67,7 +67,12 @@ export function ResultsSection() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
               {metrics.map((metric, index) => (
-                <div key={index} className="text-center">
+                <div 
+                  key={index} 
+                  className={`text-center ${
+                    index === metrics.length - 1 ? "col-span-2 md:col-span-1" : ""
+                  }`}
+                >
                   <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mx-auto mb-3">
                     <metric.icon className="w-6 h-6 text-primary" />
                   </div>
