@@ -140,7 +140,7 @@ export function DmIaSection() {
             </div>
 
             {/* Tabs Navigation */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-8 px-2">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -150,15 +150,15 @@ export function DmIaSection() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`
-                      flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
-                      transition-all duration-300 border
+                      flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium
+                      transition-all duration-300 border min-w-[40px] sm:min-w-0
                       ${isActive 
                         ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25" 
                         : "bg-card/50 text-muted-foreground border-border/50 hover:bg-card hover:text-foreground hover:border-border"
                       }
                     `}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span className="hidden sm:inline">{tab.label}</span>
                   </button>
                 );
@@ -211,29 +211,29 @@ export function DmIaSection() {
           </div>
 
           {/* Results banner */}
-          <div className="bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 rounded-2xl p-8 mb-12">
-            <h3 className="text-xl font-bold text-center mb-6">Na prática, você ganha:</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 rounded-xl sm:rounded-2xl p-4 sm:p-8 mb-8 sm:mb-12 mx-2 sm:mx-0">
+            <h3 className="text-lg sm:text-xl font-bold text-center mb-4 sm:mb-6">Na prática, você ganha:</h3>
+            <div className="grid gap-3 sm:gap-6 md:grid-cols-3">
               {results.map((result, index) => (
-                <div key={index} className="flex items-center gap-3 justify-center">
-                  <div className="w-10 h-10 rounded-full bg-primary/30 flex items-center justify-center">
-                    <result.icon className="w-5 h-5 text-primary" />
+                <div key={index} className="flex items-center gap-2 sm:gap-3 justify-start md:justify-center">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/30 flex items-center justify-center flex-shrink-0">
+                    <result.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
-                  <span className="font-medium">{result.text}</span>
+                  <span className="font-medium text-sm sm:text-base">{result.text}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CTA */}
-          <div className="text-center">
-            <Button variant="hero" size="xl" asChild>
-              <a href="#diagnostico" className="flex items-center gap-2">
+          <div className="text-center px-4 sm:px-0">
+            <Button variant="hero" size="lg" className="w-full sm:w-auto sm:px-10" asChild>
+              <a href="#diagnostico" className="flex items-center justify-center gap-2">
                 Quero Meu CRM Inteligente
-                <ArrowUpRight className="w-5 h-5" />
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </Button>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-3">
               Demonstração rápida do fluxo de triagem + acompanhamento.
             </p>
           </div>
