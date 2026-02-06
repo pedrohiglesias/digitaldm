@@ -63,7 +63,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in">
             <Button variant="hero" size="xl" asChild>
               <a href="#diagnostico" className="flex items-center gap-2">
-                Agendar Diagnóstico Gratuito
+                Saber Valor Agora
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>
