@@ -4,7 +4,7 @@ import heroCeoBg from "@/assets/hero-ceo-bg.png";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[110vh] flex items-end justify-center overflow-hidden pb-24 pt-20">
+    <section className="relative min-h-[140vh] md:min-h-[120vh] flex items-end justify-center overflow-hidden pb-12 md:pb-24 pt-20">
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
