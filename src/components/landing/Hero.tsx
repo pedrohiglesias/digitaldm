@@ -53,7 +53,7 @@ export function Hero() {
           </div>
 
           {/* Subheadline */}
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in px-4">
+          <p className="text-base sm:text-lg md:text-xl text-foreground mb-8 max-w-2xl mx-auto animate-fade-in px-4">
             A Digital DM estrutura sistemas completos de aquisição e conversão para 
             seu negócio parar de depender de sorte — e escalar com segurança.
           </p>
