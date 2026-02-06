@@ -33,6 +33,7 @@ const Index = () => {
         <ProblemSection />
         <MechanismSection />
         <TrafficSection />
+        <SegmentsSection />
         <DmIaSection />
         <AutomationSection />
         <FunnelSection />
