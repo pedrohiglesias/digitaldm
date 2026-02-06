@@ -5,7 +5,7 @@ import ceoDeomir from "@/assets/ceo-deomir.png";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stats = [
-  { icon: Users, value: "600+", label: "Empresas Atendidas" },
+  { icon: Users, value: "1200+", label: "Empresas Atendidas" },
   { icon: Award, value: "14+", label: "Anos de Experiência" },
   { icon: TrendingUp, value: "42%", label: "Aumento Médio em Vendas" },
 ];
@@ -42,7 +42,7 @@ export function AboutSection() {
                 <p className="text-lg">
                   Meu nome é <strong className="text-foreground">Deomir</strong> e sou fundador da Digital DM. 
                   Com mais de 14 anos de experiência, nossa empresa já transformou a realidade de{" "}
-                  <strong className="text-foreground">mais de 600 empresas</strong> que alcançaram{" "}
+                  <strong className="text-foreground">mais de 1200 empresas</strong> que alcançaram{" "}
                   <strong className="text-primary">crescimento exponencial</strong> através da nossa metodologia.
                 </p>
 
