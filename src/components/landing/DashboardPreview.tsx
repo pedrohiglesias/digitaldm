@@ -94,182 +94,112 @@ const topSellers = [
 
 export function DashboardPreview() {
   return (
-    <div className="flex w-full h-full min-h-[500px] bg-[#f5f7fb] rounded-lg overflow-hidden text-[#0f172a] text-xs">
-      {/* Sidebar */}
-      <aside className="w-56 bg-gradient-to-b from-[#0b1426] to-[#0e1a33] text-[#dbe6ff] p-3 flex flex-col shrink-0">
+    <div className="flex w-full h-full min-h-[280px] md:min-h-[400px] bg-[#f5f7fb] rounded-lg overflow-hidden text-[#0f172a] text-[8px] md:text-[10px] scale-[0.85] md:scale-100 origin-top-left">
+      {/* Sidebar - Hidden on mobile, compact on tablet */}
+      <aside className="hidden sm:flex w-32 md:w-44 bg-gradient-to-b from-[#0b1426] to-[#0e1a33] text-[#dbe6ff] p-2 md:p-3 flex-col shrink-0">
         {/* Brand */}
-        <div className="flex items-center justify-center px-2 py-3 mb-2">
-          <img src={logoDigitalDM} alt="DigitalDM" className="h-5 w-auto" />
+        <div className="flex items-center justify-center px-1 py-2 mb-1">
+          <img src={logoDigitalDM} alt="DigitalDM" className="h-3 md:h-4 w-auto" />
         </div>
 
         {/* Navigation */}
-        <nav className="flex flex-col gap-1">
-          {navItems.map((item, i) => (
+        <nav className="flex flex-col gap-0.5">
+          {navItems.slice(0, 6).map((item, i) => (
             <a 
               key={i}
               href="#"
               onClick={(e) => e.preventDefault()}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors ${
+              className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[8px] md:text-[9px] transition-colors ${
                 item.active 
                   ? "bg-white/10 text-[#dbe6ff]" 
                   : "text-[#dbe6ff]/65 hover:bg-white/5 hover:text-[#dbe6ff]"
               }`}
             >
-              <item.icon className="w-4 h-4" />
-              {item.label}
+              <item.icon className="w-3 h-3" />
+              <span className="hidden md:inline">{item.label}</span>
             </a>
           ))}
         </nav>
-
-        {/* Footer */}
-        <div className="mt-auto pt-4">
-          <div className="flex items-center gap-2 px-2 py-2 rounded-lg bg-white/5">
-            <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-xs font-bold">
-              U
-            </div>
-            <div>
-              <div className="font-semibold text-xs">Usuário</div>
-              <div className="text-[10px] text-[#dbe6ff]/65">Administrador</div>
-            </div>
-          </div>
-          <a 
-            href="#" 
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center gap-2 px-3 py-2 text-[#dbe6ff]/65 hover:text-[#dbe6ff] text-xs mt-1"
-          >
-            <LogOut className="w-4 h-4" />
-            Sair
-          </a>
-        </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 overflow-auto">
+      <main className="flex-1 p-2 md:p-3 overflow-hidden">
         {/* Topbar */}
-        <header className="flex items-start justify-between mb-4">
+        <header className="flex items-start justify-between mb-2 md:mb-3">
           <div>
-            <h1 className="text-xl font-bold text-[#0f172a] m-0">Dashboard</h1>
-            <p className="text-xs text-[#64748b] mt-0.5">Visão geral do seu negócio</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 h-8 px-3 rounded-lg border border-[#e6edf7] bg-white text-xs text-[#334155]">
-              Últimos 30 dias
-              <ChevronDown className="w-3 h-3" />
-            </button>
-            <button className="w-8 h-8 rounded-lg border border-[#e6edf7] bg-white flex items-center justify-center text-[#3b4a66]">
-              <RefreshCw className="w-3.5 h-3.5" />
-            </button>
+            <h1 className="text-sm md:text-base font-bold text-[#0f172a] m-0">Dashboard</h1>
+            <p className="text-[8px] md:text-[9px] text-[#64748b] mt-0.5">Visão geral do seu negócio</p>
           </div>
         </header>
 
-        {/* Status Cards */}
-        <div className="grid grid-cols-4 gap-3 mb-3">
-          {statusCards.map((card, i) => (
-            <article key={i} className="bg-white rounded-xl border border-[#e6edf7] p-3">
-              <div className="flex items-center justify-between mb-2">
-                <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${card.color}`}>
-                  <card.icon className="w-3.5 h-3.5" />
+        {/* Status Cards - 2 cols on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-2 mb-2">
+          {statusCards.slice(0, 4).map((card, i) => (
+            <article key={i} className="bg-white rounded-lg border border-[#e6edf7] p-1.5 md:p-2">
+              <div className="flex items-center gap-1 mb-1">
+                <div className={`w-5 h-5 md:w-6 md:h-6 rounded-md flex items-center justify-center ${card.color}`}>
+                  <card.icon className="w-2.5 h-2.5 md:w-3 md:h-3" />
                 </div>
-                <span className={`text-[10px] px-2 py-1 rounded-full border ${
+                <span className={`text-[7px] md:text-[8px] px-1 py-0.5 rounded-full ${
                   card.status === "online" 
-                    ? "text-green-600 bg-green-500/10 border-green-500/20" 
-                    : "text-[#64748b] bg-slate-100 border-[#e6edf7]"
+                    ? "text-green-600 bg-green-500/10" 
+                    : "text-[#64748b] bg-slate-100"
                 }`}>
-                  {card.status === "online" && <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1" />}
-                  {card.status === "online" ? "Online" : "Inativo"}
+                  {card.status === "online" ? "On" : "Off"}
                 </span>
               </div>
-              <div className="text-[10px] text-[#64748b]">{card.label}</div>
-              <div className="font-bold text-sm mt-0.5">{card.value}</div>
-              <div className="text-[10px] text-[#64748b]">{card.sub}</div>
+              <div className="font-bold text-[10px] md:text-xs">{card.value}</div>
+              <div className="text-[7px] md:text-[8px] text-[#64748b]">{card.label}</div>
             </article>
           ))}
         </div>
 
-        {/* Performance Section */}
-        <section className="bg-white rounded-xl border border-[#e6edf7] p-3 mb-3">
-          <div className="flex items-center gap-2 mb-3">
-            <TrendingUp className="w-4 h-4 text-[#64748b]" />
-            <h2 className="text-xs font-semibold m-0">Desempenho de Vendas</h2>
+        {/* Performance Section - Simplified */}
+        <section className="bg-white rounded-lg border border-[#e6edf7] p-2 mb-2">
+          <div className="flex items-center gap-1 mb-2">
+            <TrendingUp className="w-3 h-3 text-[#64748b]" />
+            <h2 className="text-[9px] md:text-[10px] font-semibold m-0">Desempenho de Vendas</h2>
           </div>
-          <div className="grid grid-cols-7 gap-2">
-            {metrics.map((m, i) => (
-              <div key={i} className="bg-[#f8fafc] rounded-lg p-2 text-center">
-                <div className={`font-bold text-sm ${m.color}`}>{m.value}</div>
-                <div className="text-[10px] text-[#64748b] mt-0.5">{m.label}</div>
-                <div className="text-[9px] text-[#94a3b8]">{m.sub}</div>
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-1">
+            {metrics.slice(0, 4).map((m, i) => (
+              <div key={i} className="bg-[#f8fafc] rounded p-1 text-center">
+                <div className={`font-bold text-[9px] md:text-[10px] ${m.color}`}>{m.value}</div>
+                <div className="text-[7px] md:text-[8px] text-[#64748b] truncate">{m.label}</div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Stats Row */}
-        <div className="grid grid-cols-5 gap-3 mb-3">
-          {stats.map((s, i) => (
-            <div key={i} className="bg-white rounded-xl border border-[#e6edf7] p-3 text-center">
-              <div className={`font-bold text-lg ${s.accent ? "text-purple-600" : "text-[#0f172a]"}`}>
+        {/* Stats Row - Compact */}
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-1.5 mb-2">
+          {stats.slice(0, 3).map((s, i) => (
+            <div key={i} className="bg-white rounded-lg border border-[#e6edf7] p-1.5 text-center">
+              <div className={`font-bold text-xs md:text-sm ${s.accent ? "text-purple-600" : "text-[#0f172a]"}`}>
                 {s.value}
               </div>
-              <div className="text-[10px] text-[#64748b]">{s.label}</div>
+              <div className="text-[7px] md:text-[8px] text-[#64748b] truncate">{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Grid */}
-        <div className="grid grid-cols-2 gap-3">
-          {/* Top Sellers */}
-          <article className="bg-white rounded-xl border border-[#e6edf7] p-3">
-            <div className="flex items-center gap-2 mb-3">
-              <Star className="w-4 h-4 text-amber-500" />
-              <h2 className="text-xs font-semibold m-0">Top Vendedores</h2>
-            </div>
-            <div className="space-y-1">
-              <div className="grid grid-cols-5 gap-2 text-[10px] text-[#64748b] font-medium pb-1 border-b border-[#e6edf7]">
-                <div>#</div>
-                <div>Vendedor</div>
-                <div className="text-right">Neg.</div>
-                <div className="text-right">Ganhas</div>
-                <div className="text-right">Valor</div>
-              </div>
-              {topSellers.map((seller) => (
-                <div key={seller.rank} className="grid grid-cols-5 gap-2 text-[10px] py-1">
-                  <div className="text-amber-600 font-semibold">{seller.rank}</div>
-                  <div>{seller.name}</div>
-                  <div className="text-right">{seller.neg}</div>
-                  <div className="text-right text-blue-600">{seller.won}</div>
-                  <div className="text-right font-medium">{seller.value}</div>
+        {/* Top Sellers - Compact */}
+        <article className="bg-white rounded-lg border border-[#e6edf7] p-2 hidden sm:block">
+          <div className="flex items-center gap-1 mb-2">
+            <Star className="w-3 h-3 text-amber-500" />
+            <h2 className="text-[9px] md:text-[10px] font-semibold m-0">Top Vendedores</h2>
+          </div>
+          <div className="space-y-1">
+            {topSellers.slice(0, 2).map((seller) => (
+              <div key={seller.rank} className="flex items-center justify-between text-[8px] py-0.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-amber-600 font-semibold">{seller.rank}</span>
+                  <span className="truncate max-w-[60px]">{seller.name}</span>
                 </div>
-              ))}
-            </div>
-          </article>
-
-          {/* Conversions */}
-          <article className="bg-white rounded-xl border border-[#e6edf7] p-3">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4 text-[#64748b]" />
-                <h2 className="text-xs font-semibold m-0">Conversões por Regra</h2>
+                <span className="font-medium text-green-600">{seller.value}</span>
               </div>
-              <span className="text-[10px] text-[#64748b]">1 conversões | 0.8% taxa</span>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] px-2 py-0.5 rounded bg-green-500 text-white font-medium">Vendido!</span>
-                <span className="text-[10px] text-green-600">1 (100%)</span>
-              </div>
-              <div className="h-1.5 bg-[#e6edf7] rounded-full overflow-hidden">
-                <div className="h-full bg-green-500 rounded-full" style={{ width: "100%" }} />
-              </div>
-              <div className="flex items-center justify-between text-[9px] text-[#94a3b8]">
-                <div>
-                  <div>03/01, 00:32</div>
-                  <div>Palavras: "eu comprei" • Movido para Qualificação</div>
-                </div>
-                <div>Lucas Almeida</div>
-              </div>
-            </div>
-          </article>
-        </div>
+            ))}
+          </div>
+        </article>
       </main>
     </div>
   );
