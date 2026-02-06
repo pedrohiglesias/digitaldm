@@ -12,8 +12,8 @@ const videoTestimonials = [
   },
   {
     id: 2,
-    company: "Porto House",
-    location: "Porto Feliz - SP",
+    company: "Mania de Vestir",
+    location: "Chapecó - SC",
     rating: 5.0,
     videoId: "W8KcHTC9-ic",
   },

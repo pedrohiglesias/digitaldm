@@ -1,4 +1,5 @@
-import { Award, Shield, Cpu, Repeat, Quote } from "lucide-react";
+import { Award, Shield, Cpu, Repeat, Quote, BadgeCheck } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const proofs = [
   {
@@ -36,9 +37,10 @@ export function ProofSection() {
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
-            <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
+              <BadgeCheck className="w-4 h-4 mr-2" />
               Autoridade
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               Não é "marketing bonito".{" "}
               <span className="text-gradient">É operação de crescimento.</span>

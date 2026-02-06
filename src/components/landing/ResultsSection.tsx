@@ -19,10 +19,10 @@ const transformations = [
 
 const metrics = [
   { icon: Timer, label: "Tempo de resposta" },
-  { icon: Users, label: "Taxa de triagem (perfil x curioso)" },
+  { icon: Users, label: "Taxa de triagem" },
   { icon: Calendar, label: "Taxa de agendamento" },
   { icon: DollarSign, label: "Custo por conversão" },
-  { icon: TrendingUp, label: "Origem dos melhores clientes" },
+  { icon: TrendingUp, label: "Melhores Clientes" },
 ];
 
 export function ResultsSection() {
