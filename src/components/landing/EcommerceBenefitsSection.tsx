@@ -184,7 +184,7 @@ export function EcommerceBenefitsSection() {
           {/* CTA */}
           <div className="text-center mt-16">
             <Button variant="hero" size="lg" asChild>
-              <a href="#diagnostico" className="flex items-center gap-2">
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 Crie seu E-Commerce Agora
                 <ArrowRight className="w-4 h-4" />
               </a>

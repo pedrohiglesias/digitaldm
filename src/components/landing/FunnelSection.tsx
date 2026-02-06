@@ -120,7 +120,7 @@ export function FunnelSection() {
             {/* CTA - Centered */}
             <div className="text-center">
               <Button variant="hero" size="lg" asChild>
-                <a href="#diagnostico" className="flex items-center gap-2">
+                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   Quero Meu Funil Personalizado
                   <ArrowUpRight className="w-5 h-5" />
                 </a>

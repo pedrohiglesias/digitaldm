@@ -159,7 +159,7 @@ export function PricingSection() {
                     className="w-full"
                     asChild
                   >
-                    <a href="#diagnostico" className="flex items-center justify-center gap-2">
+                    <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       Ativar Minha IA Agora
                       <ArrowRight className="w-4 h-4" />
                     </a>

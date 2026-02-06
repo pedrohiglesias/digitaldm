@@ -206,7 +206,7 @@ export function EcommercePortfolioSection() {
           {/* CTA */}
           <div className="text-center mt-12">
             <Button variant="hero" size="lg" className="rounded-2xl" asChild>
-              <a href="#diagnostico">
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
                 Quero Marcar Reunião
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>
