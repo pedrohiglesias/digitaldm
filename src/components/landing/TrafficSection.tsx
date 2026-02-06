@@ -55,8 +55,7 @@ export const TrafficSection = () => {
             Tráfego Pago
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-foreground">Estratégia</span>{" "}
-            <span className="text-gradient">Ultra Segmentada</span>
+            <span className="text-gradient">Gestão profissional de Tráfego Pago</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Gestão orçamentária inteligente focada em maximizar seu ROAS e lucro operacional
