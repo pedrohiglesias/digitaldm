@@ -151,9 +151,9 @@ export const TrafficSection = () => {
               </div>
               
               {/* Frame wrapper */}
-              <div className="relative z-10 p-3 rounded-3xl bg-gradient-to-b from-primary/30 via-primary/10 to-secondary/20 border-2 border-primary/40 shadow-[0_0_60px_rgba(59,130,246,0.4)]">
+              <div className="relative z-10 p-4 rounded-3xl bg-gradient-to-b from-primary/30 via-primary/10 to-secondary/20 border-2 border-primary/40 shadow-[0_0_60px_rgba(59,130,246,0.4)]">
                 {/* Inner frame */}
-                <div className="p-1 rounded-2xl bg-card/80 border border-border/50">
+                <div className="p-2 rounded-2xl bg-card/90 border border-border/50">
                   {/* Video container - Shorts style */}
                   <div 
                     className="relative rounded-xl overflow-hidden cursor-pointer group w-[260px] aspect-[9/16]"
@@ -162,13 +162,13 @@ export const TrafficSection = () => {
                     <iframe
                       src={previewSrc}
                       title="Gestão de Tráfego Pago"
-                      className="w-full h-full pointer-events-none"
+                      className="w-full h-full pointer-events-none scale-[1.02]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       loading="lazy"
                     />
                     
                     {/* Click overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
                     
                     {/* Play Button - appears on hover */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -185,16 +185,6 @@ export const TrafficSection = () => {
                         <span className="px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs text-foreground/80">
                           tráfego-pago
                         </span>
-                      </div>
-                    </div>
-
-                    {/* YouTube branding */}
-                    <div className="absolute bottom-3 right-3">
-                      <div className="flex items-center gap-1 text-white/80">
-                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                        </svg>
-                        <span className="text-xs font-medium">YouTube</span>
                       </div>
                     </div>
                   </div>
