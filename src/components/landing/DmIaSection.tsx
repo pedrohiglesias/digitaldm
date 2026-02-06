@@ -167,8 +167,8 @@ export function DmIaSection() {
 
             {/* Browser Window Mockup */}
             <div className="glass-card rounded-2xl overflow-hidden gradient-border">
-              {/* Browser Header */}
-              <div className="bg-card/80 border-b border-border/50 px-4 py-3 flex items-center gap-4">
+              {/* Browser Header - Hidden on mobile */}
+              <div className="hidden sm:flex bg-card/80 border-b border-border/50 px-4 py-3 items-center gap-4">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-destructive/60" />
                   <div className="w-3 h-3 rounded-full bg-accent/60" />
@@ -186,9 +186,9 @@ export function DmIaSection() {
                 <DashboardPreview />
                 
                 {/* Info overlay at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/95 to-transparent p-6 pt-12">
-                  <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
-                  <p className="text-muted-foreground">{currentContent.description}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/95 to-transparent p-4 sm:p-6 pt-8 sm:pt-12">
+                  <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2">{currentContent.title}</h3>
+                  <p className="text-muted-foreground text-sm">{currentContent.description}</p>
                 </div>
               </div>
             </div>
