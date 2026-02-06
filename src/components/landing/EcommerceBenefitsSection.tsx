@@ -51,7 +51,7 @@ export function EcommerceBenefitsSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+    <section id="ecommerce" className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
