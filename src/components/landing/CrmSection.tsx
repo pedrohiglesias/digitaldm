@@ -77,10 +77,6 @@ const tabContent: Record<string, { image: string; title: string; description: st
 };
 
 export function CrmSection() {
-  const [activeTab, setActiveTab] = useState("dashboard");
-
-  const currentContent = tabContent[activeTab];
-
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background effects */}
@@ -110,28 +106,19 @@ export function CrmSection() {
             <span>Esta é apenas uma demonstração visual do sistema. A interface real possui ainda mais recursos.</span>
           </div>
 
-          {/* Tabs Navigation */}
+          {/* Static Tabs Display - No interaction */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             {tabs.map((tab) => {
               const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
               
               return (
-                <button
+                <div
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`
-                    flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
-                    transition-all duration-300 border
-                    ${isActive 
-                      ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25" 
-                      : "bg-card/50 text-muted-foreground border-border/50 hover:bg-card hover:text-foreground hover:border-border"
-                    }
-                  `}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-primary/20 text-primary border border-primary/30"
                 >
                   <Icon className="w-4 h-4" />
                   <span className="hidden sm:inline">{tab.label}</span>
-                </button>
+                </div>
               );
             })}
           </div>
@@ -152,19 +139,19 @@ export function CrmSection() {
               </div>
             </div>
 
-            {/* Content Area */}
+            {/* Content Area - Static Dashboard */}
             <div className="relative">
               <img 
-                src={currentContent.image}
-                alt={currentContent.title}
-                className="w-full h-auto transition-opacity duration-300"
+                src={crmDashboard}
+                alt="CRM Dashboard"
+                className="w-full h-auto"
               />
               
-              {/* Overlay with info on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              {/* Static overlay with CRM info */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent flex items-end p-6">
                 <div className="text-left">
-                  <h3 className="text-xl font-bold mb-2">{currentContent.title}</h3>
-                  <p className="text-muted-foreground">{currentContent.description}</p>
+                  <h3 className="text-xl font-bold mb-2">CRM Completo para Gestão de Leads</h3>
+                  <p className="text-muted-foreground">Todas as ferramentas que você precisa para organizar e converter seus leads em um único lugar.</p>
                 </div>
               </div>
             </div>
