@@ -2,9 +2,10 @@ import { useCountUp, parseStatValue } from '@/hooks/useCountUp';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const stats = [
-  { value: "1200+", label: "Negócios Atendidos" },
-  { value: "14+", label: "Anos de Experiência" },
-  { value: "R$100M+", label: "Gerados para Clientes" },
+  { value: "120+", label: "Empresas Atendidas" },
+  { value: "1200+", label: "E-commerces Atendidos" },
+  { value: "R$12M+", label: "Reais Gerenciados" },
+  { value: "15+", label: "Anos de Experiência" },
 ];
 
 function AnimatedNumber({ value, label, delay }: { value: string; label: string; delay: number }) {
