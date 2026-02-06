@@ -2,7 +2,7 @@ import { useCountUp, parseStatValue } from '@/hooks/useCountUp';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const stats = [
-  { value: "600+", label: "Negócios Atendidos" },
+  { value: "1200+", label: "Negócios Atendidos" },
   { value: "14+", label: "Anos de Experiência" },
   { value: "R$100M+", label: "Gerados para Clientes" },
 ];
