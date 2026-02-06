@@ -60,12 +60,15 @@ function VideoCard({
   const previewSrc = `https://www.youtube.com/embed/${testimonial.videoId}?autoplay=1&mute=1&loop=1&playlist=${testimonial.videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`;
 
   return (
-    <div className="glass-card rounded-2xl overflow-hidden hover-lift cursor-pointer group">
+    <div 
+      className="relative rounded-2xl overflow-hidden cursor-pointer group"
+      onClick={() => onPlay(testimonial.videoId)}
+    >
+      {/* Simple frame background */}
+      <div className="absolute inset-0 rounded-2xl bg-card/50 border border-border/30" />
+      
       {/* Video Preview - Autoplay Muted */}
-      <div 
-        className="relative aspect-[9/16] overflow-hidden"
-        onClick={() => onPlay(testimonial.videoId)}
-      >
+      <div className="relative aspect-[9/16] overflow-hidden rounded-2xl m-1">
         <iframe
           src={previewSrc}
           title={`Preview ${testimonial.company}`}
@@ -75,7 +78,7 @@ function VideoCard({
         />
         
         {/* Click overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
         
         {/* Play Button - appears on hover */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -94,18 +97,6 @@ function VideoCard({
             </span>
           </div>
         </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-5">
-        <h3 className="font-bold text-lg mb-2">
-          {testimonial.company}
-        </h3>
-        <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-          <MapPin className="w-4 h-4 text-primary" />
-          <span>{testimonial.location}</span>
-        </div>
-        <StarRating rating={testimonial.rating} />
       </div>
     </div>
   );
