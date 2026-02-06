@@ -127,7 +127,7 @@ export function MechanismSection() {
           {/* CTA */}
           <div className="text-center">
             <Button variant="hero" size="lg" asChild>
-              <a href="#dm-ia">Ver o Sistema na Prática</a>
+              <a href="#dm-ia">Quero Ver Meu Sistema na Prática</a>
             </Button>
           </div>
         </div>

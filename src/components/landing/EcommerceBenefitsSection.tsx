@@ -1,6 +1,7 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Percent, Palette, Server, Smartphone, CreditCard, GraduationCap } from "lucide-react";
+import { Percent, Palette, Server, Smartphone, CreditCard, GraduationCap, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const benefits = [
   {
@@ -178,6 +179,16 @@ export function EcommerceBenefitsSection() {
                 </div>
               );
             })}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-16">
+            <Button variant="hero" size="lg" asChild>
+              <a href="#diagnostico" className="flex items-center gap-2">
+                Crie seu E-Commerce Agora
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </Button>
           </div>
         </div>
       </div>
