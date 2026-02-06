@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, ExternalLink, LayoutGrid, CreditCard, Search, Smartphone, Wallet, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import portfolioAmazonas from "@/assets/portfolio-amazonas.jpg";
-import portfolioAnaSouza from "@/assets/portfolio-anasouza.png";
-import portfolioFlexEstilo from "@/assets/portfolio-flexestilo.png";
-import portfolioDiulli from "@/assets/portfolio-diulli.png";
+import portfolioAmazonas from "@/assets/portfolio-amazonas-new.png";
+import portfolioHyorrana from "@/assets/portfolio-hyorrana.png";
+import portfolioDonnaMoca from "@/assets/portfolio-donnamoca.png";
+import portfolioCalcadosInfantil from "@/assets/portfolio-calcados-infantil.png";
+import portfolioCalcadosVerao from "@/assets/portfolio-calcados-verao.png";
+import portfolioJRPortas from "@/assets/portfolio-jrportas.png";
+import portfolioManiaVestir from "@/assets/portfolio-maniavestir.png";
+import portfolioLustShoes from "@/assets/portfolio-lustshoes.png";
 
 const portfolioSlides = [
   {
@@ -16,21 +20,45 @@ const portfolioSlides = [
   },
   {
     id: 2,
-    image: portfolioAnaSouza,
-    title: "Ana Souza",
+    image: portfolioHyorrana,
+    title: "Hyorrana",
     description: "Loja virtual elegante com experiência de compra premium",
   },
   {
     id: 3,
-    image: portfolioFlexEstilo,
-    title: "Flex Estilo",
-    description: "E-commerce responsivo com foco em conversão e usabilidade",
+    image: portfolioDonnaMoca,
+    title: "Donna Moça",
+    description: "Moda feminina com identidade visual marcante",
   },
   {
     id: 4,
-    image: portfolioDiulli,
-    title: "Diulli",
-    description: "Plataforma de vendas sofisticada com identidade visual marcante",
+    image: portfolioCalcadosInfantil,
+    title: "Calçados Novo Hamburgo",
+    description: "E-commerce de calçados infantis com promoções atrativas",
+  },
+  {
+    id: 5,
+    image: portfolioCalcadosVerao,
+    title: "Calçados Alto Verão",
+    description: "Coleção de verão com design moderno e responsivo",
+  },
+  {
+    id: 6,
+    image: portfolioJRPortas,
+    title: "JR Portas",
+    description: "E-commerce de portas e acessórios com navegação intuitiva",
+  },
+  {
+    id: 7,
+    image: portfolioManiaVestir,
+    title: "Mania de Vestir",
+    description: "Moda feminina com menu completo e campanhas sazonais",
+  },
+  {
+    id: 8,
+    image: portfolioLustShoes,
+    title: "Lust Shoes",
+    description: "Calçados femininos com design sofisticado e elegante",
   },
 ];
 
