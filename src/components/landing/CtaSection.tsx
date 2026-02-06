@@ -80,7 +80,7 @@ export function CtaSection() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
-                Agendar Diagnóstico Gratuito
+                Fale conosco
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>
