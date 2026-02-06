@@ -35,7 +35,7 @@ export function AboutSection() {
                 Autoridade
               </Badge>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight text-center lg:text-left">
-                <span className="text-gradient">Quem somos nós?</span>
+                Quem somos <span className="text-gradient">nós?</span>
               </h2>
 
               <div className="space-y-6 text-foreground/90">

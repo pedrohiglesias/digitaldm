@@ -122,7 +122,7 @@ export function DmIaSection() {
               <span className="text-sm text-primary font-semibold">CRM Inteligente</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-              <span className="text-gradient">DM IA:</span> o CRM com Inteligência Artificial
+              CRM com <span className="text-gradient">Inteligência Artificial</span>{" "}
               que impede o lead de esfriar
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

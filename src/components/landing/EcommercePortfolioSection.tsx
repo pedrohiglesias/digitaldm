@@ -83,9 +83,7 @@ export function EcommercePortfolioSection() {
             </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Confira algumas das{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                nossas lojas criadas
-              </span>
+              <span className="text-gradient">nossas lojas criadas</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Expertise em criação de e-commerce e sites profissionais que convertem visitantes em clientes

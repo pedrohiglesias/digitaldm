@@ -65,9 +65,8 @@ export function EcommerceBenefitsSection() {
           }`}
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-              Criação de E-Commerce profissional
-            </span>
+            Criação de{" "}
+            <span className="text-gradient">E-Commerce profissional</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Veja abaixo o "porque" ter uma loja online conosco é a melhor opção para você escalar suas vendas e aumentar seu faturamento nos próximos meses.

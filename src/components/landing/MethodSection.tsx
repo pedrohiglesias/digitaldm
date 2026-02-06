@@ -66,7 +66,8 @@ export function MethodSection() {
               O Método
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-              Método <span className="text-gradient">MIA</span>: Método + IA + Análise
+              Método MIA:{" "}
+              <span className="text-gradient">Método + IA + Análise</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Seu negócio não cresce com improviso. Cresce com rotina, métrica e melhoria contínua. 
