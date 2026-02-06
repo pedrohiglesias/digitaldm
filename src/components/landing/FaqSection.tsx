@@ -61,7 +61,8 @@ export function FaqSection() {
               FAQ
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4">
-              Perguntas <span className="text-gradient">Frequentes</span>
+              Perguntas{" "}
+              <span className="text-gradient">Frequentes</span>
             </h2>
           </div>
 

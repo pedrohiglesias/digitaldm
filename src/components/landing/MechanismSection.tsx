@@ -45,7 +45,7 @@ export function MechanismSection() {
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               O problema não é o anúncio.{" "}
-              <span className="text-gradient">É não ter um sistema de conversão.</span>
+              <span className="text-gradient">É o sistema de conversão.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Tráfego é só a "porta". Previsibilidade vem quando você tem um sistema que:

@@ -26,7 +26,7 @@ export function FunnelSection() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
               Funil Estratégico{" "}
-              <span className="text-gradient">Personalizado e Validado</span>
+              <span className="text-gradient">Personalizado</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Construímos funis de conversão sob medida para o seu negócio. Cada etapa é mapeada, 

@@ -62,9 +62,8 @@ export function AutomationSection() {
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient">Cadência Infinita</span>
-            <br />
-            <span className="text-foreground">Resultados Constantes</span>
+            Cadência Infinita,{" "}
+            <span className="text-gradient">Resultados Constantes</span>
           </h2>
           
           <p className="text-lg text-muted-foreground">

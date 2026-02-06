@@ -37,7 +37,8 @@ export function EligibilitySection() {
               Elegibilidade
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mt-4 mb-6">
-              Isso é pra você? <span className="text-gradient">Vamos descobrir.</span>
+              Isso é pra você?{" "}
+              <span className="text-gradient">Vamos descobrir.</span>
             </h2>
           </div>
 
