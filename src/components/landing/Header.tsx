@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 
@@ -27,23 +27,24 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border/50 py-3"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border/50 py-3"
           : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+        {/* Desktop Layout */}
+        <div className="hidden md:flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center">
             <img 
               src={logoDigitalDM} 
               alt="Digital DM" 
-              className="h-6 md:h-8 w-auto"
+              className="h-8 w-auto"
             />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -56,52 +57,72 @@ export function Header() {
           </nav>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-3">
             <Button variant="outline" size="lg" asChild>
               <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
                 Entrar na DM IA
               </a>
             </Button>
             <Button variant="hero" size="lg" asChild>
-              <a href="#diagnostico">Agendar Diagnóstico</a>
+              <a href="#diagnostico">Fale conosco</a>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4">
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Button variant="outline" size="lg" className="mt-2" asChild>
-                <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
-                  Entrar na DM IA
-                </a>
-              </Button>
-              <Button variant="hero" size="lg" className="mt-2" asChild>
-                <a href="#diagnostico">Agendar Diagnóstico</a>
-              </Button>
-            </nav>
+        {/* Mobile Layout */}
+        <div className="md:hidden">
+          <div className="flex flex-col items-center">
+            {/* Centered Logo */}
+            <a href="#" className="flex items-center mb-2">
+              <img 
+                src={logoDigitalDM} 
+                alt="Digital DM" 
+                className="h-7 w-auto"
+              />
+            </a>
+            
+            {/* Navigation Toggle Text */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Menu"
+            >
+              <span>Clique para navegar aqui</span>
+              <ChevronDown 
+                size={14} 
+                className={`transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
           </div>
-        )}
+
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="mt-4 pb-4 bg-background/95 backdrop-blur-xl rounded-2xl border border-border/50 p-4">
+              <nav className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium py-2 px-3 rounded-xl hover:bg-accent/50"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-border/50">
+                  <Button variant="outline" size="lg" className="w-full rounded-xl" asChild>
+                    <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                      Entrar na DM IA
+                    </a>
+                  </Button>
+                  <Button variant="hero" size="lg" className="w-full rounded-xl" asChild>
+                    <a href="#diagnostico">Fale conosco</a>
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
