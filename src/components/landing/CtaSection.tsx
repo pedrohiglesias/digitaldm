@@ -1,16 +1,5 @@
-import { useState } from "react";
-import { ArrowRight, ClipboardList, Search, Map } from "lucide-react";
+import { ClipboardList, Search, Map, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
@@ -32,20 +21,8 @@ const steps = [
 ];
 
 export function CtaSection() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.2 });
   const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation({ threshold: 0.1 });
-  const { ref: formRef, isVisible: formVisible } = useScrollAnimation({ threshold: 0.1 });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Obrigado! Entraremos em contato em breve.");
-    }, 2000);
-  };
 
   return (
     <section id="diagnostico" className="py-24 relative overflow-hidden">
@@ -74,7 +51,7 @@ export function CtaSection() {
           </div>
 
           {/* Process steps */}
-          <div ref={stepsRef} className="grid md:grid-cols-3 gap-6 mb-16">
+          <div ref={stepsRef} className="grid md:grid-cols-3 gap-6 mb-12">
             {steps.map((step, index) => (
               <div 
                 key={index} 
@@ -94,104 +71,22 @@ export function CtaSection() {
             ))}
           </div>
 
-          {/* Form */}
-          <div 
-            ref={formRef}
-            className={`glass-card rounded-2xl p-8 md:p-12 max-w-2xl mx-auto transition-all duration-700 ${
-              formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Nome completo</Label>
-                  <Input
-                    id="name"
-                    placeholder="Seu nome"
-                    required
-                    className="bg-muted/50 border-border/50"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="instagram">Nome do Instagram</Label>
-                  <Input
-                    id="instagram"
-                    placeholder="@seuperfil"
-                    required
-                    className="bg-muted/50 border-border/50"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="revenue">Faturamento Mensal</Label>
-                  <Select required>
-                    <SelectTrigger className="bg-muted/50 border-border/50">
-                      <SelectValue placeholder="Selecione" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="40k-80k">R$ 40k - R$ 80k</SelectItem>
-                      <SelectItem value="80k-150k">R$ 80k - R$ 150k</SelectItem>
-                      <SelectItem value="150k-300k">R$ 150k - R$ 300k</SelectItem>
-                      <SelectItem value="300k-500k">R$ 300k - R$ 500k</SelectItem>
-                      <SelectItem value="500k-1m">R$ 500k - R$ 1 milhão</SelectItem>
-                      <SelectItem value="acima-1m">Acima de R$ 1 milhão</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="whatsapp">WhatsApp</Label>
-                  <Input
-                    id="whatsapp"
-                    placeholder="(00) 00000-0000"
-                    required
-                    className="bg-muted/50 border-border/50"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email">E-mail</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  required
-                  className="bg-muted/50 border-border/50"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="challenge">Qual é o maior gargalo hoje?</Label>
-                <Textarea
-                  id="challenge"
-                  placeholder="Descreva brevemente o principal desafio do seu negócio..."
-                  className="bg-muted/50 border-border/50 min-h-[100px]"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="hero"
-                size="xl"
-                className="w-full"
-                disabled={isSubmitting}
+          {/* CTA Button */}
+          <div className="text-center">
+            <Button variant="hero" size="xl" asChild>
+              <a 
+                href="https://wa.me/5551999999999" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
               >
-                {isSubmitting ? (
-                  "Enviando..."
-                ) : (
-                  <>
-                    Agendar Diagnóstico Gratuito
-                    <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
-              </Button>
-
-              <p className="text-xs text-muted-foreground text-center">
-                Seus dados serão usados apenas para contato sobre o diagnóstico. Sem spam.
-              </p>
-            </form>
+                Agendar Diagnóstico Gratuito
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </Button>
+            <p className="text-sm text-muted-foreground mt-4">
+              Fale diretamente com nossa equipe pelo WhatsApp
+            </p>
           </div>
         </div>
       </div>
