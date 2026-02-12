@@ -42,7 +42,7 @@ export function AboutSection() {
                 <p className="text-lg">
                   Meu nome é <strong className="text-foreground">Deomir</strong> e sou fundador da Digital DM. 
                   Com mais de 15 anos de experiência, nossa empresa já transformou a realidade de{" "}
-                  <strong className="text-foreground"><strong className="text-foreground">mais de 800 e-commerces</strong> que alcançaram{" "}</strong> que alcançaram{" "}
+                  <strong className="text-foreground">mais de 800 e-commerces</strong> que alcançaram{" "}
                   <strong className="text-primary">crescimento exponencial</strong> através da nossa metodologia.
                 </p>
 
