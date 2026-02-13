@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import DmIa from "./pages/DmIa";
 import Institucional from "./pages/Institucional";
+import SimuladorDm from "./pages/SimuladorDm";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/dmia" element={<DmIa />} />
           <Route path="/institucional" element={<Institucional />} />
+          <Route path="/simuladordm" element={<SimuladorDm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
