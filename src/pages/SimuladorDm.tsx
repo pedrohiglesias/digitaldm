@@ -95,6 +95,35 @@ export default function SimuladorDm() {
   const [ticketMedio, setTicketMedio] = useState(180);
   const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
 
+  const scenarioColors: Record<Scenario, { accent: string; accentBg: string; border: string; btn: string; btnOutline: string; funnel: string[] }> = {
+    pessimista: {
+      accent: "text-red-400",
+      accentBg: "bg-red-500/20 text-red-400",
+      border: "border-red-500/30",
+      btn: "bg-red-500 hover:bg-red-600 text-white",
+      btnOutline: "border-red-500/50 text-red-400 hover:bg-red-500/10",
+      funnel: ["hsl(0, 80%, 55%)", "hsl(0, 70%, 50%)", "hsl(0, 65%, 45%)", "hsl(0, 60%, 40%)"],
+    },
+    realista: {
+      accent: "text-primary",
+      accentBg: "bg-primary/20 text-primary",
+      border: "border-primary/30",
+      btn: "bg-primary hover:bg-primary/90 text-white",
+      btnOutline: "border-primary/50 text-primary hover:bg-primary/10",
+      funnel: ["hsl(210, 100%, 55%)", "hsl(195, 100%, 50%)", "hsl(200, 100%, 55%)", "hsl(180, 100%, 45%)"],
+    },
+    otimista: {
+      accent: "text-emerald-400",
+      accentBg: "bg-emerald-500/20 text-emerald-400",
+      border: "border-emerald-500/30",
+      btn: "bg-emerald-500 hover:bg-emerald-600 text-white",
+      btnOutline: "border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10",
+      funnel: ["hsl(145, 70%, 45%)", "hsl(150, 65%, 42%)", "hsl(155, 60%, 38%)", "hsl(160, 55%, 35%)"],
+    },
+  };
+
+  const currentColors = activeScenario ? scenarioColors[activeScenario] : scenarioColors.realista;
+
   const results = useMemo(() => {
     const impressoes = (investimento / cpm) * 1000;
     const cliques = impressoes * (ctr / 100);
@@ -180,9 +209,9 @@ export default function SimuladorDm() {
               <Button
                 key={s}
                 size="lg"
-                variant={activeScenario === s ? "default" : "outline"}
+                variant="outline"
                 onClick={() => applyScenario(s)}
-                className="capitalize"
+                className={`capitalize ${activeScenario === s ? scenarioColors[s].btn : scenarioColors[s].btnOutline}`}
               >
                 Cenário {s}
               </Button>
@@ -199,17 +228,17 @@ export default function SimuladorDm() {
             {kpis.map((kpi) => (
               <Card
                 key={kpi.label}
-                className={`border-border/50 ${kpi.negative ? "border-destructive/50" : kpi.accent ? "border-primary/30" : ""}`}
+                className={`border-border/50 ${kpi.negative ? "border-destructive/50" : kpi.accent ? currentColors.border : ""}`}
               >
                 <CardContent className="p-4 flex items-center gap-3">
                   <div
-                    className={`p-2 rounded-lg ${kpi.negative ? "bg-destructive/20 text-destructive" : kpi.accent ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"}`}
+                    className={`p-2 rounded-lg ${kpi.negative ? "bg-destructive/20 text-destructive" : kpi.accent ? currentColors.accentBg : "bg-muted text-muted-foreground"}`}
                   >
                     <kpi.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">{kpi.label}</p>
-                    <p className={`text-lg font-bold ${kpi.negative ? "text-destructive" : kpi.accent ? "text-primary" : ""}`}>
+                    <p className={`text-lg font-bold ${kpi.negative ? "text-destructive" : kpi.accent ? currentColors.accent : ""}`}>
                       {kpi.value}
                     </p>
                   </div>
@@ -315,12 +344,7 @@ export default function SimuladorDm() {
                     const bottomWidthPct = 100 - ((i + 1) * 70) / (totalSteps - 1);
                     const isLast = i === totalSteps - 1;
 
-                    const colors = [
-                      "hsl(210, 100%, 55%)",
-                      "hsl(195, 100%, 50%)",
-                      "hsl(200, 100%, 55%)",
-                      "hsl(180, 100%, 45%)",
-                    ];
+                    const colors = currentColors.funnel;
                     const fillColor = colors[i] || colors[0];
 
                     return (
