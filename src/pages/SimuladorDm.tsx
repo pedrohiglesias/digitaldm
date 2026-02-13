@@ -248,27 +248,47 @@ export default function SimuladorDm() {
                 </div>
 
                 <div className="border-t border-border/50 pt-3 space-y-3">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Parâmetros técnicos</p>
-                  <SimInput label="CPM (R$)" value={cpm} onChange={setCpm} min={1} max={100} step={0.5} prefix="R$" />
-                  <SimInput label="CTR (%)" value={ctr} onChange={setCtr} min={0.1} max={15} step={0.1} suffix="%" />
-                  <SimInput
-                    label="Taxa de Carregamento (%)"
-                    value={taxaCarregamento}
-                    onChange={setTaxaCarregamento}
-                    min={1}
-                    max={100}
-                    step={1}
-                    suffix="%"
-                  />
-                  <SimInput
-                    label="Taxa de Conversão (%)"
-                    value={taxaConversao}
-                    onChange={setTaxaConversao}
-                    min={0.1}
-                    max={20}
-                    step={0.1}
-                    suffix="%"
-                  />
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Métricas do funil</p>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Custo por mil exibições (CPM R$)</Label>
+                    <Input
+                      type="number"
+                      value={cpm}
+                      onChange={(e) => setCpm(Math.max(0.01, Number(e.target.value)))}
+                      className="text-right font-bold"
+                      step={0.5}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Taxa de cliques (CTR %)</Label>
+                    <Input
+                      type="number"
+                      value={ctr}
+                      onChange={(e) => setCtr(Math.max(0.01, Number(e.target.value)))}
+                      className="text-right font-bold"
+                      step={0.1}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Taxa de carregamento da página (%)</Label>
+                    <Input
+                      type="number"
+                      value={taxaCarregamento}
+                      onChange={(e) => setTaxaCarregamento(Math.min(100, Math.max(1, Number(e.target.value))))}
+                      className="text-right font-bold"
+                      step={1}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Taxa de conversão em vendas (%)</Label>
+                    <Input
+                      type="number"
+                      value={taxaConversao}
+                      onChange={(e) => setTaxaConversao(Math.max(0.01, Number(e.target.value)))}
+                      className="text-right font-bold"
+                      step={0.1}
+                    />
+                  </div>
                 </div>
 
                 <Button asChild variant="hero" size="lg" className="w-full mt-4">
@@ -485,52 +505,6 @@ export default function SimuladorDm() {
       </section>
 
       <Footer />
-    </div>
-  );
-}
-
-/* Reusable input with slider */
-function SimInput({
-  label,
-  value,
-  onChange,
-  min,
-  max,
-  step,
-  prefix,
-  suffix,
-}: {
-  label: string;
-  value: number;
-  onChange: (v: number) => void;
-  min: number;
-  max: number;
-  step: number;
-  prefix?: string;
-  suffix?: string;
-}) {
-  return (
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between">
-        <Label className="text-xs text-muted-foreground">{label}</Label>
-        <span className="text-sm font-bold text-foreground">
-          {prefix && <span className="text-muted-foreground text-xs mr-0.5">{prefix}</span>}
-          {step < 1 ? formatDecimal(value) : formatNumber(value)}
-          {suffix && <span className="text-muted-foreground text-xs ml-0.5">{suffix}</span>}
-        </span>
-      </div>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full h-2 bg-muted rounded-full appearance-none cursor-pointer accent-primary
-          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4
-          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-md
-          [&::-webkit-slider-thumb]:cursor-pointer"
-      />
     </div>
   );
 }
