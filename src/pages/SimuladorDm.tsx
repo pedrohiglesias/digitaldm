@@ -242,37 +242,79 @@ export default function SimuladorDm() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                {funnelSteps.map((step, i) => (
-                  <div key={step.label} className="space-y-1">
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2">
-                        <step.icon className="w-4 h-4 text-muted-foreground" />
-                        <span className="font-medium">{step.label}</span>
+              {/* True inverted pyramid funnel */}
+              <div className="flex flex-col items-center w-full max-w-lg mx-auto">
+                {funnelSteps.map((step, i) => {
+                  const totalSteps = funnelSteps.length;
+                  // Each step gets narrower: 100% → ~25%
+                  const topWidthPct = 100 - (i * 70) / (totalSteps - 1);
+                  const bottomWidthPct = 100 - ((i + 1) * 70) / (totalSteps - 1);
+                  const isLast = i === totalSteps - 1;
+
+                  // Colors for the gradient (using hsl values from design system)
+                  const colors = [
+                    "hsl(210, 100%, 55%)",   // primary
+                    "hsl(195, 100%, 50%)",   // secondary  
+                    "hsl(200, 100%, 55%)",   // accent
+                    "hsl(180, 100%, 45%)",   // chart-3
+                  ];
+                  const fillColor = colors[i] || colors[0];
+
+                  return (
+                    <div key={step.label} className="w-full flex flex-col items-center">
+                      {/* Label row */}
+                      <div className="w-full flex items-center justify-between px-2 mb-1">
+                        <div className="flex items-center gap-2 text-sm">
+                          <step.icon className="w-4 h-4 text-muted-foreground" />
+                          <span className="font-medium">{step.label}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-sm">{step.value}</span>
+                          {step.sub && (
+                            <span className="text-xs text-muted-foreground">{step.sub}</span>
+                          )}
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <span className="font-bold text-foreground">{step.value}</span>
-                        {step.sub && (
-                          <span className="text-xs text-muted-foreground ml-2">{step.sub}</span>
-                        )}
-                      </div>
+
+                      {/* Trapezoid shape */}
+                      <svg
+                        viewBox="0 0 400 60"
+                        className="w-full transition-all duration-700"
+                        style={{ maxWidth: "100%" }}
+                        preserveAspectRatio="none"
+                      >
+                        <defs>
+                          <linearGradient id={`funnel-grad-${i}`} x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stopColor={fillColor} stopOpacity="0.7" />
+                            <stop offset="50%" stopColor={fillColor} stopOpacity="1" />
+                            <stop offset="100%" stopColor={fillColor} stopOpacity="0.7" />
+                          </linearGradient>
+                        </defs>
+                        <polygon
+                          points={`${(400 - topWidthPct * 4) / 2},0 ${(400 + topWidthPct * 4) / 2},0 ${(400 + (isLast ? bottomWidthPct : bottomWidthPct) * 4) / 2},60 ${(400 - (isLast ? bottomWidthPct : bottomWidthPct) * 4) / 2},60`}
+                          fill={`url(#funnel-grad-${i})`}
+                          className="transition-all duration-700"
+                        />
+                        <text
+                          x="200"
+                          y="36"
+                          textAnchor="middle"
+                          className="fill-foreground text-sm font-bold"
+                          style={{ fontSize: "16px", fontWeight: 700 }}
+                        >
+                          {step.value}
+                        </text>
+                      </svg>
+
+                      {/* Arrow between steps */}
+                      {!isLast && (
+                        <div className="py-1">
+                          <ArrowRight className="w-4 h-4 text-muted-foreground rotate-90" />
+                        </div>
+                      )}
                     </div>
-                    <div className="w-full bg-muted/50 rounded-full h-10 overflow-hidden relative flex items-center justify-center">
-                      <div
-                        className={`absolute left-0 top-0 h-full bg-gradient-to-r ${step.color} rounded-full transition-all duration-700 ease-out`}
-                        style={{ width: `${step.width}%` }}
-                      />
-                      <span className="relative z-10 text-xs font-semibold text-foreground drop-shadow-sm">
-                        {step.value}
-                      </span>
-                    </div>
-                    {i < funnelSteps.length - 1 && (
-                      <div className="flex justify-center py-1">
-                        <ArrowRight className="w-4 h-4 text-muted-foreground rotate-90" />
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Summary Box */}
