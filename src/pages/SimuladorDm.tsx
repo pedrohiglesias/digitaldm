@@ -15,9 +15,13 @@ import {
   Calculator,
   Zap,
   Target,
-  ArrowLeft,
+  CheckCircle,
+  Lightbulb,
+  Rocket,
+  ShieldCheck,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Header } from "@/components/landing/Header";
+import { Footer } from "@/components/landing/Footer";
 
 const formatBRL = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -35,6 +39,52 @@ const scenarioDefaults: Record<Scenario, { ctr: number; taxaCarregamento: number
   realista: { ctr: 1.3, taxaCarregamento: 80, taxaConversao: 1.5 },
   otimista: { ctr: 2.5, taxaCarregamento: 92, taxaConversao: 3.0 },
 };
+
+const impactCards = [
+  {
+    icon: Target,
+    title: "Previsibilidade de Receita",
+    description: "Saiba exatamente quanto precisa investir para atingir sua meta de faturamento mensal.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Decisões Baseadas em Dados",
+    description: "Pare de chutar valores. Use métricas reais para definir orçamentos e metas de vendas.",
+  },
+  {
+    icon: Rocket,
+    title: "Escale com Segurança",
+    description: "Identifique o ponto exato onde aumentar investimento gera mais lucro, sem desperdiçar verba.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Identifique Gargalos",
+    description: "Descubra onde seu funil está perdendo clientes: no clique, no carregamento ou na conversão.",
+  },
+];
+
+const howItWorks = [
+  {
+    step: "01",
+    title: "Defina seu investimento",
+    description: "Insira quanto pretende investir em tráfego pago e qual o ticket médio do seu produto.",
+  },
+  {
+    step: "02",
+    title: "Ajuste os parâmetros",
+    description: "Use os cenários prontos ou ajuste CPM, CTR e taxas de conversão com base nos seus dados reais.",
+  },
+  {
+    step: "03",
+    title: "Analise o funil",
+    description: "Veja em tempo real quantas impressões, cliques, visitas e vendas seu investimento pode gerar.",
+  },
+  {
+    step: "04",
+    title: "Tome a decisão certa",
+    description: "Compare cenários e descubra o investimento ideal para atingir seu ROAS desejado.",
+  },
+];
 
 export default function SimuladorDm() {
   const [investimento, setInvestimento] = useState(5000);
@@ -71,42 +121,29 @@ export default function SimuladorDm() {
       label: "Impressões",
       value: formatNumber(results.impressoes),
       icon: Eye,
-      width: 100,
-      color: "from-primary/80 to-primary",
     },
     {
       label: "Cliques",
       value: formatNumber(results.cliques),
       sub: `CPC: ${formatBRL(results.cpc)}`,
       icon: MousePointerClick,
-      width: Math.min(95, Math.max(20, (results.cliques / (results.impressoes || 1)) * 100 * 30)),
-      color: "from-secondary/80 to-secondary",
     },
     {
       label: "Page Views",
       value: formatNumber(results.pageViews),
       icon: BarChart3,
-      width: Math.min(85, Math.max(15, (results.pageViews / (results.impressoes || 1)) * 100 * 50)),
-      color: "from-accent/80 to-accent",
     },
     {
       label: "Vendas",
       value: formatNumber(results.vendas),
       icon: ShoppingCart,
-      width: Math.min(70, Math.max(10, (results.vendas / (results.impressoes || 1)) * 100 * 200)),
-      color: "from-chart-4/80 to-chart-4",
     },
   ];
 
   const kpis = [
     { label: "Investimento", value: formatBRL(investimento), icon: DollarSign, accent: false },
     { label: "Receita Projetada", value: formatBRL(results.receita), icon: TrendingUp, accent: true },
-    {
-      label: "ROAS",
-      value: `${formatDecimal(results.roas)}x`,
-      icon: Target,
-      accent: true,
-    },
+    { label: "ROAS", value: `${formatDecimal(results.roas)}x`, icon: Target, accent: true },
     {
       label: "Lucro Líquido",
       value: formatBRL(results.lucro),
@@ -118,239 +155,336 @@ export default function SimuladorDm() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto flex items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm hidden sm:inline">Voltar</span>
-            </Link>
-            <div className="h-5 w-px bg-border" />
-            <div className="flex items-center gap-2">
-              <Calculator className="w-5 h-5 text-primary" />
-              <h1 className="text-lg font-bold">Simulador de Funil</h1>
-              <span className="text-xs text-muted-foreground hidden sm:inline">by Digital DM</span>
-            </div>
-          </div>
+      <Header />
 
-          {/* Scenarios */}
-          <div className="flex gap-2">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
+        <div className="container mx-auto px-4 text-center max-w-4xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-6">
+            <Calculator className="w-4 h-4 text-primary" />
+            Ferramenta Gratuita
+          </div>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Simule o{" "}
+            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+              retorno do seu investimento
+            </span>{" "}
+            em tráfego pago
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+            Descubra quantas vendas, qual receita e qual ROAS seu e-commerce pode alcançar 
+            antes de investir um único real em anúncios.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
             {(["pessimista", "realista", "otimista"] as Scenario[]).map((s) => (
               <Button
                 key={s}
-                size="sm"
+                size="lg"
                 variant={activeScenario === s ? "default" : "outline"}
                 onClick={() => applyScenario(s)}
-                className="capitalize text-xs"
+                className="capitalize"
               >
-                {s}
+                Cenário {s}
               </Button>
             ))}
           </div>
         </div>
-      </header>
+      </section>
 
-      <div className="container mx-auto px-4 py-6">
-        {/* KPI Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {kpis.map((kpi) => (
-            <Card
-              key={kpi.label}
-              className={`border-border/50 ${kpi.negative ? "border-destructive/50" : kpi.accent ? "border-primary/30" : ""}`}
-            >
-              <CardContent className="p-4 flex items-center gap-3">
-                <div
-                  className={`p-2 rounded-lg ${kpi.negative ? "bg-destructive/20 text-destructive" : kpi.accent ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"}`}
-                >
-                  <kpi.icon className="w-5 h-5" />
+      {/* Simulator Section */}
+      <section className="pb-16 md:pb-24">
+        <div className="container mx-auto px-4">
+          {/* KPI Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {kpis.map((kpi) => (
+              <Card
+                key={kpi.label}
+                className={`border-border/50 ${kpi.negative ? "border-destructive/50" : kpi.accent ? "border-primary/30" : ""}`}
+              >
+                <CardContent className="p-4 flex items-center gap-3">
+                  <div
+                    className={`p-2 rounded-lg ${kpi.negative ? "bg-destructive/20 text-destructive" : kpi.accent ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground"}`}
+                  >
+                    <kpi.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">{kpi.label}</p>
+                    <p className={`text-lg font-bold ${kpi.negative ? "text-destructive" : kpi.accent ? "text-primary" : ""}`}>
+                      {kpi.value}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="grid lg:grid-cols-[340px_1fr] gap-6">
+            {/* Sidebar - Inputs */}
+            <Card className="border-border/50 h-fit lg:sticky lg:top-20">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-primary" />
+                  Parâmetros da Simulação
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs text-muted-foreground">Investimento (R$)</Label>
+                  <Input
+                    type="number"
+                    value={investimento}
+                    onChange={(e) => setInvestimento(Math.max(0, Number(e.target.value)))}
+                    className="text-right font-bold"
+                  />
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">{kpi.label}</p>
-                  <p className={`text-lg font-bold ${kpi.negative ? "text-destructive" : kpi.accent ? "text-primary" : ""}`}>
-                    {kpi.value}
-                  </p>
+                <div className="space-y-1.5">
+                  <Label className="text-xs text-muted-foreground">Ticket Médio (R$)</Label>
+                  <Input
+                    type="number"
+                    value={ticketMedio}
+                    onChange={(e) => setTicketMedio(Math.max(1, Number(e.target.value)))}
+                    className="text-right font-bold"
+                  />
+                </div>
+
+                <div className="border-t border-border/50 pt-3 space-y-3">
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Parâmetros técnicos</p>
+                  <SimInput label="CPM (R$)" value={cpm} onChange={setCpm} min={1} max={100} step={0.5} prefix="R$" />
+                  <SimInput label="CTR (%)" value={ctr} onChange={setCtr} min={0.1} max={15} step={0.1} suffix="%" />
+                  <SimInput
+                    label="Taxa de Carregamento (%)"
+                    value={taxaCarregamento}
+                    onChange={setTaxaCarregamento}
+                    min={1}
+                    max={100}
+                    step={1}
+                    suffix="%"
+                  />
+                  <SimInput
+                    label="Taxa de Conversão (%)"
+                    value={taxaConversao}
+                    onChange={setTaxaConversao}
+                    min={0.1}
+                    max={20}
+                    step={0.1}
+                    suffix="%"
+                  />
+                </div>
+
+                <Button asChild variant="hero" size="lg" className="w-full mt-4">
+                  <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
+                    Quero esse resultado <ArrowRight className="w-4 h-4 ml-1" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Funnel Visualization */}
+            <Card className="border-border/50">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4 text-primary" />
+                  Funil de Conversão
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col items-center w-full max-w-lg mx-auto">
+                  {funnelSteps.map((step, i) => {
+                    const totalSteps = funnelSteps.length;
+                    const topWidthPct = 100 - (i * 70) / (totalSteps - 1);
+                    const bottomWidthPct = 100 - ((i + 1) * 70) / (totalSteps - 1);
+                    const isLast = i === totalSteps - 1;
+
+                    const colors = [
+                      "hsl(210, 100%, 55%)",
+                      "hsl(195, 100%, 50%)",
+                      "hsl(200, 100%, 55%)",
+                      "hsl(180, 100%, 45%)",
+                    ];
+                    const fillColor = colors[i] || colors[0];
+
+                    return (
+                      <div key={step.label} className="w-full flex flex-col items-center">
+                        <div className="w-full flex items-center justify-between px-2 mb-1">
+                          <div className="flex items-center gap-2 text-sm">
+                            <step.icon className="w-4 h-4 text-muted-foreground" />
+                            <span className="font-medium">{step.label}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-bold text-sm">{step.value}</span>
+                            {step.sub && (
+                              <span className="text-xs text-muted-foreground">{step.sub}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        <svg
+                          viewBox="0 0 400 60"
+                          className="w-full transition-all duration-700"
+                          style={{ maxWidth: "100%" }}
+                          preserveAspectRatio="none"
+                        >
+                          <defs>
+                            <linearGradient id={`funnel-grad-${i}`} x1="0" y1="0" x2="1" y2="0">
+                              <stop offset="0%" stopColor={fillColor} stopOpacity="0.7" />
+                              <stop offset="50%" stopColor={fillColor} stopOpacity="1" />
+                              <stop offset="100%" stopColor={fillColor} stopOpacity="0.7" />
+                            </linearGradient>
+                          </defs>
+                          <polygon
+                            points={`${(400 - topWidthPct * 4) / 2},0 ${(400 + topWidthPct * 4) / 2},0 ${(400 + bottomWidthPct * 4) / 2},60 ${(400 - bottomWidthPct * 4) / 2},60`}
+                            fill={`url(#funnel-grad-${i})`}
+                            className="transition-all duration-700"
+                          />
+                          <text
+                            x="200"
+                            y="36"
+                            textAnchor="middle"
+                            className="fill-foreground text-sm font-bold"
+                            style={{ fontSize: "16px", fontWeight: 700 }}
+                          >
+                            {step.value}
+                          </text>
+                        </svg>
+
+                        {!isLast && (
+                          <div className="py-1">
+                            <ArrowRight className="w-4 h-4 text-muted-foreground rotate-90" />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Summary Box */}
+                <div className="mt-8 p-4 rounded-xl bg-muted/30 border border-border/50 space-y-2">
+                  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Resumo da Simulação</h3>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <span className="text-muted-foreground">Investimento</span>
+                      <p className="font-bold">{formatBRL(investimento)}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Receita</span>
+                      <p className="font-bold text-primary">{formatBRL(results.receita)}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Vendas Estimadas</span>
+                      <p className="font-bold">{formatDecimal(results.vendas, 0)}</p>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">ROAS</span>
+                      <p className={`font-bold ${results.roas >= 2 ? "text-primary" : results.roas >= 1 ? "text-foreground" : "text-destructive"}`}>
+                        {formatDecimal(results.roas)}x
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-          ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-[340px_1fr] gap-6">
-          {/* Sidebar - Inputs */}
-          <Card className="border-border/50 h-fit lg:sticky lg:top-20">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <Zap className="w-4 h-4 text-primary" />
-                Parâmetros da Simulação
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {/* Editable inputs */}
-              <div className="space-y-1.5">
-                <Label className="text-xs text-muted-foreground">Investimento (R$)</Label>
-                <Input
-                  type="number"
-                  value={investimento}
-                  onChange={(e) => setInvestimento(Math.max(0, Number(e.target.value)))}
-                  className="text-right font-bold"
-                />
+      {/* How It Works Section */}
+      <section className="py-16 md:py-24 border-t border-border/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-4">
+              <Zap className="w-4 h-4 text-primary" />
+              Como Funciona
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
+              Entenda o{" "}
+              <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                funil de vendas
+              </span>{" "}
+              do seu e-commerce
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Cada etapa do funil representa uma fase da jornada do cliente. Entender esses números 
+              é o primeiro passo para escalar suas vendas com previsibilidade.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {howItWorks.map((item) => (
+              <div key={item.step} className="relative">
+                <div className="text-5xl font-black text-primary/10 mb-2">{item.step}</div>
+                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
-              <div className="space-y-1.5">
-                <Label className="text-xs text-muted-foreground">Ticket Médio (R$)</Label>
-                <Input
-                  type="number"
-                  value={ticketMedio}
-                  onChange={(e) => setTicketMedio(Math.max(1, Number(e.target.value)))}
-                  className="text-right font-bold"
-                />
-              </div>
-
-              {/* Read-only calculated params */}
-              <div className="border-t border-border/50 pt-3 space-y-3">
-                <p className="text-xs text-muted-foreground uppercase tracking-wider">Parâmetros técnicos</p>
-                <SimInput label="CPM (R$)" value={cpm} onChange={setCpm} min={1} max={100} step={0.5} prefix="R$" />
-                <SimInput label="CTR (%)" value={ctr} onChange={setCtr} min={0.1} max={15} step={0.1} suffix="%" />
-                <SimInput
-                  label="Taxa de Carregamento (%)"
-                  value={taxaCarregamento}
-                  onChange={setTaxaCarregamento}
-                  min={1}
-                  max={100}
-                  step={1}
-                  suffix="%"
-                />
-                <SimInput
-                  label="Taxa de Conversão (%)"
-                  value={taxaConversao}
-                  onChange={setTaxaConversao}
-                  min={0.1}
-                  max={20}
-                  step={0.1}
-                  suffix="%"
-                />
-              </div>
-
-              <Button asChild variant="hero" size="lg" className="w-full mt-4">
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
-                  Quero esse resultado <ArrowRight className="w-4 h-4 ml-1" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Funnel Visualization */}
-          <Card className="border-border/50">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-base flex items-center gap-2">
-                <BarChart3 className="w-4 h-4 text-primary" />
-                Funil de Conversão
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {/* True inverted pyramid funnel */}
-              <div className="flex flex-col items-center w-full max-w-lg mx-auto">
-                {funnelSteps.map((step, i) => {
-                  const totalSteps = funnelSteps.length;
-                  // Each step gets narrower: 100% → ~25%
-                  const topWidthPct = 100 - (i * 70) / (totalSteps - 1);
-                  const bottomWidthPct = 100 - ((i + 1) * 70) / (totalSteps - 1);
-                  const isLast = i === totalSteps - 1;
-
-                  // Colors for the gradient (using hsl values from design system)
-                  const colors = [
-                    "hsl(210, 100%, 55%)",   // primary
-                    "hsl(195, 100%, 50%)",   // secondary  
-                    "hsl(200, 100%, 55%)",   // accent
-                    "hsl(180, 100%, 45%)",   // chart-3
-                  ];
-                  const fillColor = colors[i] || colors[0];
-
-                  return (
-                    <div key={step.label} className="w-full flex flex-col items-center">
-                      {/* Label row */}
-                      <div className="w-full flex items-center justify-between px-2 mb-1">
-                        <div className="flex items-center gap-2 text-sm">
-                          <step.icon className="w-4 h-4 text-muted-foreground" />
-                          <span className="font-medium">{step.label}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-sm">{step.value}</span>
-                          {step.sub && (
-                            <span className="text-xs text-muted-foreground">{step.sub}</span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Trapezoid shape */}
-                      <svg
-                        viewBox="0 0 400 60"
-                        className="w-full transition-all duration-700"
-                        style={{ maxWidth: "100%" }}
-                        preserveAspectRatio="none"
-                      >
-                        <defs>
-                          <linearGradient id={`funnel-grad-${i}`} x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stopColor={fillColor} stopOpacity="0.7" />
-                            <stop offset="50%" stopColor={fillColor} stopOpacity="1" />
-                            <stop offset="100%" stopColor={fillColor} stopOpacity="0.7" />
-                          </linearGradient>
-                        </defs>
-                        <polygon
-                          points={`${(400 - topWidthPct * 4) / 2},0 ${(400 + topWidthPct * 4) / 2},0 ${(400 + (isLast ? bottomWidthPct : bottomWidthPct) * 4) / 2},60 ${(400 - (isLast ? bottomWidthPct : bottomWidthPct) * 4) / 2},60`}
-                          fill={`url(#funnel-grad-${i})`}
-                          className="transition-all duration-700"
-                        />
-                        <text
-                          x="200"
-                          y="36"
-                          textAnchor="middle"
-                          className="fill-foreground text-sm font-bold"
-                          style={{ fontSize: "16px", fontWeight: 700 }}
-                        >
-                          {step.value}
-                        </text>
-                      </svg>
-
-                      {/* Arrow between steps */}
-                      {!isLast && (
-                        <div className="py-1">
-                          <ArrowRight className="w-4 h-4 text-muted-foreground rotate-90" />
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Summary Box */}
-              <div className="mt-8 p-4 rounded-xl bg-muted/30 border border-border/50 space-y-2">
-                <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Resumo da Simulação</h3>
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div>
-                    <span className="text-muted-foreground">Investimento</span>
-                    <p className="font-bold">{formatBRL(investimento)}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Receita</span>
-                    <p className="font-bold text-primary">{formatBRL(results.receita)}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">Vendas Estimadas</span>
-                    <p className="font-bold">{formatDecimal(results.vendas, 0)}</p>
-                  </div>
-                  <div>
-                    <span className="text-muted-foreground">ROAS</span>
-                    <p className={`font-bold ${results.roas >= 2 ? "text-primary" : results.roas >= 1 ? "text-foreground" : "text-destructive"}`}>
-                      {formatDecimal(results.roas)}x
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Impact Section */}
+      <section className="py-16 md:py-24 border-t border-border/50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-4">
+              <TrendingUp className="w-4 h-4 text-primary" />
+              Por que isso importa
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
+              Como o simulador{" "}
+              <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                impacta seu e-commerce
+              </span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A maioria dos e-commerces investe em tráfego pago sem saber se o retorno será positivo. 
+              Com o simulador, você elimina as suposições e toma decisões inteligentes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {impactCards.map((card) => (
+              <Card key={card.title} className="border-border/50">
+                <CardContent className="p-6 flex gap-4">
+                  <div className="p-3 rounded-lg bg-primary/10 text-primary h-fit">
+                    <card.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">{card.title}</h3>
+                    <p className="text-sm text-muted-foreground">{card.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 border-t border-border/50">
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">
+            Pronto para{" "}
+            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+              escalar suas vendas?
+            </span>
+          </h2>
+          <p className="text-muted-foreground mb-8 text-lg">
+            Nossos especialistas analisam seu funil gratuitamente e criam uma estratégia 
+            personalizada para maximizar seu ROAS.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild variant="hero" size="lg">
+              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
+                Quero um Diagnóstico Gratuito <ArrowRight className="w-4 h-4 ml-1" />
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href="/">Conhecer a Digital DM</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
