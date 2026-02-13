@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/landing/Footer";
+import { BaseCalculatorSection } from "@/components/landing/BaseCalculatorSection";
 
 const formatBRL = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -386,6 +387,9 @@ export default function SimuladorDm() {
           </div>
         </div>
       </section>
+
+      {/* Base Calculator Section */}
+      <BaseCalculatorSection />
 
       {/* How It Works Section */}
       <section className="py-16 md:py-24 border-t border-border/50">
