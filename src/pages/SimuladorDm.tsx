@@ -32,10 +32,9 @@ const formatNumber = (value: number) =>
 const formatDecimal = (value: number, digits = 2) =>
   value.toLocaleString("pt-BR", { minimumFractionDigits: digits, maximumFractionDigits: digits });
 
-type Scenario = "pessimista" | "realista" | "otimista";
+type Scenario = "realista" | "otimista";
 
 const scenarioDefaults: Record<Scenario, { ctr: number; taxaCarregamento: number; taxaConversao: number }> = {
-  pessimista: { ctr: 0.8, taxaCarregamento: 60, taxaConversao: 0.8 },
   realista: { ctr: 1.3, taxaCarregamento: 80, taxaConversao: 1.5 },
   otimista: { ctr: 2.5, taxaCarregamento: 92, taxaConversao: 3.0 },
 };
@@ -96,14 +95,6 @@ export default function SimuladorDm() {
   const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
 
   const scenarioColors: Record<Scenario, { accent: string; accentBg: string; border: string; btn: string; btnOutline: string; funnel: string[] }> = {
-    pessimista: {
-      accent: "text-red-400",
-      accentBg: "bg-red-500/20 text-red-400",
-      border: "border-red-500/30",
-      btn: "bg-red-500 hover:bg-red-600 text-white",
-      btnOutline: "border-red-500/50 text-red-400 hover:bg-red-500/10",
-      funnel: ["hsl(0, 80%, 55%)", "hsl(0, 70%, 50%)", "hsl(0, 65%, 45%)", "hsl(0, 60%, 40%)"],
-    },
     realista: {
       accent: "text-primary",
       accentBg: "bg-primary/20 text-primary",
@@ -205,7 +196,7 @@ export default function SimuladorDm() {
             antes de investir um único real em anúncios.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            {(["pessimista", "realista", "otimista"] as Scenario[]).map((s) => (
+            {(["realista", "otimista"] as Scenario[]).map((s) => (
               <Button
                 key={s}
                 size="lg"
