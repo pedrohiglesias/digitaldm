@@ -34,9 +34,9 @@ const formatDecimal = (value: number, digits = 2) =>
 
 type Scenario = "realista" | "otimista";
 
-const scenarioDefaults: Record<Scenario, { ctr: number; taxaCarregamento: number; taxaConversao: number }> = {
-  realista: { ctr: 1.3, taxaCarregamento: 80, taxaConversao: 1.5 },
-  otimista: { ctr: 2.5, taxaCarregamento: 92, taxaConversao: 3.0 },
+const scenarioDefaults: Record<Scenario, { ctr: number; taxaCarregamento: number; taxaCarrinho: number; taxaCheckout: number; taxaConversao: number }> = {
+  realista: { ctr: 1.3, taxaCarregamento: 80, taxaCarrinho: 10, taxaCheckout: 50, taxaConversao: 40 },
+  otimista: { ctr: 2.5, taxaCarregamento: 92, taxaCarrinho: 15, taxaCheckout: 65, taxaConversao: 55 },
 };
 
 const impactCards = [
@@ -90,7 +90,9 @@ export default function SimuladorDm() {
   const [cpm, setCpm] = useState(16.56);
   const [ctr, setCtr] = useState(1.31);
   const [taxaCarregamento, setTaxaCarregamento] = useState(80);
-  const [taxaConversao, setTaxaConversao] = useState(1.5);
+  const [taxaCarrinho, setTaxaCarrinho] = useState(10);
+  const [taxaCheckout, setTaxaCheckout] = useState(50);
+  const [taxaConversao, setTaxaConversao] = useState(40);
   const [ticketMedio, setTicketMedio] = useState(180);
   const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
 
@@ -101,7 +103,7 @@ export default function SimuladorDm() {
       border: "border-primary/30",
       btn: "bg-primary hover:bg-primary/90 text-white",
       btnOutline: "border-primary/50 text-primary hover:bg-primary/10",
-      funnel: ["hsl(210, 100%, 55%)", "hsl(195, 100%, 50%)", "hsl(200, 100%, 55%)", "hsl(180, 100%, 45%)"],
+      funnel: ["hsl(210, 100%, 55%)", "hsl(205, 100%, 52%)", "hsl(200, 100%, 50%)", "hsl(195, 100%, 48%)", "hsl(190, 100%, 45%)", "hsl(180, 100%, 42%)"],
     },
     otimista: {
       accent: "text-emerald-400",
@@ -109,7 +111,7 @@ export default function SimuladorDm() {
       border: "border-emerald-500/30",
       btn: "bg-emerald-500 hover:bg-emerald-600 text-white",
       btnOutline: "border-emerald-500/50 text-emerald-400 hover:bg-emerald-500/10",
-      funnel: ["hsl(145, 70%, 45%)", "hsl(150, 65%, 42%)", "hsl(155, 60%, 38%)", "hsl(160, 55%, 35%)"],
+      funnel: ["hsl(145, 70%, 45%)", "hsl(148, 68%, 43%)", "hsl(150, 65%, 42%)", "hsl(153, 62%, 40%)", "hsl(155, 60%, 38%)", "hsl(160, 55%, 35%)"],
     },
   };
 
@@ -120,18 +122,22 @@ export default function SimuladorDm() {
     const cliques = impressoes * (ctr / 100);
     const cpc = cliques > 0 ? investimento / cliques : 0;
     const pageViews = cliques * (taxaCarregamento / 100);
-    const vendas = pageViews * (taxaConversao / 100);
+    const carrinho = pageViews * (taxaCarrinho / 100);
+    const checkout = carrinho * (taxaCheckout / 100);
+    const vendas = checkout * (taxaConversao / 100);
     const receita = vendas * ticketMedio;
     const roas = investimento > 0 ? receita / investimento : 0;
     const lucro = receita - investimento;
 
-    return { impressoes, cliques, cpc, pageViews, vendas, receita, roas, lucro };
-  }, [investimento, cpm, ctr, taxaCarregamento, taxaConversao, ticketMedio]);
+    return { impressoes, cliques, cpc, pageViews, carrinho, checkout, vendas, receita, roas, lucro };
+  }, [investimento, cpm, ctr, taxaCarregamento, taxaCarrinho, taxaCheckout, taxaConversao, ticketMedio]);
 
   const applyScenario = (scenario: Scenario) => {
     const s = scenarioDefaults[scenario];
     setCtr(s.ctr);
     setTaxaCarregamento(s.taxaCarregamento);
+    setTaxaCarrinho(s.taxaCarrinho);
+    setTaxaCheckout(s.taxaCheckout);
     setTaxaConversao(s.taxaConversao);
     setActiveScenario(scenario);
   };
@@ -149,14 +155,24 @@ export default function SimuladorDm() {
       icon: MousePointerClick,
     },
     {
-      label: "Page Views",
+      label: "Visualizações da página",
       value: formatNumber(results.pageViews),
       icon: BarChart3,
     },
     {
+      label: "Carrinho",
+      value: formatNumber(results.carrinho),
+      icon: ShoppingCart,
+    },
+    {
+      label: "Checkout",
+      value: formatNumber(results.checkout),
+      icon: CreditCard,
+    },
+    {
       label: "Vendas",
       value: formatNumber(results.vendas),
-      icon: ShoppingCart,
+      icon: CheckCircle,
     },
   ];
 
@@ -295,6 +311,26 @@ export default function SimuladorDm() {
                       type="number"
                       value={taxaCarregamento}
                       onChange={(e) => setTaxaCarregamento(Math.min(100, Math.max(1, Number(e.target.value))))}
+                      className="text-right font-bold"
+                      step={1}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Taxa de adição ao carrinho (%)</Label>
+                    <Input
+                      type="number"
+                      value={taxaCarrinho}
+                      onChange={(e) => setTaxaCarrinho(Math.min(100, Math.max(0.01, Number(e.target.value))))}
+                      className="text-right font-bold"
+                      step={0.5}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Taxa de checkout (%)</Label>
+                    <Input
+                      type="number"
+                      value={taxaCheckout}
+                      onChange={(e) => setTaxaCheckout(Math.min(100, Math.max(0.01, Number(e.target.value))))}
                       className="text-right font-bold"
                       step={1}
                     />
