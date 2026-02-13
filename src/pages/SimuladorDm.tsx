@@ -34,10 +34,14 @@ const formatDecimal = (value: number, digits = 2) =>
 
 type Scenario = "realista" | "otimista";
 
-const scenarioDefaults: Record<Scenario, { ctr: number; taxaCarregamento: number; taxaCarrinho: number; taxaCheckout: number; taxaConversao: number }> = {
-  realista: { ctr: 1.3, taxaCarregamento: 80, taxaCarrinho: 10, taxaCheckout: 50, taxaConversao: 40 },
-  otimista: { ctr: 2.5, taxaCarregamento: 92, taxaCarrinho: 15, taxaCheckout: 65, taxaConversao: 55 },
+const scenarioDefaults: Record<Scenario, { taxaCarrinho: number; taxaCheckout: number; taxaConversao: number }> = {
+  realista: { taxaCarrinho: 8, taxaCheckout: 45, taxaConversao: 35 },
+  otimista: { taxaCarrinho: 14, taxaCheckout: 60, taxaConversao: 50 },
 };
+
+const CPM_FIXO = 20;
+const CTR_FIXO = 2.5;
+const TAXA_CARREGAMENTO_FIXA = 80;
 
 const impactCards = [
   {
@@ -87,14 +91,8 @@ const howItWorks = [
 
 export default function SimuladorDm() {
   const [investimento, setInvestimento] = useState(5000);
-  const [cpm, setCpm] = useState(16.56);
-  const [ctr, setCtr] = useState(1.31);
-  const [taxaCarregamento, setTaxaCarregamento] = useState(80);
-  const [taxaCarrinho, setTaxaCarrinho] = useState(10);
-  const [taxaCheckout, setTaxaCheckout] = useState(50);
-  const [taxaConversao, setTaxaConversao] = useState(40);
   const [ticketMedio, setTicketMedio] = useState(180);
-  const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
+  const [activeScenario, setActiveScenario] = useState<Scenario>("realista");
 
   const scenarioColors: Record<Scenario, { accent: string; accentBg: string; border: string; btn: string; btnOutline: string; funnel: string[] }> = {
     realista: {
@@ -115,31 +113,27 @@ export default function SimuladorDm() {
     },
   };
 
-  const currentColors = activeScenario ? scenarioColors[activeScenario] : scenarioColors.realista;
+  const currentColors = scenarioColors[activeScenario];
 
   const results = useMemo(() => {
-    const impressoes = (investimento / cpm) * 1000;
-    const cliques = impressoes * (ctr / 100);
+    const sc = scenarioDefaults[activeScenario];
+    const impressoes = (investimento / CPM_FIXO) * 1000;
+    const cliques = impressoes * (CTR_FIXO / 100);
     const cpc = cliques > 0 ? investimento / cliques : 0;
-    const pageViews = cliques * (taxaCarregamento / 100);
-    const carrinho = pageViews * (taxaCarrinho / 100);
-    const checkout = carrinho * (taxaCheckout / 100);
-    const vendas = checkout * (taxaConversao / 100);
+    const pageViews = cliques * (TAXA_CARREGAMENTO_FIXA / 100);
+    const carrinho = pageViews * (sc.taxaCarrinho / 100);
+    const checkout = carrinho * (sc.taxaCheckout / 100);
+    const vendas = checkout * (sc.taxaConversao / 100);
     const receita = vendas * ticketMedio;
     const roas = investimento > 0 ? receita / investimento : 0;
     const lucro = receita - investimento;
 
     return { impressoes, cliques, cpc, pageViews, carrinho, checkout, vendas, receita, roas, lucro };
-  }, [investimento, cpm, ctr, taxaCarregamento, taxaCarrinho, taxaCheckout, taxaConversao, ticketMedio]);
+  }, [investimento, ticketMedio, activeScenario]);
 
   const applyScenario = (scenario: Scenario) => {
-    const s = scenarioDefaults[scenario];
-    setCtr(s.ctr);
-    setTaxaCarregamento(s.taxaCarregamento);
-    setTaxaCarrinho(s.taxaCarrinho);
-    setTaxaCheckout(s.taxaCheckout);
-    setTaxaConversao(s.taxaConversao);
     setActiveScenario(scenario);
+  };
   };
 
   const funnelSteps = [
@@ -281,70 +275,6 @@ export default function SimuladorDm() {
                     onChange={(e) => setTicketMedio(Math.max(1, Number(e.target.value)))}
                     className="text-right font-bold"
                   />
-                </div>
-
-                <div className="border-t border-border/50 pt-3 space-y-3">
-                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Métricas do funil</p>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Custo por mil exibições (CPM R$)</Label>
-                    <Input
-                      type="number"
-                      value={cpm}
-                      onChange={(e) => setCpm(Math.max(0.01, Number(e.target.value)))}
-                      className="text-right font-bold"
-                      step={0.5}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Taxa de cliques (CTR %)</Label>
-                    <Input
-                      type="number"
-                      value={ctr}
-                      onChange={(e) => setCtr(Math.max(0.01, Number(e.target.value)))}
-                      className="text-right font-bold"
-                      step={0.1}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Taxa de carregamento da página (%)</Label>
-                    <Input
-                      type="number"
-                      value={taxaCarregamento}
-                      onChange={(e) => setTaxaCarregamento(Math.min(100, Math.max(1, Number(e.target.value))))}
-                      className="text-right font-bold"
-                      step={1}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Taxa de adição ao carrinho (%)</Label>
-                    <Input
-                      type="number"
-                      value={taxaCarrinho}
-                      onChange={(e) => setTaxaCarrinho(Math.min(100, Math.max(0.01, Number(e.target.value))))}
-                      className="text-right font-bold"
-                      step={0.5}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Taxa de checkout (%)</Label>
-                    <Input
-                      type="number"
-                      value={taxaCheckout}
-                      onChange={(e) => setTaxaCheckout(Math.min(100, Math.max(0.01, Number(e.target.value))))}
-                      className="text-right font-bold"
-                      step={1}
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label className="text-xs text-muted-foreground">Taxa de conversão em vendas (%)</Label>
-                    <Input
-                      type="number"
-                      value={taxaConversao}
-                      onChange={(e) => setTaxaConversao(Math.max(0.01, Number(e.target.value)))}
-                      className="text-right font-bold"
-                      step={0.1}
-                    />
-                  </div>
                 </div>
 
                 <Button asChild variant="hero" size="lg" className="w-full mt-4">
