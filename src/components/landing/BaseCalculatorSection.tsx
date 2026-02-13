@@ -35,27 +35,8 @@ export function BaseCalculatorSection() {
   }, [baseClientes, ticketMedio, taxaConversao]);
 
   return (
-    <section className="py-16 md:py-24 border-t border-border/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-4">
-            <Calculator className="w-4 h-4 text-primary" />
-            Calculadora de ROI
-          </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">
-            Quanto você pode{" "}
-            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-              economizar
-            </span>{" "}
-            ativando sua base?
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Descubra o potencial de receita da sua base de clientes comparado ao
-            custo de mídia paga.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-6 max-w-5xl mx-auto">
+    <div>
+      <div className="grid lg:grid-cols-[1fr_1fr] gap-6 max-w-5xl mx-auto">
           {/* Inputs */}
           <Card className="border-border/50">
             <CardContent className="p-6 space-y-6">
@@ -176,7 +157,6 @@ export function BaseCalculatorSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 }

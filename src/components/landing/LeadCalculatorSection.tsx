@@ -39,26 +39,8 @@ export function LeadCalculatorSection() {
   }, [investimento, cpl, taxaAtendimento, taxaVenda, ticketMedio]);
 
   return (
-    <section className="py-16 md:py-24 border-t border-border/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-4">
-            <Calculator className="w-4 h-4 text-primary" />
-            Simulador de Resultados
-          </div>
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">
-            Simule seu{" "}
-            <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-              funil de vendas
-            </span>{" "}
-            com tráfego pago
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Ajuste os valores e veja em tempo real quantos leads, atendimentos e vendas você pode gerar.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-8 max-w-5xl mx-auto">
+    <div>
+      <div className="grid lg:grid-cols-[1fr_1fr] gap-8 max-w-5xl mx-auto">
           {/* Inputs */}
           <Card className="border-border/50">
             <CardContent className="p-0">
@@ -240,7 +222,6 @@ export function LeadCalculatorSection() {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 }
