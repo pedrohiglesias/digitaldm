@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -71,23 +72,23 @@ const impactCards = [
 const howItWorks = [
   {
     step: "01",
-    title: "Defina seu investimento",
-    description: "Insira quanto pretende investir em tráfego pago e qual o ticket médio do seu produto.",
+    title: "Escolha a calculadora",
+    description: "Selecione entre E-commerce, Base de Clientes ou Geração de Leads conforme seu modelo de negócio.",
   },
   {
     step: "02",
-    title: "Ajuste os parâmetros",
-    description: "Use os cenários prontos ou ajuste CPM, CTR e taxas de conversão com base nos seus dados reais.",
+    title: "Insira seus dados",
+    description: "Preencha investimento, ticket médio e demais parâmetros com base nos seus números reais.",
   },
   {
     step: "03",
     title: "Analise o funil",
-    description: "Veja em tempo real quantas impressões, cliques, visitas e vendas seu investimento pode gerar.",
+    description: "Veja em tempo real quantas vendas, receita e retorno seu investimento pode gerar.",
   },
   {
     step: "04",
     title: "Tome a decisão certa",
-    description: "Compare cenários e descubra o investimento ideal para atingir seu ROAS desejado.",
+    description: "Compare cenários e descubra o investimento ideal para maximizar seu ROAS.",
   },
 ];
 
@@ -389,11 +390,43 @@ export default function SimuladorDm() {
         </div>
       </section>
 
-      {/* Base Calculator Section */}
-      <BaseCalculatorSection />
+      {/* All Calculators in Tabs */}
+      <section className="pb-16 md:pb-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-sm text-muted-foreground mb-4">
+              <Calculator className="w-4 h-4 text-primary" />
+              Mais Simuladores
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4">
+              Explore nossas{" "}
+              <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                calculadoras
+              </span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Escolha a calculadora ideal para o seu modelo de negócio e descubra o potencial de retorno.
+            </p>
+          </div>
 
-      {/* Lead Calculator Section */}
-      <LeadCalculatorSection />
+          <Tabs defaultValue="base" className="max-w-5xl mx-auto">
+            <TabsList className="grid w-full grid-cols-2 mb-8 h-auto">
+              <TabsTrigger value="base" className="py-3 text-sm font-semibold">
+                📊 Ativar Base de Clientes
+              </TabsTrigger>
+              <TabsTrigger value="leads" className="py-3 text-sm font-semibold">
+                🎯 Geração de Leads
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="base">
+              <BaseCalculatorSection />
+            </TabsContent>
+            <TabsContent value="leads">
+              <LeadCalculatorSection />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
 
       {/* How It Works Section */}
       <section className="py-16 md:py-24 border-t border-border/50">
@@ -404,15 +437,15 @@ export default function SimuladorDm() {
               Como Funciona
             </div>
             <h2 className="text-2xl md:text-4xl font-bold mb-4">
-              Entenda o{" "}
+              Como usar nossas{" "}
               <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-                funil de vendas
+                calculadoras
               </span>{" "}
-              do seu e-commerce
+              para vender mais
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Cada etapa do funil representa uma fase da jornada do cliente. Entender esses números 
-              é o primeiro passo para escalar suas vendas com previsibilidade.
+              Simule funis de e-commerce, ativação de base de clientes ou geração de leads.
+              Entender esses números é o primeiro passo para escalar suas vendas com previsibilidade.
             </p>
           </div>
 
@@ -437,14 +470,14 @@ export default function SimuladorDm() {
               Por que isso importa
             </div>
             <h2 className="text-2xl md:text-4xl font-bold mb-4">
-              Como o simulador{" "}
+              Como as simulações{" "}
               <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-                impacta seu e-commerce
+                impactam seu negócio
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              A maioria dos e-commerces investe em tráfego pago sem saber se o retorno será positivo. 
-              Com o simulador, você elimina as suposições e toma decisões inteligentes.
+              A maioria dos negócios investe sem saber se o retorno será positivo. 
+              Com nossas calculadoras, você elimina as suposições e toma decisões inteligentes.
             </p>
           </div>
 
