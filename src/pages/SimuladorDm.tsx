@@ -134,7 +134,6 @@ export default function SimuladorDm() {
   const applyScenario = (scenario: Scenario) => {
     setActiveScenario(scenario);
   };
-  };
 
   const funnelSteps = [
     {
