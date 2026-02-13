@@ -186,44 +186,50 @@ export default function SimuladorDm() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <SimInput
-                label="Investimento (R$)"
-                value={investimento}
-                onChange={setInvestimento}
-                min={100}
-                max={500000}
-                step={100}
-                prefix="R$"
-              />
-              <SimInput label="CPM (R$)" value={cpm} onChange={setCpm} min={1} max={100} step={0.5} prefix="R$" />
-              <SimInput label="CTR (%)" value={ctr} onChange={setCtr} min={0.1} max={15} step={0.1} suffix="%" />
-              <SimInput
-                label="Taxa de Carregamento (%)"
-                value={taxaCarregamento}
-                onChange={setTaxaCarregamento}
-                min={1}
-                max={100}
-                step={1}
-                suffix="%"
-              />
-              <SimInput
-                label="Taxa de Conversão (%)"
-                value={taxaConversao}
-                onChange={setTaxaConversao}
-                min={0.1}
-                max={20}
-                step={0.1}
-                suffix="%"
-              />
-              <SimInput
-                label="Ticket Médio (R$)"
-                value={ticketMedio}
-                onChange={setTicketMedio}
-                min={10}
-                max={10000}
-                step={10}
-                prefix="R$"
-              />
+              {/* Editable inputs */}
+              <div className="space-y-1.5">
+                <Label className="text-xs text-muted-foreground">Investimento (R$)</Label>
+                <Input
+                  type="number"
+                  value={investimento}
+                  onChange={(e) => setInvestimento(Math.max(0, Number(e.target.value)))}
+                  className="text-right font-bold"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-xs text-muted-foreground">Ticket Médio (R$)</Label>
+                <Input
+                  type="number"
+                  value={ticketMedio}
+                  onChange={(e) => setTicketMedio(Math.max(1, Number(e.target.value)))}
+                  className="text-right font-bold"
+                />
+              </div>
+
+              {/* Read-only calculated params */}
+              <div className="border-t border-border/50 pt-3 space-y-3">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider">Parâmetros técnicos</p>
+                <SimInput label="CPM (R$)" value={cpm} onChange={setCpm} min={1} max={100} step={0.5} prefix="R$" />
+                <SimInput label="CTR (%)" value={ctr} onChange={setCtr} min={0.1} max={15} step={0.1} suffix="%" />
+                <SimInput
+                  label="Taxa de Carregamento (%)"
+                  value={taxaCarregamento}
+                  onChange={setTaxaCarregamento}
+                  min={1}
+                  max={100}
+                  step={1}
+                  suffix="%"
+                />
+                <SimInput
+                  label="Taxa de Conversão (%)"
+                  value={taxaConversao}
+                  onChange={setTaxaConversao}
+                  min={0.1}
+                  max={20}
+                  step={0.1}
+                  suffix="%"
+                />
+              </div>
 
               <Button asChild variant="hero" size="lg" className="w-full mt-4">
                 <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
