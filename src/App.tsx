@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import DmIa from "./pages/DmIa";
 import Institucional from "./pages/Institucional";
 import SimuladorDm from "./pages/SimuladorDm";
+import Acelera90Dias from "./pages/Acelera90Dias";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/dmia" element={<DmIa />} />
           <Route path="/institucional" element={<Institucional />} />
           <Route path="/simuladordm" element={<SimuladorDm />} />
+          <Route path="/acelera90dias" element={<Acelera90Dias />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
