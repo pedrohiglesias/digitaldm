@@ -9,6 +9,7 @@ import Institucional from "./pages/Institucional";
 import SimuladorDm from "./pages/SimuladorDm";
 import Acelera90Dias from "./pages/Acelera90Dias";
 import Mentoria from "./pages/Mentoria";
+import Gestao from "./pages/Gestao";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/simuladordm" element={<SimuladorDm />} />
           <Route path="/acelera90dias" element={<Acelera90Dias />} />
           <Route path="/mentoria" element={<Mentoria />} />
+          <Route path="/gestao" element={<Gestao />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
