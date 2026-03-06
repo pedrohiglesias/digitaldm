@@ -145,12 +145,6 @@ export default function Mentoria() {
             ))}
           </div>
 
-          <Button variant="hero" size="xl" asChild>
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              Quero Organizar Minha Marca AGORA
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </Button>
         </div>
       </section>
 
