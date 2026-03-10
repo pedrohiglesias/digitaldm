@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   XCircle,
   Zap,
-  Target,
   TrendingUp,
   BarChart3,
   Star,
@@ -18,22 +17,29 @@ import {
   ChevronDown,
   Settings,
   Eye,
-  RefreshCw,
   Layers,
+  AlertTriangle,
+  ShieldCheck,
+  CreditCard,
+  Clock,
+  Flame,
 } from "lucide-react";
+import provaRoas from "@/assets/prova-roas20-clean.png";
+import provaResultados from "@/assets/prova-resultados.png";
 
 const WA_LINK = "https://wzap.me/9665020002";
+const KIWIFY_LINK = "https://pay.kiwify.com.br/ymOOQOl";
 
 /* ─── Plan Data ─── */
 const plans = [
   {
     tag: "Ponto de Entrada",
     name: "START",
-    tagline: "WhatsApp + Instagram — Presença que Vende",
+    tagline: "WhatsApp + Instagram: Máquina de Aquisição Previsível",
     objective:
-      "Colocar a operação no ar do jeito certo e começar a gerar fluxo com consistência.",
+      "Parar de impulsionar no chute e construir uma base organizada que gera leads com consistência e custo controlado.",
     features: [
-      "Gestão de tráfego em Meta Ads (Instagram e Facebook)",
+      "Máquina de aquisição previsível no Meta Ads (Instagram e Facebook)",
       "Google Ads quando aplicável ao negócio ou contratado no escopo",
       "Campanhas geolocalizadas por raio com foco em loja física e regional",
       "Google Meu Negócio: otimizações para presença local e busca orgânica",
@@ -42,11 +48,11 @@ const plans = [
       "Otimização de criativos com base no que está performando",
       "Relatórios e acompanhamento: visão semanal de performance e ajustes",
       "Reunião estratégica mensal de alinhamento",
-      "Testes A/B contínuos de criativos, públicos e mensagens",
+      "Otimização contínua para reduzir o CAC (custo por cliente)",
       "Ferramenta de rastreamento de dados com origem de clientes e campanhas",
     ],
     audience:
-      "Para e-commerces e negócios digitais iniciantes que querem sair do \"anúncio básico\" e construir uma base organizada com previsibilidade real.",
+      'Para e-commerces e negócios digitais iniciantes que querem sair do "anúncio básico" e construir uma base organizada com previsibilidade real.',
     criativos:
       "Se o cliente quiser produzir com a DigitalDM, será cobrado R$35,00 por criativo. Os criativos são desenvolvidos no modelo validado pela DigitalDM para performance, com no máximo 1 ajuste.",
     price: "R$ 2.000",
@@ -59,16 +65,16 @@ const plans = [
   {
     tag: "Próximo Nível",
     name: "PREMIUM",
-    tagline: "E-commerce + Catálogo — Venda Enquanto Dorme",
+    tagline: "E-commerce + Catálogo: Otimização Contínua para Reduzir o CAC",
     objective:
-      "Aumentar a taxa de conversão e evoluir a operação para rodar com funil e testes reais.",
+      "Correção de gargalos de conversão, funil completo e testes reais para vender mais com o mesmo ou menor investimento.",
     includesLabel: "Tudo do Start, mais",
     features: [
       "Funil completo: estrutura em camadas de Topo, Meio e Fundo com mapeamento",
       "Inteligência de audiência: estudo e criação de públicos mais específicos",
-      "Testes A/B contínuos de criativos, públicos e mensagens em profundidade",
+      "Otimização contínua de criativos, públicos e mensagens para reduzir CAC",
       "Célula de criativos com direção: roteiros e briefings para vídeos com mais retenção",
-      "Auditoria técnica e de UX no site e e-commerce para pontos que travam conversão",
+      "Correção de gargalos de conversão no site e e-commerce",
       "Configuração e validação de eventos, rastreio, pixel, tags, mensuração e mapa de calor",
       "Sistema DMIA: CRM + IA para organizar atendimento e acelerar conversão",
     ],
@@ -86,9 +92,9 @@ const plans = [
   {
     tag: "Alta Performance",
     name: "MASTER",
-    tagline: "Criativos + Escala + Rotina de Drops + IA",
+    tagline: "Criativos + Escala + ROI Real + IA",
     objective:
-      "Operação de elite com foco em ROI real, consistência de vendas e retenção, com acompanhamento próximo e estratégico.",
+      "Operação de elite com consistência de vendas, retenção e acompanhamento próximo. Cada real investido tem retorno mapeado.",
     includesLabel: "Tudo do Premium, mais",
     features: [
       "Playbook de vendas: scripts, contorno de objeções e treinamento de equipe",
@@ -114,7 +120,7 @@ const plans = [
     name: "SCALE",
     tagline: "Alto Volume + Automação + IA + Squad Dedicado",
     objective:
-      "O nível máximo. Construção de marca, valuation e equity com suporte de diretoria para grandes tomadas de decisão.",
+      "Nível máximo. Construção de marca, valuation e equity com suporte de diretoria. Decisões que movem milhões.",
     includesLabel: "Tudo do Master, mais",
     features: [
       "Acompanhamento de Diretoria C-Level nas reuniões estratégicas mensais",
@@ -242,6 +248,20 @@ const pricingSim = [
   { plan: "SCALE", price: "SOB CONSULTA", sales: null, ratio: "Alta Performance", note: "Para operações de alto volume, a proposta é desenhada sob medida. Acompanhamento contínuo, squad dedicado e crescimento de longo prazo." },
 ];
 
+/* ─── Erro vs Verdade ─── */
+const erroAcha = [
+  "Preciso de mais tráfego",
+  "Meu criativo está ruim",
+  "Preciso de mais verba",
+  "O algoritmo está contra mim",
+];
+const erroReal = [
+  "Falta de estratégia clara de aquisição",
+  "Dado não lido, decisão no achismo",
+  "Verba gasta sem saber o retorno real",
+  "Ninguém responsável pelo crescimento",
+];
+
 /* ─── FAQ ─── */
 const faqs = [
   {
@@ -275,7 +295,7 @@ const fitNo = [
   "Quem quer resultado na primeira semana sem processo",
   "Quem não consegue participar das reuniões mensais",
   "Quem não está disposto a implementar os direcionamentos",
-  "Quem fatura abaixo de R$ 40k — para esse perfil existe a Mentoria 360",
+  "Quem fatura abaixo de R$ 40k — para esse perfil existe o GPS 360: Estruturação de Vendas",
 ];
 
 /* ─── Component ─── */
@@ -283,11 +303,16 @@ export default function Gestao() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const heroAnim = useScrollAnimation();
+  const provocAnim = useScrollAnimation();
   const plansAnim = useScrollAnimation();
   const phasesAnim = useScrollAnimation();
   const howAnim = useScrollAnimation();
   const fitAnim = useScrollAnimation();
   const simAnim = useScrollAnimation();
+  const provaAnim = useScrollAnimation();
+  const erroAnim = useScrollAnimation();
+  const garantiaAnim = useScrollAnimation();
+  const realidadeAnim = useScrollAnimation();
   const ctaAnim = useScrollAnimation();
   const faqAnim = useScrollAnimation();
 
@@ -301,30 +326,45 @@ export default function Gestao() {
         className={`pt-32 pb-20 md:pt-40 md:pb-28 transition-all duration-700 ${heroAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <div className="container mx-auto px-4 text-center max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-6">
-            <Layers className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Gestão Mensal</span>
-          </div>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 mb-8 ml-2">
-            <span className="text-sm text-muted-foreground">Moda, Varejo e Negócios Digitais</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
+              <Layers className="w-4 h-4 text-primary" />
+              <span className="text-sm text-muted-foreground">Sistema de Crescimento Mensal</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30">
+              <span className="text-sm text-muted-foreground">Moda, Varejo e Negócios Digitais</span>
+            </div>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Você Não Precisa de{" "}
-            <span className="text-gradient">Mais Tráfego.</span>
+            Todo Mês Você Toma{" "}
+            <span className="text-gradient">DECISÕES DE MARKETING</span>
             <br />
-            Precisa de{" "}
-            <span className="text-muted-foreground font-light">Gestão de Verdade.</span>
+            <span className="text-muted-foreground font-light">No Escuro.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-            Tráfego sem gestão é dinheiro jogado fora. Você investe, o resultado aparece, some, você investe mais, e fica nesse ciclo sem fim.
+            Quem cresce tem estrutura, dados e alguém responsável pelo crescimento.{" "}
+            <strong className="text-foreground">TRÁFEGO SEM GESTÃO É DINHEIRO RODANDO SEM CONTROLE.</strong>
           </p>
-          <p className="text-base sm:text-lg text-foreground font-semibold max-w-2xl mx-auto mb-4">
-            A Gestão Mensal quebra esse ciclo. Mês a mês, com método, dado e responsabilidade real.
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+            Enquanto você investe em anúncios esperando vender mais, a maior parte das empresas perde lucro por falta de estrutura, dados e direção estratégica.
           </p>
-          <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-            A maioria das empresas não cresce por falta de esforço. Para de crescer por falta de <strong className="text-foreground">estrutura, leitura de dado e alguém que olha junto sem sumir depois do contrato.</strong>
+        </div>
+      </section>
+
+      {/* ═══ PROVOC STRIP ═══ */}
+      <section
+        ref={provocAnim.ref}
+        className={`py-10 bg-primary/5 border-y border-primary/10 transition-all duration-700 ${provocAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <p className="text-base sm:text-lg text-foreground">
+            Seu problema não é falta de tráfego. É que você está{" "}
+            <strong className="text-primary">QUEIMANDO DINHEIRO TODO MÊS SEM PERCEBER.</strong>
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            SEM GESTÃO, SUA EMPRESA CRESCE POR SORTE. COM GESTÃO, ELA CRESCE POR DECISÃO.
           </p>
         </div>
       </section>
@@ -339,7 +379,7 @@ export default function Gestao() {
           <div className="text-center mb-12">
             <span className="text-sm text-primary font-semibold tracking-wider uppercase">Nossos Planos</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-              Quatro Formatos. Uma Missão.
+              Quatro Formatos. <span className="text-gradient">Uma Missão.</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Cada plano foi desenhado para um estágio real do negócio. Você não precisa do maior. Precisa do certo para onde você está agora.
@@ -414,7 +454,7 @@ export default function Gestao() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
-            <strong className="text-foreground">Processo Progressivo:</strong> Você não precisa começar no maior plano. O caminho natural é Start → Premium → Master → Scale, à medida que a operação amadurece e os resultados escalam.
+            <strong className="text-foreground">Sistema de Crescimento Mensal:</strong> Você não precisa começar no maior. Cada plano foi desenhado para evoluir junto com o negócio. O caminho natural é Start → Premium → Master → Scale, à medida que a operação amadurece e os resultados escalam.
           </p>
         </div>
       </section>
@@ -429,7 +469,7 @@ export default function Gestao() {
           <div className="text-center mb-12">
             <span className="text-sm text-primary font-semibold tracking-wider uppercase">Fases de Crescimento</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-              Cada Fase Tem um Papel Específico.
+              Cada Fase Tem um <span className="text-gradient">Papel Específico.</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Não existe atalho. Existe método. Quem pula fase, volta. Quem segue o processo, escala.
@@ -480,7 +520,7 @@ export default function Gestao() {
             {[
               { title: "Sem CRM e IA", text: "A Gestão de Tráfego completa entrega crescimento com testes e otimizações semanais focados em tráfego qualificado." },
               { title: "Com CRM e Agent de IA", text: "O ganho passa a ser converter mais com o mesmo lead: menos lead perdido, mais follow-up e mais previsibilidade no comercial." },
-              { title: "Tempo de Maturação", text: "Os primeiros 7 a 20 dias são aprendizado de plataforma. Resultados consistentes aparecem após validação inicial." },
+              { title: "Tempo de Maturação", text: "Os primeiros 7 a 20 dias são aprendizado de plataforma. Resultados consistentes aparecem após validação inicial. A mágica está na consistência, não na urgência." },
             ].map((n) => (
               <div key={n.title} className="glass-card rounded-xl p-4 border border-border/50 text-center">
                 <h4 className="text-sm font-bold mb-2">{n.title}</h4>
@@ -500,12 +540,29 @@ export default function Gestao() {
           <div className="text-center mb-12">
             <span className="text-sm text-primary font-semibold tracking-wider uppercase">Como Funciona</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-              Olhamos o Todo. Marketing, Dado, Posicionamento e Ponto de Melhoria.
+              Analisamos Dado. <span className="text-gradient">CORTAMOS O QUE DRENA.</span>{" "}
+              Escalamos o que Converte.
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Cada mês começa com um diagnóstico honesto do que aconteceu no mês anterior. O que funcionou, o que parou de funcionar e o que entra no próximo ciclo. <strong className="text-foreground">Sem relatório de vaidade. Com decisão baseada em dado.</strong>
-            </p>
+            <div className="max-w-2xl mx-auto space-y-3 text-muted-foreground">
+              <p>
+                Cada mês começa com um diagnóstico honesto e brutal do que aconteceu no mês anterior. O que funcionou, o que parou de funcionar e o que entra no próximo ciclo.{" "}
+                <strong className="text-foreground">Sem relatório de vaidade. Com decisão baseada em dado real.</strong>
+              </p>
+              <p>
+                Você não fica no escuro. Sabe exatamente o que foi feito, o que está convertendo, o que está desperdiçando verba e qual é o próximo movimento. <strong className="text-foreground">Sempre.</strong>
+              </p>
+              <p>
+                Nosso papel é ser os olhos estratégicos que você não tem como ser no dia a dia. Quem está dentro do negócio não enxerga tudo.{" "}
+                <strong className="text-foreground">Trazemos o olhar de fora com 15 anos de prática aplicada ao varejo e ao digital.</strong>
+              </p>
+            </div>
           </div>
+
+          <blockquote className="max-w-2xl mx-auto mb-10 text-center border-l-4 border-primary pl-4 py-2">
+            <p className="text-foreground font-semibold italic">
+              "SEM GESTÃO, SUA EMPRESA CRESCE POR SORTE. COM GESTÃO, ELA CRESCE POR DECISÃO."
+            </p>
+          </blockquote>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {howSteps.map((step) => (
@@ -518,10 +575,6 @@ export default function Gestao() {
               </div>
             ))}
           </div>
-
-          <blockquote className="max-w-2xl mx-auto mt-10 text-center text-muted-foreground italic border-l-4 border-primary pl-4 py-2">
-            "Quando existe acompanhamento certo, crescimento deixa de ser tentativa e passa a ser construção."
-          </blockquote>
         </div>
       </section>
 
@@ -533,13 +586,13 @@ export default function Gestao() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="text-sm text-primary font-semibold tracking-wider uppercase">Fit Ideal</span>
-            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">Esse Perfil É Você?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">ESSE PERFIL É VOCÊ?</h2>
             <p className="text-muted-foreground">Resultado consistente só acontece quando existe o contexto certo dos dois lados.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <div className="glass-card rounded-2xl p-6 border border-primary/30">
-              <h3 className="font-bold text-lg mb-4 text-primary">✅ Você está pronto para isso</h3>
+              <h3 className="font-bold text-lg mb-4 text-primary">✅ VOCÊ ESTÁ PRONTO PARA ISSO</h3>
               <ul className="space-y-3">
                 {fitYes.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
@@ -551,7 +604,7 @@ export default function Gestao() {
             </div>
 
             <div className="glass-card rounded-2xl p-6 border border-destructive/30">
-              <h3 className="font-bold text-lg mb-4 text-destructive">❌ Esse não é o caminho para você</h3>
+              <h3 className="font-bold text-lg mb-4 text-destructive">❌ ESSE NÃO É O CAMINHO PARA VOCÊ</h3>
               <ul className="space-y-3">
                 {fitNo.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm">
@@ -571,13 +624,15 @@ export default function Gestao() {
         className={`py-20 md:py-28 transition-all duration-700 ${simAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <div className="container mx-auto px-4">
+          <div className="text-center mb-4">
+            <span className="text-sm text-primary font-semibold tracking-wider uppercase">⚡ UMA ÚNICA CAMPANHA VENCEDORA PAGA O PLANO INTEIRO</span>
+          </div>
           <div className="text-center mb-12">
-            <span className="text-sm text-primary font-semibold tracking-wider uppercase">⚡ A Conta que Ninguém te Mostrou</span>
             <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-              Você paga a Gestão Mensal com quanto vende em um único dia.
+              UM DIA DE VENDAS COBRE A <span className="text-gradient">GESTÃO DO MÊS.</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Parece exagero. Não é. Faz a conta com a gente agora. Cada plano se paga com menos do que você imagina.
+              Não é exagero. É matemática. Com ticket de R$ 150, veja quantas vendas cobrem cada plano. Tudo que vier depois é crescimento puro.
             </p>
           </div>
 
@@ -589,7 +644,7 @@ export default function Gestao() {
                   p.highlight ? "border-primary/60 ring-1 ring-primary/20" : "border-border/50"
                 }`}
               >
-                <h3 className="font-bold text-lg mb-1">{p.plan}</h3>
+                <h3 className="font-bold text-lg mb-1">Plano {p.plan}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{p.price}</p>
                 {p.sales !== null ? (
                   <>
@@ -608,9 +663,223 @@ export default function Gestao() {
 
           <div className="max-w-3xl mx-auto mt-10 text-center">
             <p className="text-muted-foreground text-sm">
-              A Gestão Mensal não é um custo. <strong className="text-foreground">É o profissional que você não tem tempo de ser.</strong> Enquanto você cuida da operação, do estoque, do atendimento, <strong className="text-foreground">a DigitalDM está com os olhos 100% no dado, na campanha e na próxima alavanca de crescimento.</strong>
+              A DigitalDM não é uma agência. <strong className="text-foreground">É o parceiro que analisa dado, decide o que cortar, onde escalar e acompanha o crescimento.</strong> Enquanto você cuida da operação, do estoque e do atendimento, <strong className="text-foreground">a DigitalDM está com os olhos 100% no dado, na campanha e na próxima alavanca de crescimento.</strong>
             </p>
-            <p className="text-foreground font-semibold mt-4">Mês a mês. Sem sumir. Sem desculpa. Crescendo junto com você.</p>
+            <p className="text-foreground font-semibold mt-4">
+              Mês a mês. Sem sumir. Sem desculpa. <span className="text-primary">SEM GESTÃO, VOCÊ CRESCE POR SORTE. COM A DIGITALDM, VOCÊ CRESCE POR DECISÃO.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ A REALIDADE ═══ */}
+      <section
+        ref={realidadeAnim.ref}
+        className={`py-20 md:py-28 bg-muted/20 transition-all duration-700 ${realidadeAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <span className="text-sm text-primary font-semibold tracking-wider uppercase">A Realidade</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+            A MAIORIA DAS EMPRESAS NÃO CRESCE PORQUE{" "}
+            <span className="text-gradient">NINGUÉM ESTÁ OLHANDO O NEGÓCIO DE VERDADE.</span>
+          </h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>
+              Cada mês sem gestão é um mês de verba queimada,{" "}
+              <strong className="text-foreground">decisão tomada no feeling e crescimento que nunca vai aparecer no extrato.</strong>
+            </p>
+            <p>
+              A DigitalDM não é mais uma agência. É o parceiro estratégico que{" "}
+              <strong className="text-foreground">entra no negócio, olha o dado, corta o que drena e escala o que converte.</strong>
+            </p>
+            <p>
+              O negócio não para de evoluir.{" "}
+              <strong className="text-foreground">A questão é se vai evoluir com método ou continuar perdendo dinheiro no improviso.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PROVA REAL ═══ */}
+      <section
+        ref={provaAnim.ref}
+        className={`py-20 md:py-28 transition-all duration-700 ${provaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="text-sm text-primary font-semibold tracking-wider uppercase">Prova Real</span>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+              ESSES SÃO OS RESULTADOS DE QUEM <span className="text-gradient">CONFIOU NO PROCESSO.</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Não são promessas. São prints reais de operações reais que decidiram parar de improvisar e{" "}
+              <strong className="text-foreground">deixar a DigitalDM escalar o que converte.</strong>
+            </p>
+          </div>
+
+          {/* Caso principal */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="glass-card rounded-2xl border border-primary/30 overflow-hidden">
+              <div className="md:flex">
+                <div className="md:w-1/2">
+                  <img src={provaRoas} alt="Resultado ROAS 20 — R$ 2.997 investido, R$ 61.513 faturado" className="w-full h-full object-cover" />
+                </div>
+                <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                  <span className="text-xs text-primary font-semibold mb-2">🚀 Caso Real — 12 Semanas</span>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                    R$ 2.997 investidos.<br />
+                    <span className="text-gradient">R$ 61.513 faturados.</span>
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Em apenas <strong className="text-foreground">12 semanas</strong>, esse cliente atingiu{" "}
+                    <strong className="text-foreground">ROAS 20</strong> na operação. Com menos de R$ 3.000 em mídia, multiplicou o dinheiro <strong className="text-foreground">20 vezes.</strong> Não foi sorte. Foi estrutura, dado e decisão.
+                  </p>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="glass-card rounded-xl p-3 text-center border border-border/50">
+                      <div className="text-lg font-bold text-foreground">R$ 2.997</div>
+                      <div className="text-xs text-muted-foreground">Valor Investido</div>
+                    </div>
+                    <div className="glass-card rounded-xl p-3 text-center border border-primary/30">
+                      <div className="text-lg font-bold text-primary">R$ 61.513</div>
+                      <div className="text-xs text-muted-foreground">Valor Faturado ⭐</div>
+                    </div>
+                  </div>
+                  <p className="text-sm font-semibold text-primary mt-4 text-center">
+                    ROAS 20 · 20x o dinheiro em 12 semanas
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mais resultados */}
+          <div className="max-w-4xl mx-auto">
+            <p className="text-sm text-muted-foreground text-center mb-6">Mais operações gerenciadas pela DigitalDM</p>
+            <div className="glass-card rounded-2xl border border-border/50 overflow-hidden mb-6">
+              <img src={provaResultados} alt="Múltiplos resultados de clientes DigitalDM" className="w-full" />
+            </div>
+            <p className="text-xs text-center text-muted-foreground mb-8">
+              Dados reais extraídos do Gerenciador de Anúncios e plataformas de e-commerce dos clientes.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              {[
+                { value: "R$ 103k", label: "Total de vendas", sub: "em um período de 3 meses." },
+                { value: "R$ 1,19M", label: "Faturamento total", sub: "consolidado em 6 meses." },
+                { value: "R$ 298k", label: "Resultado acumulado", sub: "E-commerce em um único mês." },
+                { value: "ROAS 20", label: "Retorno registrado", sub: "em 12 semanas." },
+              ].map((stat) => (
+                <div key={stat.value} className="glass-card rounded-xl p-4 border border-border/50 text-center">
+                  <div className="text-xl font-bold text-primary mb-1">{stat.value}</div>
+                  <div className="text-xs font-semibold text-foreground">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Resultado comprovado */}
+          <div className="max-w-3xl mx-auto mt-12 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              ESSES NÚMEROS SÃO O QUE ACONTECE QUANDO VOCÊ{" "}
+              <span className="text-gradient">PARA DE IMPROVISAR E COMEÇA A ESCALAR COM MÉTODO.</span>
+            </h3>
+            <p className="text-muted-foreground mb-2">
+              Não existe atalho. Existe estrutura, dado, decisão e um parceiro responsável pelo crescimento.
+            </p>
+            <p className="text-foreground font-semibold">
+              A DigitalDM escalou o que convertia. E vai fazer o mesmo pelo seu negócio.
+            </p>
+            <p className="text-primary font-bold text-lg mt-4">ESCALAMOS O QUE CONVERTE!</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ O ERRO QUE DESTRÓI EMPRESAS ═══ */}
+      <section
+        ref={erroAnim.ref}
+        className={`py-20 md:py-28 bg-muted/20 transition-all duration-700 ${erroAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold tracking-wider uppercase text-destructive">🚨 O ERRO QUE DESTRÓI EMPRESAS</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+              A maioria acredita que o problema é falta de tráfego, criativo ou verba.{" "}
+              <span className="text-gradient">O problema real é a falta de gestão estratégica.</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="glass-card rounded-2xl p-6 border border-destructive/20">
+              <h3 className="font-bold text-lg mb-4 text-destructive">O que você acha que é o problema</h3>
+              <ul className="space-y-3">
+                {erroAcha.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <XCircle className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass-card rounded-2xl p-6 border border-primary/20">
+              <h3 className="font-bold text-lg mb-4 text-primary">O que é de verdade</h3>
+              <ul className="space-y-3">
+                {erroReal.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm">
+                    <AlertTriangle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-muted-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-muted-foreground">
+              Toda semana você gasta verba. Mas quanto dessa verba está gerando retorno real?{" "}
+              <strong className="text-foreground">Sem alguém olhando o dado, tomando decisão e sendo responsável pelo crescimento, você vai continuar queimando dinheiro</strong>{" "}
+              e chamando isso de "investimento em marketing".
+            </p>
+            <p className="text-foreground font-semibold mt-4">
+              Isso é o que destrói empresas que poderiam ser grandes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ GARANTIA ═══ */}
+      <section
+        ref={garantiaAnim.ref}
+        className={`py-20 md:py-28 transition-all duration-700 ${garantiaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <span className="text-sm text-primary font-semibold tracking-wider uppercase">🛡️ GARANTIA CONDICIONAL DE RESULTADO</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+              Se em 90 dias não houver evolução clara nos indicadores,{" "}
+              <span className="text-gradient">revisamos toda a estratégia sem custo até ajustar.</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Você continua pagando apenas o que foi acordado na gestão mensal.{" "}
+              <strong className="text-foreground">Não cobramos nada além disso.</strong>{" "}
+              Nenhum custo extra de estratégia, nenhuma hora adicional de consultoria, nenhum ajuste pago. Trabalhamos até o resultado aparecer.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { icon: ShieldCheck, title: "Revisão Completa", desc: "Toda a estratégia revisitada sem custo adicional" },
+              { icon: CreditCard, title: "Sem Cobranças Extras", desc: "Apenas o valor mensal acordado. Nada mais" },
+              { icon: Flame, title: "Comprometimento Real", desc: "Trabalhamos até os indicadores evoluírem" },
+            ].map((g) => (
+              <div key={g.title} className="glass-card rounded-2xl p-6 border border-primary/20 text-center">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <g.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-bold mb-2">{g.title}</h3>
+                <p className="text-sm text-muted-foreground">{g.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -653,22 +922,26 @@ export default function Gestao() {
         className={`py-20 md:py-28 transition-all duration-700 ${ctaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <span className="text-sm text-primary font-semibold tracking-wider uppercase">📊 A Pergunta Certa</span>
+          <span className="text-sm text-primary font-semibold tracking-wider uppercase">📈 A PERGUNTA QUE VOCÊ PRECISA RESPONDER</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-            Você Prefere Continuar Tentando Sozinho ou Crescer com Quem Sabe?
+            QUANTO VOCÊ ESTÁ{" "}
+            <span className="text-gradient">DEIXANDO DE GANHAR</span>{" "}
+            SEM UMA GESTÃO DE VERDADE?
           </h2>
           <p className="text-muted-foreground mb-4">
-            Cada mês sem gestão é um mês de decisão tomada no feeling, verba alocada no chute e crescimento que poderia ser maior. <strong className="text-foreground">A Gestão Mensal não é mais um serviço. É o parceiro estratégico que você não tem tempo de ser.</strong>
+            Cada mês sem gestão é um mês de verba queimada, decisão tomada no chute e crescimento que nunca aparece no extrato.{" "}
+            <strong className="text-foreground">A DigitalDM não vende tráfego. Vende crescimento como serviço.</strong>
           </p>
           <p className="text-foreground font-semibold mb-10">
-            Mês a mês. Sem sumir. Crescendo junto com você.
+            Analisamos dado, decidimos o que cortar, escalamos o que converte e somos responsáveis pelo resultado.{" "}
+            <span className="text-primary">Mês a mês. Sem sumir. Sem desculpa.</span>
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
             {[
               { v: "R$ 2k", l: "Plano de entrada" },
               { v: "4 Planos", l: "Start ao Scale" },
-              { v: "Contínuo", l: "Crescimento real" },
+              { v: "90 dias", l: "Garantia de evolução" },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <div className="text-2xl font-bold text-primary">{s.v}</div>
@@ -677,12 +950,20 @@ export default function Gestao() {
             ))}
           </div>
 
-          <Button variant="hero" size="xl" asChild>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              Quero a Gestão Mensal
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </Button>
+          <div className="glass-card rounded-2xl p-6 md:p-8 border border-primary/30 max-w-xl mx-auto mb-8">
+            <h3 className="text-xl font-bold mb-2">GARANTA JÁ SUA VAGA COM O SINAL DE R$ 500</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Esse sinal é <strong className="text-foreground">RISCO ZERO.</strong> Você tem{" "}
+              <strong className="text-foreground">7 dias para pedir estorno</strong> direto na plataforma Kiwify, sem burocracia e sem questionamento. Você só tende a sair no{" "}
+              <strong className="text-primary">LUCRO</strong>, sem perda alguma.
+            </p>
+            <Button variant="hero" size="xl" asChild className="w-full">
+              <a href={KIWIFY_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                QUERO PARAR DE DESPERDIÇAR VERBA
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
