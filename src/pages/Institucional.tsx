@@ -1,17 +1,43 @@
-import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, MessageSquare, AlertTriangle, Clock, UserX, PhoneOff, Check, X, Sparkles, ChevronDown, Users, Gauge, Shield, Rocket, ShoppingCart, MapPin, Stethoscope, Shirt } from "lucide-react";
+import { ArrowRight, Target, Zap, TrendingUp, CheckCircle, Bot, BarChart3, MessageSquare, AlertTriangle, Clock, UserX, PhoneOff, Check, X, Sparkles, ChevronDown, Users, Gauge, Shield, Rocket, ShoppingCart, MapPin, Stethoscope, Shirt, Megaphone, Store, RotateCcw, BrainCircuit, Compass, Calendar, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { AnimatedStat } from "@/components/landing/AnimatedStat";
 import { WorkflowVisualization } from "@/components/landing/WorkflowVisualization";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import logoDigitalDM from "@/assets/logo-digitaldm.png";
 import ceoDeomir from "@/assets/ceo-deomir.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import caseMania from "@/assets/case-mania.png";
 
 const stats = [
-  { icon: Users, value: "+200", label: "Negócios atendidos" },
-  { icon: TrendingUp, value: "+42%", label: "Aumento médio em vendas" },
-  { icon: Gauge, value: "24/7", label: "Atendimento automatizado" },
-  { icon: Shield, value: "100%", label: "Tecnologia própria" },
+  { icon: Users, value: "120+", label: "Empresas Atendidas" },
+  { icon: Store, value: "+1.200", label: "E-commerces Entregues pelo Brasil" },
+  { icon: TrendingUp, value: "R$100MM+", label: "Reais em Mídia Paga" },
+  { icon: Shield, value: "15+ Anos", label: "De Experiência Varejo" },
+];
+
+const offers = [
+  {
+    tag: "Ponto de Partida",
+    title: "GPS 360 — Estruturação de Vendas",
+    description: "Para marcas e negócios que faturam até R$ 30k/mês e já perceberam que o problema não é falta de produto, mas falta de estrutura para vender com previsibilidade. 3 encontros ao vivo, mão na massa, método 3C.",
+    link: "/gps360",
+    icon: Compass,
+  },
+  {
+    tag: "Acompanhamento Contínuo",
+    title: "Gestão Mensal",
+    description: "Para quem quer acompanhamento próximo, execução estratégica e evolução constante no marketing e nas vendas mês a mês. Quando existe acompanhamento certo, crescimento deixa de ser tentativa e passa a ser construção.",
+    link: "/gestao",
+    icon: BarChart3,
+  },
+  {
+    tag: "Ciclo de Aceleração",
+    title: "Acelera 90 Dias",
+    description: "Para empresas que querem um ecossistema completo de vendas em 90 dias: site, landing page, CRM, Agent IA, tráfego e conversão integrados. Resultado garantido de +10% a +15% de faturamento ou a DigitalDM estende sem custo.",
+    link: "/acelera90dias",
+    icon: Flame,
+  },
 ];
 
 const problems = [
@@ -35,6 +61,40 @@ const dmiaFeatures = [
   { title: "Follow-up automático", description: "Mantém o contato ativo sem depender de alguém 'lembrar'" },
   { title: "Histórico e origem", description: "Você sabe de onde veio e qual caminho converte melhor" },
   { title: "Recuperação de interesse", description: "Traz de volta quem sumiu — com cadência estratégica" },
+];
+
+const historyPillars = [
+  { title: "Diagnóstico Honesto", desc: "Antes de qualquer ação, entendemos o negócio, o momento e o que precisa ser ajustado para crescimento real." },
+  { title: "Execução com Método", desc: "Não entregamos teoria. Construímos operação, estrutura e rotina que funciona mesmo quando você não está olhando." },
+  { title: "Parceria de Longo Prazo", desc: "Nossos melhores resultados vieram de clientes que ficaram. Crescimento real é construído com tempo, confiança e comprometimento mútuo." },
+  { title: "Dado Acima de Opinião", desc: "Cada decisão é orientada por número, não por intuição. O que funciona escala. O que não funciona é cortado sem apego." },
+];
+
+const ecosystem = [
+  {
+    tag: "Tráfego Pago",
+    title: "Gestão de Tráfego Pago Completo",
+    items: ["Meta Ads (Instagram e Facebook)", "Google Ads e Shopping", "Estratégias de Escala e Testes A/B", "Relatórios de Performance Semanais"],
+    icon: Megaphone,
+  },
+  {
+    tag: "E-commerce",
+    title: "Criação de E-commerce",
+    items: ["Loja Virtual de Alta Conversão", "UX/UI Focado em Experiência do Usuário", "Integração com ERP e Logística", "Otimização para Mobile First"],
+    icon: ShoppingCart,
+  },
+  {
+    tag: "Retenção",
+    title: "Reativação e Recuperação",
+    items: ["Recuperação de carrinhos abandonados", "Reativação de clientes inativos", "Aumento do LTV com sequências automáticas", "Nenhuma venda perdida sem uma segunda chance"],
+    icon: RotateCcw,
+  },
+  {
+    tag: "IA e CRM",
+    title: "DM IA (CRM + Agent de IA)",
+    items: ["Atendimento Inteligente 24/7", "Qualificação Automática de Leads", "CRM Integrado para Gestão de Pipeline", "Humanização com Tecnologia"],
+    icon: BrainCircuit,
+  },
 ];
 
 const benefits = [
@@ -115,6 +175,12 @@ const partners = [
 ];
 
 export default function Institucional() {
+  const offersAnim = useScrollAnimation();
+  const historyAnim = useScrollAnimation();
+  const caseAnim = useScrollAnimation();
+  const ecoAnim = useScrollAnimation();
+  const pathsAnim = useScrollAnimation();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -127,6 +193,9 @@ export default function Institucional() {
             <nav className="hidden md:flex items-center gap-8">
               <a href="#como-funciona" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 Como Funciona
+              </a>
+              <a href="#ofertas" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
+                Ofertas
               </a>
               <a href="#dmia" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                 DM IA
@@ -152,9 +221,8 @@ export default function Institucional() {
         </div>
       </header>
 
-      {/* HERO - Layout lado a lado com imagem de fundo */}
+      {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBg})` }}
@@ -164,20 +232,24 @@ export default function Institucional() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Text Content */}
             <div className="max-w-xl">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-6">
-                <span className="text-sm text-primary font-medium">👋 BEM VINDO(A) À DIGITAL DM</span>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
+                  <span className="text-sm text-primary font-medium">👋 DigitalDM</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30">
+                  <span className="text-sm text-muted-foreground">Moda, Varejo e Negócios Locais</span>
+                </div>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Vendas mais previsíveis com{" "}
-                <span className="text-gradient">demanda qualificada</span>.
+                Três Caminhos Claros para Crescer com{" "}
+                <span className="text-gradient">Estratégia, Previsibilidade e Escala.</span>
               </h1>
 
               <p className="text-lg text-muted-foreground mb-8">
-                A Digital DM estrutura um sistema para seu negócio parar de depender de "mês bom / mês ruim" 
-                e transformar contatos em clientes com consistência.
+                Na DigitalDM, acreditamos que <strong className="text-foreground">cada negócio está em um momento diferente.</strong>{" "}
+                Por isso estruturamos três formatos de trabalho que acompanham a evolução natural da empresa, desde o ajuste estratégico até a escala com acompanhamento contínuo.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -188,14 +260,13 @@ export default function Institucional() {
                   </a>
                 </Button>
                 <Button variant="heroOutline" size="xl" asChild>
-                  <a href="#como-funciona" className="flex items-center gap-2">
-                    Conheça mais
+                  <a href="#ofertas" className="flex items-center gap-2">
+                    Ver Ofertas
                     <ChevronDown className="w-5 h-5" />
                   </a>
                 </Button>
               </div>
 
-              {/* Mini badges */}
               <div className="flex flex-wrap gap-3">
                 <span className="px-3 py-1.5 rounded-full bg-muted text-xs font-medium">Método Validado</span>
                 <span className="px-3 py-1.5 rounded-full bg-muted text-xs font-medium">100% Digital</span>
@@ -203,7 +274,6 @@ export default function Institucional() {
               </div>
             </div>
 
-            {/* Right - Interactive Workflow Visualization */}
             <WorkflowVisualization />
           </div>
         </div>
@@ -212,6 +282,15 @@ export default function Institucional() {
       {/* STATS BAR */}
       <section className="py-8 bg-card border-y border-border/30">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-6">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest">Por Que a DigitalDM</p>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2">
+              Dominamos o varejo digital com expertise em <span className="text-gradient">Moda, Varejo e Negócios Locais.</span>
+            </h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto text-sm">
+              Unimos inteligência de dados avançada e execução estratégica com um único foco: gerar <strong className="text-foreground">vendas reais</strong> e crescimento previsível para o seu negócio.
+            </p>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border/50">
             {stats.map((stat, index) => (
               <AnimatedStat
@@ -225,11 +304,54 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* SEÇÃO 1 - Problema (Imagem esquerda, texto direita) */}
+      {/* ═══ NOSSAS OFERTAS ═══ */}
+      <section
+        id="ofertas"
+        ref={offersAnim.ref}
+        className={`py-20 md:py-28 transition-all duration-700 ${offersAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">Nossas Ofertas</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Três Formatos. <span className="text-gradient">Uma Missão.</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Aqui você entende qual é o próximo passo para destravar crescimento, organizar processos e transformar marketing em vendas reais.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {offers.map((offer) => (
+              <div key={offer.title} className="glass-card rounded-2xl p-6 md:p-8 border border-border/50 hover:border-primary/50 transition-all duration-300 flex flex-col">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <offer.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-xs text-muted-foreground">{offer.tag}</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">{offer.title}</h3>
+                <p className="text-sm text-muted-foreground mb-6 flex-1">{offer.description}</p>
+                <Button variant="outline" size="lg" asChild className="w-full">
+                  <a href={offer.link} className="flex items-center justify-center gap-2">
+                    Ver Detalhes
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+            A seguir você vai entender <strong className="text-foreground">quem somos, como pensamos</strong> e por que nossos clientes conseguem avançar com segurança e resultado. Não vendemos serviço genérico. Construímos operação real.
+          </p>
+        </div>
+      </section>
+
+      {/* SEÇÃO PROBLEMA */}
       <section id="como-funciona" className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Image/Visual */}
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-destructive/20 to-destructive/5 p-8 flex flex-col justify-center">
                 <div className="space-y-4">
@@ -248,7 +370,6 @@ export default function Institucional() {
               </div>
             </div>
 
-            {/* Right - Text */}
             <div>
               <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">O PROBLEMA</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -273,7 +394,7 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* COMO FUNCIONA - Steps horizontais */}
+      {/* COMO FUNCIONA - Steps */}
       <section className="py-20 md:py-28 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -283,7 +404,6 @@ export default function Institucional() {
             </h2>
           </div>
 
-          {/* Steps */}
           <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {processSteps.map((step, index) => (
               <div key={index} className="relative">
@@ -303,11 +423,10 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* SEÇÃO 2 - DM IA (Texto esquerda, visual direita) */}
+      {/* DM IA */}
       <section id="dmia" className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Text */}
             <div>
               <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">O QUE É A DM IA</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -338,13 +457,9 @@ export default function Institucional() {
               </Button>
             </div>
 
-            {/* Right - Visual */}
             <div className="relative">
               <div className="aspect-square max-w-md mx-auto">
-                {/* Background glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl" />
-                
-                {/* Floating cards */}
                 <div className="relative h-full flex flex-col justify-center gap-4 px-4">
                   <div className="glass-card rounded-xl p-4 transform hover:scale-105 transition-transform ml-0 lg:ml-8">
                     <div className="flex items-center gap-3">
@@ -388,7 +503,137 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* BENEFÍCIOS - Grid de cards */}
+      {/* ═══ QUEM É A DIGITALDM + NOSSA HISTÓRIA ═══ */}
+      <section
+        ref={historyAnim.ref}
+        className={`py-20 md:py-28 bg-card/50 transition-all duration-700 ${historyAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">Quem é a DigitalDM</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Estratégia, Execução e <span className="text-gradient">Parceria Real</span> com Quem Quer Crescer.
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Não acreditamos em promessas vazias nem em soluções genéricas. Nosso trabalho é entrar no negócio, entender o cenário e construir caminhos que fazem sentido para a realidade de cada cliente.
+            </p>
+          </div>
+
+          {/* Nossa História */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold">
+                Nascemos para Fazer o Cliente Vender Mais com <span className="text-gradient">Clareza e Controle.</span>
+              </h3>
+            </div>
+            <div className="space-y-4 text-muted-foreground text-center max-w-2xl mx-auto mb-10">
+              <p>
+                A DigitalDM nasceu com um propósito claro. Ajudar empresas a crescer com método, visão e acompanhamento de verdade.
+              </p>
+              <p>
+                Somos conhecidos por atuar próximos, com olhar estratégico e foco em resultado.
+                Não chegamos com uma solução pronta. <strong className="text-foreground">Chegamos para entender, mapear e construir junto.</strong>
+              </p>
+              <p>
+                Nosso compromisso é simples. Fazer o cliente vender mais com clareza e controle.
+                Sem achismo. Sem vanidade de relatório. <strong className="text-foreground">Com dado, método e responsabilidade.</strong>
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {historyPillars.map((pillar) => (
+                <div key={pillar.title} className="glass-card rounded-xl p-5 border border-border/50 text-center">
+                  <h4 className="font-bold text-sm mb-2">{pillar.title}</h4>
+                  <p className="text-xs text-muted-foreground">{pillar.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CASE MANIA DE VESTIR ═══ */}
+      <section
+        ref={caseAnim.ref}
+        className={`py-20 md:py-28 transition-all duration-700 ${caseAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">Case de Sucesso</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Mania de Vestir: 9 Anos de Parceria e <span className="text-gradient">+R$ 50M no E-commerce.</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Qualquer agência tem um case bonito no site. Poucas têm um cliente que ficou por quase uma década. A Mania de Vestir cresceu com a gente <strong className="text-foreground">mês após mês, decisão após decisão.</strong> Não terceirizamos tráfego. <strong className="text-foreground">Construímos operação real.</strong>
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="glass-card rounded-2xl border border-primary/30 overflow-hidden">
+              <div className="md:flex">
+                <div className="md:w-1/2">
+                  <img src={caseMania} alt="Case Mania de Vestir — 9 anos de parceria" className="w-full h-full object-cover" />
+                </div>
+                <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="glass-card rounded-xl p-4 text-center border border-primary/20">
+                      <div className="text-2xl font-bold text-primary">+R$50M</div>
+                      <div className="text-xs text-muted-foreground">Faturamento no E-commerce</div>
+                    </div>
+                    <div className="glass-card rounded-xl p-4 text-center border border-border/50">
+                      <div className="text-2xl font-bold text-foreground">9 anos</div>
+                      <div className="text-xs text-muted-foreground">De parceria contínua</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Se você quer alguém que <strong className="text-foreground">entra no negócio, pensa estratégia e executa com responsabilidade,</strong> você está no lugar certo. Esse é o padrão DigitalDM.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ECOSSISTEMA DE OFERTAS ═══ */}
+      <section
+        ref={ecoAnim.ref}
+        className={`py-20 md:py-28 bg-card/50 transition-all duration-700 ${ecoAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">O Que a DigitalDM Oferta</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Um Ecossistema Completo para <span className="text-gradient">Escalar com Previsibilidade.</span>
+            </h2>
+            <p className="text-muted-foreground">
+              Inteligência e execução integradas em cada frente do negócio.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {ecosystem.map((eco) => (
+              <div key={eco.title} className="glass-card rounded-2xl p-6 border border-border/50">
+                <div className="flex items-center gap-2 mb-3">
+                  <eco.icon className="w-5 h-5 text-primary" />
+                  <span className="text-xs text-primary font-semibold">{eco.tag}</span>
+                </div>
+                <h3 className="font-bold text-sm mb-3">{eco.title}</h3>
+                <ul className="space-y-2">
+                  {eco.items.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BENEFÍCIOS */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -415,7 +660,7 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* SEGMENTOS - Time dedicado */}
+      {/* SEGMENTOS */}
       <section id="segmentos" className="py-20 md:py-28 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -467,7 +712,7 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* ELEGIBILIDADE - Lado a lado */}
+      {/* ELEGIBILIDADE */}
       <section className="py-20 md:py-28 bg-card/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -481,7 +726,6 @@ export default function Institucional() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Para quem É */}
             <div className="glass-card rounded-2xl p-8 border-t-4 border-primary">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
@@ -499,7 +743,6 @@ export default function Institucional() {
               </ul>
             </div>
 
-            {/* Para quem NÃO é */}
             <div className="glass-card rounded-2xl p-8 border-t-4 border-destructive">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
@@ -520,11 +763,10 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* SOBRE / CEO - Layout com imagem */}
+      {/* SOBRE / CEO */}
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            {/* Left - CEO Image */}
             <div className="relative flex justify-center">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-72 h-72 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 blur-2xl" />
@@ -547,7 +789,6 @@ export default function Institucional() {
               </div>
             </div>
 
-            {/* Right - Text */}
             <div>
               <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">SOBRE NÓS</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -612,7 +853,7 @@ export default function Institucional() {
             <div className="text-center mt-8">
               <p className="text-muted-foreground mb-4">Não encontrou o que gostaria?</p>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
                   Quero tirar outra dúvida
                 </a>
               </Button>
@@ -621,67 +862,81 @@ export default function Institucional() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section id="diagnostico" className="py-20 md:py-28 relative overflow-hidden">
+      {/* ═══ QUAL CAMINHO — CTA FINAL ═══ */}
+      <section
+        ref={pathsAnim.ref}
+        className={`py-20 md:py-28 relative overflow-hidden transition-all duration-700 ${pathsAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            {/* Left - Text */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Deixe a conversão com especialistas e foque no crescimento do seu negócio!
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Você não precisa "apostar" no marketing. Você precisa de um sistema que organiza demanda, 
-                atendimento e conversão. No diagnóstico, a gente identifica o gargalo principal e desenha 
-                um plano prático para estabilizar e crescer.
-              </p>
+          <div className="text-center mb-12">
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-4">O Próximo Passo</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Qual Caminho Faz Sentido para o <span className="text-gradient">Seu Momento Agora?</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Cada formato de trabalho foi pensado para um estágio específico do negócio.{" "}
+              <strong className="text-foreground">Você não precisa de tudo ao mesmo tempo.</strong> Precisa do que é certo para onde você está agora.
+            </p>
+            <p className="text-muted-foreground mt-2 max-w-xl mx-auto">
+              Clareza estratégica, acompanhamento contínuo ou ciclo de aceleração.{" "}
+              <strong className="text-foreground">Escolha o caminho e avance com quem já transformou mais de 120 empresas.</strong>
+            </p>
+          </div>
 
-              <div className="glass-card rounded-xl p-6 mb-8">
-                <h4 className="font-semibold mb-4">O que acontece depois que você agenda:</h4>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary">1</div>
-                    <span className="text-muted-foreground text-sm">Questionário rápido (2 min)</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary">2</div>
-                    <span className="text-muted-foreground text-sm">Diagnóstico (30–40 min) com análise do funil</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-bold text-primary">3</div>
-                    <span className="text-muted-foreground text-sm">Roadmap com prioridades</span>
-                  </div>
-                </div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+            {[
+              {
+                tag: "Ponto de Partida",
+                title: "GPS 360 — Estruturação de Vendas",
+                desc: "Estruturação comercial para marcas que faturam até R$ 30k/mês e querem vender com previsibilidade. Método 3C em 3 encontros ao vivo.",
+                link: "/gps360",
+                cta: "Ver o GPS 360",
+              },
+              {
+                tag: "Evolução Contínua",
+                title: "Gestão Mensal",
+                desc: "Acompanhamento estratégico próximo para empreendedores que faturam R$ 40k/mês ou mais.",
+                link: "/gestao",
+                cta: "Ver a Gestão",
+              },
+              {
+                tag: "Aceleração Máxima",
+                title: "Acelera 90 Dias",
+                desc: "Ecossistema completo para marcas que faturam R$ 50k+ e querem escalar com garantia de resultado.",
+                link: "/acelera90dias",
+                cta: "Ver o Acelera",
+              },
+            ].map((path) => (
+              <div key={path.title} className="glass-card rounded-2xl p-6 border border-border/50 hover:border-primary/50 transition-all flex flex-col">
+                <span className="text-xs text-primary font-semibold mb-2">{path.tag}</span>
+                <h3 className="font-bold text-lg mb-3">{path.title}</h3>
+                <p className="text-sm text-muted-foreground mb-6 flex-1">{path.desc}</p>
+                <Button variant="hero" size="lg" asChild className="w-full">
+                  <a href={path.link} className="flex items-center justify-center gap-2">
+                    {path.cta}
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </Button>
               </div>
+            ))}
+          </div>
 
-              <Button variant="hero" size="xl" asChild>
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  Agendar Diagnóstico Estratégico
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
-              <p className="text-xs text-muted-foreground mt-4">
-                Seus dados serão usados apenas para contato. Sem spam.
-              </p>
-            </div>
-
-            {/* Right - Partners */}
-            <div className="text-center lg:text-left">
-              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
-                Parceiros e Integrações
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                {partners.map((partner, index) => (
-                  <span 
-                    key={index} 
-                    className="px-4 py-2 rounded-lg bg-muted text-muted-foreground text-sm font-medium"
-                  >
-                    {partner}
-                  </span>
-                ))}
-              </div>
+          {/* Partners */}
+          <div className="text-center">
+            <p className="text-xs text-muted-foreground uppercase tracking-widest mb-6">
+              Parceiros e Integrações
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              {partners.map((partner, index) => (
+                <span 
+                  key={index} 
+                  className="px-4 py-2 rounded-lg bg-muted text-muted-foreground text-sm font-medium"
+                >
+                  {partner}
+                </span>
+              ))}
             </div>
           </div>
         </div>
