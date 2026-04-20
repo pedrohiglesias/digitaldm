@@ -27,7 +27,7 @@ import {
 import provaRoas from "@/assets/prova-roas20-clean.png";
 import provaResultados from "@/assets/prova-resultados.png";
 
-const WA_LINK = "https://wzap.me/9665020002";
+const WA_LINK = "https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a";
 const KIWIFY_LINK = "https://pay.kiwify.com.br/ymOOQOl";
 
 /* ─── Plan Data ─── */
