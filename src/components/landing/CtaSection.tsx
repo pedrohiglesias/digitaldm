@@ -75,7 +75,7 @@ export function CtaSection() {
           <div className="text-center">
             <Button variant="hero" size="xl" asChild>
               <a 
-                href="https://wzap.me/9665020002" 
+                href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
