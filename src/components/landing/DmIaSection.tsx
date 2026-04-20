@@ -228,7 +228,7 @@ export function DmIaSection() {
           {/* CTA */}
           <div className="text-center px-4 sm:px-0">
             <Button variant="hero" size="lg" className="w-full sm:w-auto sm:px-10" asChild>
-              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                 Quero Meu CRM Inteligente
                 <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>

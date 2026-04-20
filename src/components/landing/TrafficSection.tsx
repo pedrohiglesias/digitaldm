@@ -246,7 +246,7 @@ export const TrafficSection = () => {
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
           <Button variant="hero" size="lg" asChild>
-            <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+            <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               Quero Tráfego Pago Agora
               <ArrowRight className="w-4 h-4" />
             </a>

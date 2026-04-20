@@ -118,7 +118,7 @@ export function MethodSection() {
               e replicando o sucesso.
             </p>
             <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Quero Crescer com Método</a>
+              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer">Quero Crescer com Método</a>
             </Button>
           </div>
         </div>

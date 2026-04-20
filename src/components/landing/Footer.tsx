@@ -16,7 +16,7 @@ const resourceLinks = [
 ];
 
 const actionLinks = [
-  { label: "Diagnóstico Grátis", href: "https://wzap.me/9665020002" },
+  { label: "Diagnóstico Grátis", href: "https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" },
   { label: "Planos e Preços", href: "#planos" },
   { label: "Quem Somos", href: "#sobre" },
   { label: "FAQ", href: "#faq" },
