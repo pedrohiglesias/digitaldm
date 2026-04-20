@@ -103,7 +103,7 @@ const faqs = [
   },
 ];
 
-const CTA_URL = "https://wzap.me/9665020002";
+const CTA_URL = "https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a";
 
 export default function Acelera90Dias() {
   return (

@@ -214,7 +214,7 @@ export default function Institucional() {
                 </a>
               </Button>
               <Button variant="hero" size="lg" asChild>
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">Agendar Diagnóstico</a>
+                <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer">Agendar Diagnóstico</a>
               </Button>
             </div>
           </div>
@@ -254,7 +254,7 @@ export default function Institucional() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button variant="hero" size="xl" asChild>
-                  <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     Agendar Diagnóstico
                     <ArrowRight className="w-5 h-5" />
                   </a>
@@ -381,7 +381,7 @@ export default function Institucional() {
                 triagem e velocidade no atendimento. Resultado: investimento entra, mas o retorno "escorre" no meio do caminho.
               </p>
               <Button variant="hero" size="lg" asChild>
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   Quero Corrigir Meu Funil
                   <ArrowRight className="w-4 h-4" />
                 </a>
@@ -450,7 +450,7 @@ export default function Institucional() {
               </ul>
 
               <Button variant="hero" size="lg" asChild>
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   Quero Ver a DM IA em Ação
                   <ArrowRight className="w-4 h-4" />
                 </a>
@@ -703,7 +703,7 @@ export default function Institucional() {
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">Não encontrou seu segmento? Fale conosco!</p>
             <Button variant="hero" size="lg" asChild>
-              <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 Agendar Diagnóstico
                 <ArrowRight className="w-4 h-4" />
               </a>
@@ -853,7 +853,7 @@ export default function Institucional() {
             <div className="text-center mt-8">
               <p className="text-muted-foreground mb-4">Não encontrou o que gostaria?</p>
               <Button variant="heroOutline" size="lg" asChild>
-                <a href="https://wzap.me/9665020002" target="_blank" rel="noopener noreferrer">
+                <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer">
                   Quero tirar outra dúvida
                 </a>
               </Button>
