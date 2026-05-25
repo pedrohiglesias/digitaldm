@@ -184,7 +184,7 @@ export function EcommerceBenefitsSection() {
           {/* CTA */}
           <div className="text-center mt-16">
             <Button variant="hero" size="lg" asChild>
-              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                 Crie seu E-Commerce Agora
                 <ArrowRight className="w-4 h-4" />
               </a>

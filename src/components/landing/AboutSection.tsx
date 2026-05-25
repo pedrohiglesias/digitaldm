@@ -81,7 +81,7 @@ export function AboutSection() {
               {/* CTA */}
               <div className="mt-8 sm:mt-10 text-center lg:text-left px-4 sm:px-0">
                 <Button variant="hero" size="lg" className="w-full sm:w-auto" asChild>
-                  <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2">
+                  <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2">
                     Fale conosco
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </a>

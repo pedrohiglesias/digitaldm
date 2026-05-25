@@ -83,7 +83,7 @@ export function ProblemSection() {
           {/* CTA */}
           <div className="text-center">
             <Button variant="hero" size="lg" asChild>
-              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer">Quero Corrigir Meu Funil</a>
+              <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer">Quero Corrigir Meu Funil</a>
             </Button>
             <p className="text-sm text-muted-foreground mt-3">
               Em 30-40 min você sai com clareza do gargalo principal.

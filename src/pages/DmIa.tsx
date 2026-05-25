@@ -113,7 +113,7 @@ export default function DmIa() {
               style={{ animationDelay: "0.7s", animationFillMode: "both" }}
             >
               <Button variant="hero" size="xl" asChild className="group">
-                <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   Agendar Diagnóstico Gratuito
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </a>

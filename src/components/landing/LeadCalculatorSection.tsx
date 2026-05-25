@@ -216,7 +216,7 @@ export function LeadCalculatorSection() {
             </div>
 
             <Button asChild variant="hero" size="lg" className="w-full max-w-sm mt-6">
-              <a href="https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer">
                 Quero esse resultado <ArrowRight className="w-4 h-4 ml-1" />
               </a>
             </Button>
