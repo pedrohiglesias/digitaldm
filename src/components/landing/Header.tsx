@@ -71,9 +71,9 @@ export function Header() {
 
         {/* Mobile Layout */}
         <div className="md:hidden">
-          <div className="flex flex-col items-center">
-            {/* Centered Logo */}
-            <a href="#" className="flex items-center mb-2">
+          <div className="flex items-center justify-between">
+            {/* Logo Left */}
+            <a href="#" className="flex items-center">
               <img 
                 src={logoDigitalDM} 
                 alt="Digital DM" 
@@ -81,17 +81,13 @@ export function Header() {
               />
             </a>
             
-            {/* Navigation Toggle Text */}
+            {/* Hamburger Right */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-foreground hover:text-primary transition-colors"
               aria-label="Menu"
             >
-              <span>Clique para navegar aqui</span>
-              <ChevronDown 
-                size={14} 
-                className={`transition-transform duration-200 ${isMobileMenuOpen ? 'rotate-180' : ''}`}
-              />
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
