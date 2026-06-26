@@ -12,6 +12,7 @@ import Mentoria from "./pages/Mentoria";
 import Gestao from "./pages/Gestao";
 import Crm from "./pages/Crm";
 import NotFound from "./pages/NotFound";
+import { LeadCaptureModal } from "./components/LeadCaptureModal";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +21,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <LeadCaptureModal />
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/dmia" element={<DmIa />} />
