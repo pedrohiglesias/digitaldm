@@ -47,6 +47,7 @@ interface FormState {
   telefone: string;
   email: string;
   instagram: string;
+  faturamento_mensal: string;
   consent: boolean;
 }
 
@@ -55,6 +56,7 @@ const initial: FormState = {
   telefone: "",
   email: "",
   instagram: "",
+  faturamento_mensal: "",
   consent: true,
 };
 
