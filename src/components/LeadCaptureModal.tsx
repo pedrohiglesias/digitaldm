@@ -1,10 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, ArrowRight } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   buildWhatsappUrl,
   collectTrackingContext,
@@ -40,6 +47,7 @@ interface FormState {
   telefone: string;
   email: string;
   instagram: string;
+  faturamento_mensal: string;
   consent: boolean;
 }
 
@@ -48,6 +56,7 @@ const initial: FormState = {
   telefone: "",
   email: "",
   instagram: "",
+  faturamento_mensal: "",
   consent: true,
 };
 
@@ -127,6 +136,7 @@ export function LeadCaptureModal() {
       telefone_digits: form.telefone.replace(/\D/g, ""),
       email: form.email.trim().toLowerCase(),
       instagram: form.instagram.trim().replace(/^@/, ""),
+      faturamento_mensal: form.faturamento_mensal,
       consent_lgpd: form.consent,
       ...tracking,
     };
@@ -205,6 +215,24 @@ export function LeadCaptureModal() {
               onChange={(e) => upd("instagram", e.target.value)}
               placeholder="@suaempresa"
             />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="lc-faturamento">Quanto você fatura por mês?</Label>
+            <Select
+              value={form.faturamento_mensal}
+              onValueChange={(v) => upd("faturamento_mensal", v)}
+            >
+              <SelectTrigger id="lc-faturamento" className="w-full">
+                <SelectValue placeholder="Selecione uma faixa" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="60k-100k">R$ 60 mil a R$ 100 mil</SelectItem>
+                <SelectItem value="100k-250k">R$ 100 mil a R$ 250 mil</SelectItem>
+                <SelectItem value="250k-500k">R$ 250 mil a R$ 500 mil</SelectItem>
+                <SelectItem value="500k+">Mais de R$ 500 mil</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <label className="flex items-start gap-2 text-xs text-muted-foreground cursor-pointer">
