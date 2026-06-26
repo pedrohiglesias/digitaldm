@@ -239,9 +239,6 @@ export function LeadCaptureModal() {
             )}
           </Button>
 
-          <p className="text-[10px] text-center text-muted-foreground">
-            Seus dados são usados apenas para o atendimento comercial.
-          </p>
         </form>
       </DialogContent>
     </Dialog>
