@@ -152,8 +152,9 @@ export function LeadCaptureModal() {
         <DialogHeader>
           <DialogTitle className="text-xl">Antes de continuar para o WhatsApp</DialogTitle>
           <DialogDescription>
-            Preencha rapidamente para nosso comercial já chegar com seu contexto.
+            Preencha rapidamente para nossos especialistas entrarem em contato.
           </DialogDescription>
+
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
