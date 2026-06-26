@@ -136,6 +136,7 @@ export function LeadCaptureModal() {
       telefone_digits: form.telefone.replace(/\D/g, ""),
       email: form.email.trim().toLowerCase(),
       instagram: form.instagram.trim().replace(/^@/, ""),
+      faturamento_mensal: form.faturamento_mensal,
       consent_lgpd: form.consent,
       ...tracking,
     };
