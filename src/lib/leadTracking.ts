@@ -132,8 +132,45 @@ export function pushDataLayer(event: string, data: Record<string, unknown>) {
   window.dataLayer.push({ event, ...data });
 }
 
-export function buildWhatsappUrl(leadSessionId: string): string {
-  const msg = `Olá, vim do site da DigitalDM e quero falar com o comercial. ID: ${leadSessionId}`;
+export interface WhatsappLeadData {
+  nome?: string;
+  instagram?: string;
+  faturamento_mensal?: string;
+  lead_session_id?: string;
+}
+
+const FATURAMENTO_LABELS: Record<string, string> = {
+  "60k-100k": "R$ 60 mil a R$ 100 mil",
+  "100k-250k": "R$ 100 mil a R$ 250 mil",
+  "250k-500k": "R$ 250 mil a R$ 500 mil",
+  "500k+": "mais de R$ 500 mil",
+};
+
+function valueOrFallback(value: string | undefined, fallback = "não informado"): string {
+  return value?.trim() || fallback;
+}
+
+export function buildWhatsappUrl(lead: WhatsappLeadData): string {
+  const instagram = valueOrFallback(lead.instagram);
+  const formattedInstagram =
+    instagram === "não informado" || instagram.startsWith("@") ? instagram : `@${instagram}`;
+  const faturamento =
+    FATURAMENTO_LABELS[lead.faturamento_mensal || ""] ||
+    valueOrFallback(lead.faturamento_mensal);
+  const leadId = valueOrFallback(lead.lead_session_id);
+
+  const msg = [
+    "Olá, quero saber mais sobre a DigitalDM.",
+    "",
+    `Meu nome é: ${valueOrFallback(lead.nome)}`,
+    `Minha empresa/Instagram é: ${formattedInstagram}`,
+    `Faturo por mês: ${faturamento}`,
+    "",
+    "Quero entender como a DigitalDM pode ajudar minha empresa a alcançar mais resultados com mídia paga, automação e acompanhamento comercial.",
+    "",
+    `Lead ID: ${leadId}`,
+  ].join("\n");
+
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 

@@ -114,9 +114,17 @@ export function LeadCaptureModal() {
     return Object.keys(next).length === 0;
   };
 
-  const redirectToWhatsapp = (leadSessionId: string) => {
-    const url = buildWhatsappUrl(leadSessionId);
-    pushDataLayer("whatsapp_redirect", { lead_session_id: leadSessionId, url });
+  const redirectToWhatsapp = (lead: {
+    nome: string;
+    instagram: string;
+    faturamento_mensal: string;
+    lead_session_id: string;
+  }) => {
+    const url = buildWhatsappUrl(lead);
+    pushDataLayer("whatsapp_redirect", {
+      lead_session_id: lead.lead_session_id,
+      has_prefilled_whatsapp_message: true,
+    });
     window.open(url, "_blank", "noopener,noreferrer");
     setOpen(false);
     setForm(initial);
@@ -149,7 +157,12 @@ export function LeadCaptureModal() {
       console.warn("[LeadCapture] unexpected error:", err);
     } finally {
       setSubmitting(false);
-      redirectToWhatsapp(tracking.lead_session_id);
+      redirectToWhatsapp({
+        nome: payload.nome,
+        instagram: payload.instagram,
+        faturamento_mensal: payload.faturamento_mensal,
+        lead_session_id: tracking.lead_session_id,
+      });
     }
   };
 
