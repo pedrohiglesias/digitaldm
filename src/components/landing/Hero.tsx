@@ -76,15 +76,12 @@ export function Hero() {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in">
+          <div className="flex items-center justify-center mb-16 animate-fade-in">
             <Button variant="hero" size="xl" asChild>
               <a href="https://wa.me/554991002472" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                Quero Marcar Reunião
+                Quero falar com um especialista
                 <ArrowRight className="w-5 h-5" />
               </a>
-            </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href="#como-funciona">Ver Como Funciona</a>
             </Button>
           </div>
         </div>
