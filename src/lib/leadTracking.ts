@@ -2,7 +2,7 @@
 // Frontend only collects data + dispatches dataLayer + calls n8n webhook.
 // Hashing of PII is performed server-side (n8n).
 
-export const N8N_LEAD_WEBHOOK_URL = "https://n8n.example.com/webhook/digitaldm-lead";
+export const N8N_LEAD_WEBHOOK_URL = "https://webhook.dmia.com.br/webhook/digitaldm-lead";
 
 export const WHATSAPP_NUMBER = "554991002472";
 
@@ -144,7 +144,7 @@ export async function sendLeadToWebhook(payload: Record<string, unknown>, timeou
   try {
     const res = await fetch(N8N_LEAD_WEBHOOK_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
       body: JSON.stringify(payload),
       signal: ctrl.signal,
       keepalive: true,
