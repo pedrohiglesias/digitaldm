@@ -157,7 +157,6 @@ export function buildWhatsappUrl(lead: WhatsappLeadData): string {
   const faturamento =
     FATURAMENTO_LABELS[lead.faturamento_mensal || ""] ||
     valueOrFallback(lead.faturamento_mensal);
-  const leadId = valueOrFallback(lead.lead_session_id);
 
   const msg = [
     "Olá, quero saber mais sobre a DigitalDM.",
@@ -167,8 +166,6 @@ export function buildWhatsappUrl(lead: WhatsappLeadData): string {
     `Faturo por mês: ${faturamento}`,
     "",
     "Quero entender como a DigitalDM pode ajudar minha empresa a alcançar mais resultados com mídia paga, automação e acompanhamento comercial.",
-    "",
-    `Lead ID: ${leadId}`,
   ].join("\n");
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
