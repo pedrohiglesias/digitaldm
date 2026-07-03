@@ -54,7 +54,7 @@ export function FunnelSection() {
                   {/* URL bar */}
                   <div className="flex-1 flex justify-center">
                     <div className="bg-muted/50 rounded-full px-4 py-1.5 text-xs text-muted-foreground max-w-xs w-full text-center">
-                      https://app.dmia.com.br/funil
+                      https://app.dmia.net.br/funil
                     </div>
                   </div>
                   <div className="w-16" />
