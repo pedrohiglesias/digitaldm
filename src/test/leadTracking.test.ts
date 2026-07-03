@@ -20,4 +20,14 @@ describe("buildWhatsappUrl", () => {
     expect(message).not.toContain("Lead ID");
     expect(message).not.toContain("lead-123");
   });
+
+  it("formats the below 60k revenue range", () => {
+    const url = buildWhatsappUrl({
+      nome: "Lead Teste",
+      faturamento_mensal: "below-60k",
+    });
+
+    const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
+    expect(message).toContain("Faturo por mês: abaixo de R$ 60 mil");
+  });
 });

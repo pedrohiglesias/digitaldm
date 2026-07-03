@@ -140,6 +140,7 @@ export interface WhatsappLeadData {
 }
 
 const FATURAMENTO_LABELS: Record<string, string> = {
+  "below-60k": "abaixo de R$ 60 mil",
   "60k-100k": "R$ 60 mil a R$ 100 mil",
   "100k-250k": "R$ 100 mil a R$ 250 mil",
   "250k-500k": "R$ 250 mil a R$ 500 mil",

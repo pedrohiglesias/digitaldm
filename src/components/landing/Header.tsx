@@ -59,7 +59,7 @@ export function Header() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <Button variant="outline" size="lg" asChild>
-              <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+              <a href="https://app.dmia.net.br/" target="_blank" rel="noopener noreferrer">
                 Entrar na DM IA
               </a>
             </Button>
@@ -107,7 +107,7 @@ export function Header() {
                 ))}
                 <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-border/50">
                   <Button variant="outline" size="lg" className="w-full rounded-xl" asChild>
-                    <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                    <a href="https://app.dmia.net.br/" target="_blank" rel="noopener noreferrer">
                       Entrar na DM IA
                     </a>
                   </Button>

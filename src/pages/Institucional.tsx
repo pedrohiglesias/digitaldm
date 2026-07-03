@@ -209,7 +209,7 @@ export default function Institucional() {
             </nav>
             <div className="flex items-center gap-3">
               <Button variant="heroOutline" size="lg" asChild className="hidden sm:flex">
-                <a href="https://app.dmia.com.br" target="_blank" rel="noopener noreferrer">
+                <a href="https://app.dmia.net.br/" target="_blank" rel="noopener noreferrer">
                   Entrar na DMIA
                 </a>
               </Button>

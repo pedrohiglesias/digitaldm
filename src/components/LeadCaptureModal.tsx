@@ -240,6 +240,7 @@ export function LeadCaptureModal() {
                 <SelectValue placeholder="Selecione uma faixa" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="below-60k">Abaixo de R$ 60 mil</SelectItem>
                 <SelectItem value="60k-100k">R$ 60 mil a R$ 100 mil</SelectItem>
                 <SelectItem value="100k-250k">R$ 100 mil a R$ 250 mil</SelectItem>
                 <SelectItem value="250k-500k">R$ 250 mil a R$ 500 mil</SelectItem>
