@@ -116,7 +116,7 @@ interface FormState {
   nome: string;
   telefone: string;
   email: string;
-  empresa: string;
+  instagram: string;
   faturamento_mensal: string;
   segmento: string;
 }
@@ -125,7 +125,7 @@ const initial: FormState = {
   nome: "",
   telefone: "",
   email: "",
-  empresa: "",
+  instagram: "",
   faturamento_mensal: "",
   segmento: "",
 };
@@ -179,7 +179,7 @@ export function LeadCaptureModal() {
     if (phoneError) next.telefone = phoneError;
     const emailError = getCorporateEmailError(form.email);
     if (emailError) next.email = emailError;
-    if (!form.empresa.trim()) next.empresa = "Informe o nome da empresa";
+    if (!form.instagram.trim()) next.instagram = "Informe o Instagram da empresa";
     if (!form.faturamento_mensal) {
       next.faturamento_mensal = "Selecione uma faixa de faturamento";
     }
@@ -191,6 +191,7 @@ export function LeadCaptureModal() {
   const redirectToWhatsapp = (lead: {
     nome: string;
     empresa: string;
+    instagram: string;
     faturamento_mensal: string;
     segmento: string;
     lead_session_id: string;
@@ -224,8 +225,9 @@ export function LeadCaptureModal() {
       phone_country_code: "55",
       ddd: phoneDigits.slice(0, 2),
       email: form.email.trim().toLowerCase(),
-      empresa: form.empresa.trim(),
-      company_name: form.empresa.trim(),
+      instagram: form.instagram.trim(),
+      empresa: form.instagram.trim(),
+      company_name: form.instagram.trim(),
       faturamento_mensal: form.faturamento_mensal,
       segmento: form.segmento,
       consent_lgpd: true,
@@ -243,6 +245,7 @@ export function LeadCaptureModal() {
       redirectToWhatsapp({
         nome: payload.nome,
         empresa: payload.empresa,
+        instagram: payload.instagram,
         faturamento_mensal: payload.faturamento_mensal,
         segmento: payload.segmento,
         lead_session_id: tracking.lead_session_id,
@@ -288,7 +291,7 @@ export function LeadCaptureModal() {
               required
               value={form.email}
               onChange={(e) => upd("email", e.target.value)}
-              placeholder="Qual seu e-mail corporativo?"
+              placeholder="Qual email da sua empresa?"
               aria-label="E-mail corporativo"
               aria-invalid={Boolean(errors.email)}
               className={inputClassName}
@@ -299,16 +302,16 @@ export function LeadCaptureModal() {
           <div>
             <Input
               id="lc-empresa"
-              autoComplete="organization"
+              autoComplete="url"
               required
-              value={form.empresa}
-              onChange={(e) => upd("empresa", e.target.value)}
-              placeholder="Qual o nome da sua empresa?"
-              aria-label="Nome da empresa"
-              aria-invalid={Boolean(errors.empresa)}
+              value={form.instagram}
+              onChange={(e) => upd("instagram", e.target.value)}
+              placeholder="Qual o Instagram da sua empresa?"
+              aria-label="Instagram da empresa"
+              aria-invalid={Boolean(errors.instagram)}
               className={inputClassName}
             />
-            {errors.empresa && <p className="mt-1.5 text-xs text-red-400">{errors.empresa}</p>}
+            {errors.instagram && <p className="mt-1.5 text-xs text-red-400">{errors.instagram}</p>}
           </div>
 
           <div>

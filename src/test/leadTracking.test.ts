@@ -5,7 +5,7 @@ describe("buildWhatsappUrl", () => {
   it("builds a qualified commercial WhatsApp message from lead data", () => {
     const url = buildWhatsappUrl({
       nome: "Pedro Iglesias",
-      empresa: "DigitalDM",
+      instagram: "@digitaldm.com.br",
       faturamento_mensal: "100k-250k",
       segmento: "moda-feminina",
       lead_session_id: "lead-123",
@@ -16,7 +16,7 @@ describe("buildWhatsappUrl", () => {
     const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
     expect(message).toContain("Olá, quero saber mais sobre a DigitalDM.");
     expect(message).toContain("Meu nome é: Pedro Iglesias");
-    expect(message).toContain("Minha empresa é: DigitalDM");
+    expect(message).toContain("Instagram da empresa: @digitaldm.com.br");
     expect(message).toContain("Faturo por mês: R$ 100 mil a R$ 250 mil");
     expect(message).toContain("Meu segmento é: Moda Feminina");
     expect(message).not.toContain("Lead ID");

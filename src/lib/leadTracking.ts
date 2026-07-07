@@ -169,7 +169,7 @@ function valueOrFallback(value: string | undefined, fallback = "não informado")
 }
 
 export function buildWhatsappUrl(lead: WhatsappLeadData): string {
-  const empresa = valueOrFallback(lead.empresa || lead.instagram);
+  const instagram = valueOrFallback(lead.instagram || lead.empresa);
   const faturamento =
     FATURAMENTO_LABELS[lead.faturamento_mensal || ""] ||
     valueOrFallback(lead.faturamento_mensal);
@@ -181,7 +181,7 @@ export function buildWhatsappUrl(lead: WhatsappLeadData): string {
     "Olá, quero saber mais sobre a DigitalDM.",
     "",
     `Meu nome é: ${valueOrFallback(lead.nome)}`,
-    `Minha empresa é: ${empresa}`,
+    `Instagram da empresa: ${instagram}`,
     `Faturo por mês: ${faturamento}`,
     `Meu segmento é: ${segmento}`,
     "",
