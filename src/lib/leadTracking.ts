@@ -49,7 +49,9 @@ export function getLeadSessionId(): string {
     id = uuid();
     try {
       localStorage.setItem(LS_SESSION_ID, id);
-    } catch {}
+    } catch {
+      // Storage can fail in private browsing; the cookie fallback still works.
+    }
     setCookie(LS_SESSION_ID, id);
   }
   return id;
@@ -62,7 +64,9 @@ export function getLandingPageUrl(): string {
     url = window.location.href;
     try {
       localStorage.setItem(LS_LANDING_URL, url);
-    } catch {}
+    } catch {
+      // Storage can fail in private browsing; the cookie fallback still works.
+    }
     setCookie(LS_LANDING_URL, url);
   }
   return url;
@@ -134,17 +138,30 @@ export function pushDataLayer(event: string, data: Record<string, unknown>) {
 
 export interface WhatsappLeadData {
   nome?: string;
+  empresa?: string;
   instagram?: string;
   faturamento_mensal?: string;
+  segmento?: string;
   lead_session_id?: string;
 }
 
 const FATURAMENTO_LABELS: Record<string, string> = {
+  "40k-60k": "R$ 40 mil a R$ 60 mil",
   "below-60k": "abaixo de R$ 60 mil",
   "60k-100k": "R$ 60 mil a R$ 100 mil",
   "100k-250k": "R$ 100 mil a R$ 250 mil",
   "250k-500k": "R$ 250 mil a R$ 500 mil",
+  "500k-1m": "R$ 500 mil a R$ 1 milhão",
   "500k+": "mais de R$ 500 mil",
+  "1m+": "mais de R$ 1 milhão",
+};
+
+const SEGMENTO_LABELS: Record<string, string> = {
+  "e-commerce": "E-commerce",
+  "negocios-locais": "Negócios Locais",
+  "clinica-saude": "Clínicas",
+  "moda-feminina": "Moda Feminina",
+  outro: "Outro",
 };
 
 function valueOrFallback(value: string | undefined, fallback = "não informado"): string {
@@ -152,19 +169,21 @@ function valueOrFallback(value: string | undefined, fallback = "não informado")
 }
 
 export function buildWhatsappUrl(lead: WhatsappLeadData): string {
-  const instagram = valueOrFallback(lead.instagram);
-  const formattedInstagram =
-    instagram === "não informado" || instagram.startsWith("@") ? instagram : `@${instagram}`;
+  const empresa = valueOrFallback(lead.empresa || lead.instagram);
   const faturamento =
     FATURAMENTO_LABELS[lead.faturamento_mensal || ""] ||
     valueOrFallback(lead.faturamento_mensal);
+  const segmento =
+    SEGMENTO_LABELS[lead.segmento || ""] ||
+    valueOrFallback(lead.segmento);
 
   const msg = [
     "Olá, quero saber mais sobre a DigitalDM.",
     "",
     `Meu nome é: ${valueOrFallback(lead.nome)}`,
-    `Minha empresa/Instagram é: ${formattedInstagram}`,
+    `Minha empresa é: ${empresa}`,
     `Faturo por mês: ${faturamento}`,
+    `Meu segmento é: ${segmento}`,
     "",
     "Quero entender como a DigitalDM pode ajudar minha empresa a alcançar mais resultados com mídia paga, automação e acompanhamento comercial.",
   ].join("\n");
@@ -188,7 +207,6 @@ export async function sendLeadToWebhook(payload: Record<string, unknown>, timeou
     return { ok: res.ok };
   } catch (err) {
     clearTimeout(t);
-    // eslint-disable-next-line no-console
     console.warn("[LeadCapture] webhook failed:", err);
     return { ok: false, error: String(err) };
   }

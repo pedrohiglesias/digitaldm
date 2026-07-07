@@ -5,8 +5,9 @@ describe("buildWhatsappUrl", () => {
   it("builds a qualified commercial WhatsApp message from lead data", () => {
     const url = buildWhatsappUrl({
       nome: "Pedro Iglesias",
-      instagram: "digitaldm.com.br",
+      empresa: "DigitalDM",
       faturamento_mensal: "100k-250k",
+      segmento: "moda-feminina",
       lead_session_id: "lead-123",
     });
 
@@ -15,19 +16,30 @@ describe("buildWhatsappUrl", () => {
     const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
     expect(message).toContain("Olá, quero saber mais sobre a DigitalDM.");
     expect(message).toContain("Meu nome é: Pedro Iglesias");
-    expect(message).toContain("Minha empresa/Instagram é: @digitaldm.com.br");
+    expect(message).toContain("Minha empresa é: DigitalDM");
     expect(message).toContain("Faturo por mês: R$ 100 mil a R$ 250 mil");
+    expect(message).toContain("Meu segmento é: Moda Feminina");
     expect(message).not.toContain("Lead ID");
     expect(message).not.toContain("lead-123");
   });
 
-  it("formats the below 60k revenue range", () => {
+  it("formats the new 40k to 60k revenue range", () => {
     const url = buildWhatsappUrl({
       nome: "Lead Teste",
-      faturamento_mensal: "below-60k",
+      faturamento_mensal: "40k-60k",
     });
 
     const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
-    expect(message).toContain("Faturo por mês: abaixo de R$ 60 mil");
+    expect(message).toContain("Faturo por mês: R$ 40 mil a R$ 60 mil");
+  });
+
+  it("formats the over 1m revenue range", () => {
+    const url = buildWhatsappUrl({
+      nome: "Lead Teste",
+      faturamento_mensal: "1m+",
+    });
+
+    const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
+    expect(message).toContain("Faturo por mês: mais de R$ 1 milhão");
   });
 });
