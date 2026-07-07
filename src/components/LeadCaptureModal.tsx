@@ -20,26 +20,6 @@ import {
 } from "@/lib/leadTracking";
 
 const OPEN_EVENT = "open-lead-form";
-const FREE_EMAIL_DOMAINS = new Set([
-  "gmail.com",
-  "googlemail.com",
-  "hotmail.com",
-  "outlook.com",
-  "live.com",
-  "msn.com",
-  "icloud.com",
-  "me.com",
-  "mac.com",
-  "yahoo.com",
-  "yahoo.com.br",
-  "bol.com.br",
-  "uol.com.br",
-  "terra.com.br",
-  "globo.com",
-  "aol.com",
-  "proton.me",
-  "protonmail.com",
-]);
 
 const inputClassName =
   "h-12 rounded-md border-white/10 bg-white text-base text-neutral-950 placeholder:text-neutral-500 focus-visible:ring-primary md:text-base";
@@ -101,14 +81,10 @@ function splitFullName(value: string): { first_name: string; last_name: string; 
   };
 }
 
-function getCorporateEmailError(value: string): string | null {
+function getEmailError(value: string): string | null {
   const email = value.trim().toLowerCase();
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRe.test(email)) return "Informe um e-mail corporativo válido";
-  const domain = email.split("@")[1] || "";
-  if (FREE_EMAIL_DOMAINS.has(domain)) {
-    return "Use seu e-mail corporativo";
-  }
+  if (!emailRe.test(email)) return "Informe um e-mail válido";
   return null;
 }
 
@@ -177,7 +153,7 @@ export function LeadCaptureModal() {
     if (form.nome.trim().split(/\s+/).length < 2) next.nome = "Informe nome e sobrenome";
     const phoneError = getPhoneError(form.telefone);
     if (phoneError) next.telefone = phoneError;
-    const emailError = getCorporateEmailError(form.email);
+    const emailError = getEmailError(form.email);
     if (emailError) next.email = emailError;
     if (!form.instagram.trim()) next.instagram = "Informe o Instagram da empresa";
     if (!form.faturamento_mensal) {
@@ -292,7 +268,7 @@ export function LeadCaptureModal() {
               value={form.email}
               onChange={(e) => upd("email", e.target.value)}
               placeholder="Qual email da sua empresa?"
-              aria-label="E-mail corporativo"
+              aria-label="Email da empresa"
               aria-invalid={Boolean(errors.email)}
               className={inputClassName}
             />
