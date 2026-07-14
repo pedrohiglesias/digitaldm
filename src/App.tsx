@@ -11,6 +11,7 @@ import Acelera90Dias from "./pages/Acelera90Dias";
 import Mentoria from "./pages/Mentoria";
 import Gestao from "./pages/Gestao";
 import Crm from "./pages/Crm";
+import Empresario from "./pages/Empresario";
 import NotFound from "./pages/NotFound";
 import { LeadCaptureModal } from "./components/LeadCaptureModal";
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/gps360" element={<Mentoria />} />
           <Route path="/gestao" element={<Gestao />} />
           <Route path="/crm" element={<Crm />} />
+          <Route path="/empresario" element={<Empresario />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
