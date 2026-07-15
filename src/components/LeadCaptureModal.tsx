@@ -377,7 +377,7 @@ export function LeadCaptureModal() {
           <Button
             type="submit"
             size="lg"
-            className="h-12 w-full rounded-md bg-primary text-base font-bold text-primary-foreground shadow-[0_0_24px_hsla(210,100%,55%,0.28)] hover:bg-primary/90 hover:shadow-[0_0_32px_hsla(210,100%,55%,0.42)]"
+            className="min-h-14 w-full whitespace-normal rounded-md bg-[#16a34a] px-4 py-3 text-center text-[15px] font-bold leading-tight text-white shadow-[0_0_24px_rgba(22,163,74,0.32)] hover:bg-[#15803d] hover:shadow-[0_0_34px_rgba(22,163,74,0.48)] sm:text-base"
             disabled={submitting}
           >
             {submitting ? (
@@ -387,7 +387,7 @@ export function LeadCaptureModal() {
               </>
             ) : (
               <>
-                Falar com especialista
+                Receba o orçamento no WhatsApp agora mesmo
                 <ArrowRight className="w-4 h-4 ml-1" />
               </>
             )}
