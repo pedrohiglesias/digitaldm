@@ -200,13 +200,7 @@ export default function Empresario() {
                   ))}
                 </div>
 
-                <div className="mt-8 hidden lg:flex">
-                  <Button size="xl" variant="hero" className="rounded-xl" onClick={scrollToForm}>
-                    Receber diagnóstico gratuito do meu funil
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </div>
-                <p className="mt-3 hidden lg:block text-xs text-muted-foreground">
+                <p className="mt-8 hidden lg:block text-xs text-muted-foreground">
                   Resposta em até 24h úteis · Sem compromisso · Dados protegidos pela LGPD
                 </p>
               </div>
