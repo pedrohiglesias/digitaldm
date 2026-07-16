@@ -200,13 +200,7 @@ export default function Empresario() {
                   ))}
                 </div>
 
-                <div className="mt-8 hidden lg:flex">
-                  <Button size="xl" variant="hero" className="rounded-xl" onClick={scrollToForm}>
-                    Receber diagnóstico gratuito do meu funil
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </div>
-                <p className="mt-3 hidden lg:block text-xs text-muted-foreground">
+                <p className="mt-8 hidden lg:block text-xs text-muted-foreground">
                   Resposta em até 24h úteis · Sem compromisso · Dados protegidos pela LGPD
                 </p>
               </div>
@@ -483,35 +477,59 @@ export default function Empresario() {
           <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/15 rounded-full blur-3xl" />
 
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-              <div>
-                <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-                  Antes de investir mais em anúncio,{" "}
-                  <span className="text-gradient">descubra onde sua operação está perdendo dinheiro</span>
-                </h2>
-                <p className="mt-5 text-lg text-foreground/80">
-                  Solicite um diagnóstico executivo e veja quais pontos do seu funil impedem
-                  sua empresa de gerar leads qualificados com previsibilidade.
-                </p>
-                <ul className="mt-6 space-y-2.5">
-                  {[
-                    "Análise do funil completo — aquisição, qualificação e vendas",
-                    "Identificação de vazamentos e oportunidades reais de escala",
-                    "Próximos passos claros — sem enrolação, sem achismo",
-                  ].map((t) => (
-                    <li key={t} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                      <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <span>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                <Activity className="h-3.5 w-3.5" /> Última etapa
               </div>
-              <div>
-                <InlineLeadForm id="form-diagnostico-final" />
+              <h2 className="mt-5 text-3xl md:text-5xl font-bold leading-tight">
+                Antes de investir mais em anúncio,{" "}
+                <span className="text-gradient">descubra onde sua operação está perdendo dinheiro</span>
+              </h2>
+              <p className="mt-5 text-lg text-foreground/80">
+                Solicite um diagnóstico executivo e veja quais pontos do seu funil impedem
+                sua empresa de gerar leads qualificados com previsibilidade.
+              </p>
+              <ul className="mt-6 space-y-2.5 inline-block text-left">
+                {[
+                  "Análise do funil completo — aquisição, qualificação e vendas",
+                  "Identificação de vazamentos e oportunidades reais de escala",
+                  "Próximos passos claros — sem enrolação, sem achismo",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Trust stats strip */}
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
+                {[
+                  { k: "Empresas atendidas", v: "120+" },
+                  { k: "E-commerces", v: "800+" },
+                  { k: "Verba gerida", v: "R$12M+" },
+                  { k: "Anos de estrada", v: "15+" },
+                ].map((s) => (
+                  <div key={s.k} className="rounded-xl border border-border bg-card/60 backdrop-blur px-3 py-3 text-center">
+                    <div className="text-2xl font-bold text-gradient">{s.v}</div>
+                    <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">{s.k}</div>
+                  </div>
+                ))}
               </div>
+            </div>
+
+            <div className="mt-12 max-w-xl mx-auto">
+              <InlineLeadForm id="form-diagnostico-final" />
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" /> Dados protegidos pela LGPD</span>
+              <span className="inline-flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-primary" /> Resposta em até 24h úteis</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" /> Sem compromisso</span>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
