@@ -3,7 +3,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2, ArrowRight } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -33,21 +32,6 @@ const selectContentClassName =
 
 const selectItemClassName =
   "text-neutral-950 focus:bg-primary/10 focus:text-neutral-950 data-[highlighted]:bg-primary/10";
-
-const segmentOptions = [
-  { value: "e-commerce", label: "E-commerce" },
-  { value: "negocios-locais", label: "Negócios Locais" },
-  { value: "clinica-saude", label: "Clínicas" },
-  { value: "moda-feminina", label: "Moda Feminina" },
-  { value: "servicos", label: "Serviços" },
-  { value: "varejo", label: "Varejo" },
-  { value: "industria", label: "Indústria" },
-  { value: "educacao", label: "Educação" },
-  { value: "imobiliaria", label: "Imobiliária" },
-  { value: "franquia", label: "Franquia" },
-  { value: "energia-solar", label: "Energia Solar" },
-  { value: "outro", label: "Outro" },
-];
 
 // Match all WhatsApp links pointing to our commercial number.
 function isWhatsappCtaLink(el: Element | null): HTMLAnchorElement | null {
@@ -362,34 +346,38 @@ export function LeadCaptureModal() {
           </div>
 
           <div>
-            <div className="rounded-2xl bg-white p-4 text-neutral-950">
-              <p className="mb-4 text-base font-bold text-neutral-950">
-                Qual o segmento da sua empresa?
-              </p>
-              <RadioGroup
+            <Select
+              value={form.segmento}
+              onValueChange={(v) => upd("segmento", v)}
+            >
+              <SelectTrigger
                 id="lc-segmento"
-                value={form.segmento}
-                onValueChange={(v) => upd("segmento", v)}
                 aria-label="Segmento"
                 aria-invalid={Boolean(errors.segmento)}
-                className="gap-3"
+                className={selectTriggerClassName}
               >
-                {segmentOptions.map((option) => (
-                  <label
-                    key={option.value}
-                    htmlFor={`lc-segmento-${option.value}`}
-                    className="flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-full border border-neutral-200 bg-white px-4 py-3 text-[15px] font-medium text-neutral-950 shadow-sm transition-colors hover:border-neutral-300 hover:bg-neutral-50"
-                  >
-                    <span>{option.label}</span>
-                    <RadioGroupItem
-                      id={`lc-segmento-${option.value}`}
-                      value={option.value}
-                      className="h-7 w-7 shrink-0 border-2 border-neutral-500 text-neutral-950 data-[state=checked]:border-neutral-950"
-                    />
-                  </label>
-                ))}
-              </RadioGroup>
-            </div>
+                <SelectValue placeholder="Qual o seu segmento?" />
+              </SelectTrigger>
+              <SelectContent
+                side="bottom"
+                sideOffset={6}
+                avoidCollisions={false}
+                className={selectContentClassName}
+              >
+                <SelectItem className={selectItemClassName} value="e-commerce">E-commerce</SelectItem>
+                <SelectItem className={selectItemClassName} value="negocios-locais">Negócios Locais</SelectItem>
+                <SelectItem className={selectItemClassName} value="clinica-saude">Clínicas</SelectItem>
+                <SelectItem className={selectItemClassName} value="moda-feminina">Moda Feminina</SelectItem>
+                <SelectItem className={selectItemClassName} value="servicos">Serviços</SelectItem>
+                <SelectItem className={selectItemClassName} value="varejo">Varejo</SelectItem>
+                <SelectItem className={selectItemClassName} value="industria">Indústria</SelectItem>
+                <SelectItem className={selectItemClassName} value="educacao">Educação</SelectItem>
+                <SelectItem className={selectItemClassName} value="imobiliaria">Imobiliária</SelectItem>
+                <SelectItem className={selectItemClassName} value="franquia">Franquia</SelectItem>
+                <SelectItem className={selectItemClassName} value="energia-solar">Energia Solar</SelectItem>
+                <SelectItem className={selectItemClassName} value="outro">Outro</SelectItem>
+              </SelectContent>
+            </Select>
             {errors.segmento && <p className="mt-1.5 text-xs text-red-400">{errors.segmento}</p>}
           </div>
 
