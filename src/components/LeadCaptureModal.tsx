@@ -368,6 +368,13 @@ export function LeadCaptureModal() {
                 <SelectItem className={selectItemClassName} value="negocios-locais">Negócios Locais</SelectItem>
                 <SelectItem className={selectItemClassName} value="clinica-saude">Clínicas</SelectItem>
                 <SelectItem className={selectItemClassName} value="moda-feminina">Moda Feminina</SelectItem>
+                <SelectItem className={selectItemClassName} value="servicos">Serviços</SelectItem>
+                <SelectItem className={selectItemClassName} value="varejo">Varejo</SelectItem>
+                <SelectItem className={selectItemClassName} value="industria">Indústria</SelectItem>
+                <SelectItem className={selectItemClassName} value="educacao">Educação</SelectItem>
+                <SelectItem className={selectItemClassName} value="imobiliaria">Imobiliária</SelectItem>
+                <SelectItem className={selectItemClassName} value="franquia">Franquia</SelectItem>
+                <SelectItem className={selectItemClassName} value="energia-solar">Energia Solar</SelectItem>
                 <SelectItem className={selectItemClassName} value="outro">Outro</SelectItem>
               </SelectContent>
             </Select>

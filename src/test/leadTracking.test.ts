@@ -42,4 +42,14 @@ describe("buildWhatsappUrl", () => {
     const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
     expect(message).toContain("Faturo por mês: mais de R$ 1 milhão");
   });
+
+  it("formats the added segment labels", () => {
+    const url = buildWhatsappUrl({
+      nome: "Lead Teste",
+      segmento: "energia-solar",
+    });
+
+    const message = decodeURIComponent(new URL(url).searchParams.get("text") || "");
+    expect(message).toContain("Meu segmento é: Energia Solar");
+  });
 });

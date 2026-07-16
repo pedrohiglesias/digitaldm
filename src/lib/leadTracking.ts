@@ -161,6 +161,13 @@ const SEGMENTO_LABELS: Record<string, string> = {
   "negocios-locais": "Negócios Locais",
   "clinica-saude": "Clínicas",
   "moda-feminina": "Moda Feminina",
+  servicos: "Serviços",
+  varejo: "Varejo",
+  industria: "Indústria",
+  educacao: "Educação",
+  imobiliaria: "Imobiliária",
+  franquia: "Franquia",
+  "energia-solar": "Energia Solar",
   outro: "Outro",
 };
 
