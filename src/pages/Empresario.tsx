@@ -518,9 +518,13 @@ export default function Empresario() {
               </div>
             </div>
 
-            <div className="mt-12 max-w-xl mx-auto">
-              <InlineLeadForm id="form-diagnostico-final" />
-            </div>
+              <div className="mt-10 flex justify-center">
+                <Button size="xl" variant="hero" className="rounded-xl" onClick={scrollToForm}>
+                  Receber diagnóstico gratuito do meu funil
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-emerald-400" /> Dados protegidos pela LGPD</span>
