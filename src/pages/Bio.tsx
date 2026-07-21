@@ -1,182 +1,156 @@
-import { Instagram, Youtube, ArrowUpRight } from "lucide-react";
-import logo from "@/assets/logo-digitaldm.png";
-import ceo from "@/assets/ceo-deomir.png";
-import crmDmia from "@/assets/crm-dmia.png";
-import funnel from "@/assets/funnel-signals.gif";
-import workflow from "@/assets/workflow-n8n.png";
-import metaPartner from "@/assets/meta-partner.png";
-import googlePartner from "@/assets/google-partner.png";
+import { Instagram, MessageCircle } from "lucide-react";
+import avatarDigitalDM from "@/assets/bio/digitaldm-bio-avatar.jpg";
+import diagnosticoDeomir from "@/assets/bio/cards/diagnostico-deomir.png";
+import gestao360 from "@/assets/bio/cards/gestao-360.png";
+import dmiaCrm from "@/assets/bio/cards/dmia-crm.png";
+import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.png";
+import provasCases from "@/assets/bio/cards/provas-cases.png";
 
-type LinkCard = {
-  title: string;
-  description?: string;
-  image: string;
+const whatsappUrl = "https://wa.me/554991002472";
+
+const sections = [
+  {
+    title: "Produtos",
+    align: "left",
+    links: [
+      {
+        image: diagnosticoDeomir,
+        alt: "Diagnóstico estratégico com Deomir",
+        href: whatsappUrl,
+      },
+      {
+        image: gestao360,
+        alt: "Tráfego, funil e CRM trabalhando juntos",
+        href: "/gestao",
+      },
+      {
+        image: dmiaCrm,
+        alt: "CRM com IA para não perder lead",
+        href: "/dmia",
+      },
+    ],
+  },
+  {
+    title: "Serviços",
+    align: "right",
+    links: [
+      {
+        image: ecommerceLojistas,
+        alt: "Operação digital para vender mais",
+        href: "/acelera90dias",
+      },
+    ],
+  },
+  {
+    title: "Cases",
+    align: "left",
+    links: [
+      {
+        image: provasCases,
+        alt: "Resultados reais, sem promessa bonita",
+        href: "/#resultados",
+      },
+    ],
+  },
+] as const;
+
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
   href: string;
-  accent?: string;
-};
-
-const WHATSAPP =
-  "https://tintim.link/whatsapp/3cd6aada-3f3e-484b-a2b2-91f08e2bc002/ca4bcf0b-b472-419d-9c5f-aefde3ea931a";
-
-const produtos: LinkCard[] = [
-  {
-    title: "DM IA — CRM Inteligente",
-    description: "Triagem automática de leads, alertas quentes e cadência infinita.",
-    image: crmDmia,
-    href: "/dmia",
-    accent: "from-primary/40 to-secondary/20",
-  },
-  {
-    title: "Simulador de Vendas",
-    description: "Descubra o potencial real do seu funil em 2 minutos.",
-    image: funnel,
-    href: "/simuladordm",
-    accent: "from-secondary/40 to-primary/20",
-  },
-];
-
-const servicos: LinkCard[] = [
-  {
-    title: "Gestão Mensal 360º",
-    description: "Tráfego, criativo, funil e CRM operando como um só time.",
-    image: workflow,
-    href: "/gestao",
-    accent: "from-primary/40 to-secondary/20",
-  },
-  {
-    title: "Acelera 90 Dias",
-    description: "Implementação completa do método MIA em 90 dias.",
-    image: funnel,
-    href: "/acelera90dias",
-    accent: "from-secondary/40 to-primary/20",
-  },
-  {
-    title: "GPS 360 — Mentoria",
-    description: "Diagnóstico + roteiro executivo para organizar sua marca.",
-    image: ceo,
-    href: "/gps360",
-    accent: "from-primary/40 to-secondary/20",
-  },
-];
-
-const parceiros: LinkCard[] = [
-  {
-    title: "Meta Business Partner",
-    image: metaPartner,
-    href: "https://www.facebook.com/business/partner-directory",
-    accent: "from-primary/30 to-secondary/10",
-  },
-  {
-    title: "Google Partner",
-    image: googlePartner,
-    href: "https://www.google.com/partners/",
-    accent: "from-secondary/30 to-primary/10",
-  },
-];
-
-function Section({ title, items }: { title: string; items: LinkCard[] }) {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="w-full max-w-xl mx-auto mt-10">
-      <div className="flex items-center gap-4 mb-5">
-        <div className="h-px flex-1 bg-border/60" />
-        <h2 className="text-sm uppercase tracking-[0.2em] text-muted-foreground">{title}</h2>
-        <div className="h-px flex-1 bg-border/60" />
-      </div>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="grid h-9 w-9 place-items-center rounded-full border-2 border-white text-white transition hover:border-primary hover:text-primary"
+    >
+      {children}
+    </a>
+  );
+}
 
-      <div className="space-y-4">
-        {items.map((item) => {
-          const isExternal = item.href.startsWith("http");
-          return (
-            <a
-              key={item.title}
-              href={item.href}
-              target={isExternal ? "_blank" : undefined}
-              rel={isExternal ? "noopener noreferrer" : undefined}
-              className="group relative block overflow-hidden rounded-2xl border border-primary/20 bg-card/60 backdrop-blur-md transition-all hover:border-primary/60 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-20px_rgba(59,130,246,0.55)]"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-r ${item.accent ?? "from-primary/20 to-secondary/10"} opacity-40 group-hover:opacity-70 transition-opacity`} />
-              <div className="relative flex items-center gap-4 p-4">
-                <div className="h-20 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-background/40 ring-1 ring-primary/20">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-base text-foreground leading-tight">{item.title}</h3>
-                  {item.description && (
-                    <p className="mt-1 text-xs text-muted-foreground line-clamp-2">{item.description}</p>
-                  )}
-                </div>
-                <ArrowUpRight className="w-5 h-5 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
-              </div>
-            </a>
-          );
-        })}
-      </div>
-    </section>
+function SectionTitle({ title, align }: { title: string; align: "left" | "right" }) {
+  return (
+    <div className="my-8 flex items-center gap-5">
+      {align === "right" ? <span className="h-px flex-1 bg-[#19222d]" /> : null}
+      <h2 className="shrink-0 text-[17px] font-bold text-[#666f7b]">{title}</h2>
+      {align === "left" ? <span className="h-px flex-1 bg-[#19222d]" /> : null}
+    </div>
   );
 }
 
 const Bio = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute inset-0 -z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-secondary/15 blur-[120px]" />
-      </div>
+    <main className="min-h-screen bg-[#020816] text-white">
+      <section className="mx-auto min-h-screen w-full max-w-[620px] px-1 pb-10 pt-7 sm:px-3.5">
+        <header className="flex items-center justify-center gap-6 pb-7 text-left">
+          <a
+            href="/"
+            aria-label="Voltar para o site da DigitalDM"
+            className="grid h-[104px] w-[104px] shrink-0 place-items-center overflow-hidden rounded-full border-2 border-white/30 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_18px_48px_rgba(0,0,0,0.55)]"
+          >
+            <img src={avatarDigitalDM} alt="DigitalDM" className="h-full w-full object-cover" />
+          </a>
 
-      <main className="relative z-10 px-4 pb-16">
-        {/* Header / Profile */}
-        <header className="pt-12 pb-6 max-w-xl mx-auto">
-          <div className="flex items-center gap-5">
-            <div className="h-28 w-28 flex-shrink-0 rounded-full p-[3px] bg-gradient-to-br from-primary to-secondary shadow-[0_0_40px_rgba(59,130,246,0.5)]">
-              <div className="h-full w-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="Digital DM" className="h-16 w-16 object-contain" />
-              </div>
-            </div>
+          <div className="min-w-0">
+            <h1 className="text-[27px] font-black leading-tight tracking-normal">Digital DM</h1>
+            <p className="mt-2 max-w-[215px] text-[16px] font-medium leading-snug text-white/48">
+              Tráfego pago, IA e automação para crescer com previsibilidade
+            </p>
 
-            <div className="flex-1 min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Digital DM</h1>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Agência 360º com CRM inteligente. Tráfego, funil, IA e previsibilidade para escalar seu negócio.
-              </p>
-              <div className="mt-3 flex items-center gap-3">
-                <a
-                  href="https://www.instagram.com/digitaldm.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="h-9 w-9 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://www.youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="h-9 w-9 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
+            <nav className="mt-4 flex items-center gap-3" aria-label="Redes sociais da DigitalDM">
+              <SocialLink href="https://www.instagram.com/digitaldm.com.br/" label="Instagram da DigitalDM">
+                <Instagram className="h-[19px] w-[19px]" aria-hidden="true" />
+              </SocialLink>
+              <SocialLink href={whatsappUrl} label="Falar com a DigitalDM no WhatsApp">
+                <MessageCircle className="h-[19px] w-[19px]" aria-hidden="true" />
+              </SocialLink>
+            </nav>
           </div>
         </header>
 
-        <Section title="Produtos" items={produtos} />
-        <Section title="Serviços" items={servicos} />
-        <Section title="Parceiros" items={parceiros} />
+        <div className="relative left-1/2 h-px w-screen -translate-x-1/2 bg-[#16202b]" />
 
-        <footer className="mt-14 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Digital DM. Todos os direitos reservados.
+        {sections.map((section) => (
+          <section key={section.title} aria-labelledby={`bio-section-${section.title}`}>
+            <SectionTitle title={section.title} align={section.align} />
+            <div className="space-y-7">
+              {section.links.map((link) => {
+                const isExternal = link.href.startsWith("http");
+
+                return (
+                  <a
+                    key={link.alt}
+                    href={link.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="group relative left-1/2 block w-[calc(100vw-8px)] max-w-[620px] -translate-x-1/2 overflow-hidden rounded-[18px] bg-[#02050c] shadow-[0_0_0_7px_rgba(255,255,255,0.028),0_21px_48px_rgba(0,0,0,0.62)] transition duration-300 hover:-translate-x-1/2 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_rgba(0,0,0,0.7)]"
+                  >
+                    <img
+                      src={link.image}
+                      alt={link.alt}
+                      className="block w-full object-contain transition duration-500 group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+
+        <footer className="pt-9 text-center text-xs leading-relaxed text-white/35">
+          © DigitalDM. Todos os direitos reservados.
         </footer>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 };
 
