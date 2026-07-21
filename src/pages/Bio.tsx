@@ -131,49 +131,41 @@ const Bio = () => {
 
       <main className="relative z-10 px-4 pb-16">
         {/* Header / Profile */}
-        <header className="pt-12 pb-6 max-w-xl mx-auto text-center">
-          <div className="mx-auto mb-5 h-28 w-28 rounded-full p-[3px] bg-gradient-to-br from-primary to-secondary shadow-[0_0_40px_rgba(59,130,246,0.5)]">
-            <div className="h-full w-full rounded-full bg-background flex items-center justify-center overflow-hidden">
-              <img src={logo} alt="Digital DM" className="h-16 w-16 object-contain" />
+        <header className="pt-12 pb-6 max-w-xl mx-auto">
+          <div className="flex items-center gap-5">
+            <div className="h-28 w-28 flex-shrink-0 rounded-full p-[3px] bg-gradient-to-br from-primary to-secondary shadow-[0_0_40px_rgba(59,130,246,0.5)]">
+              <div className="h-full w-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                <img src={logo} alt="Digital DM" className="h-16 w-16 object-contain" />
+              </div>
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Digital DM</h1>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Agência 360º com CRM inteligente. Tráfego, funil, IA e previsibilidade para escalar seu negócio.
+              </p>
+              <div className="mt-3 flex items-center gap-3">
+                <a
+                  href="https://www.instagram.com/digitaldm.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="h-9 w-9 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="h-9 w-9 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
+                >
+                  <Youtube className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
-
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Digital DM</h1>
-          <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-sm mx-auto">
-            Agência 360º com CRM inteligente. Tráfego, funil, IA e previsibilidade para escalar seu negócio.
-          </p>
-
-          <div className="mt-5 flex items-center justify-center gap-3">
-            <a
-              href="https://www.instagram.com/digitaldm.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="h-10 w-10 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="https://www.youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="h-10 w-10 rounded-full border border-primary/30 bg-card/60 flex items-center justify-center text-foreground hover:border-primary hover:text-primary transition-colors"
-            >
-              <Youtube className="w-5 h-5" />
-            </a>
-          </div>
-
-          {/* Primary CTA */}
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center justify-center gap-2 w-full max-w-sm rounded-2xl bg-gradient-to-r from-primary to-secondary px-6 py-3.5 font-bold text-white shadow-[0_15px_40px_-10px_rgba(59,130,246,0.7)] hover:opacity-95 transition-opacity"
-          >
-            Falar com um especialista
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
         </header>
 
         <Section title="Produtos" items={produtos} />
