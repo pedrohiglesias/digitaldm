@@ -12,6 +12,7 @@ import Mentoria from "./pages/Mentoria";
 import Gestao from "./pages/Gestao";
 import Crm from "./pages/Crm";
 import Empresario from "./pages/Empresario";
+import Bio from "./pages/Bio";
 import NotFound from "./pages/NotFound";
 import { LeadCaptureModal } from "./components/LeadCaptureModal";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/gestao" element={<Gestao />} />
           <Route path="/crm" element={<Crm />} />
           <Route path="/empresario" element={<Empresario />} />
+          <Route path="/bio" element={<Bio />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
