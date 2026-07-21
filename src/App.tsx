@@ -12,6 +12,7 @@ import Mentoria from "./pages/Mentoria";
 import Gestao from "./pages/Gestao";
 import Crm from "./pages/Crm";
 import Empresario from "./pages/Empresario";
+import Bio from "./pages/Bio";
 import NotFound from "./pages/NotFound";
 import { LeadCaptureModal } from "./components/LeadCaptureModal";
 
