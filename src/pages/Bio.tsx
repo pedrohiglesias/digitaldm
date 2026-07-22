@@ -1,9 +1,9 @@
 import { Instagram, MessageCircle } from "lucide-react";
 import avatarDigitalDM from "@/assets/bio/digitaldm-bio-avatar.jpg";
-import diagnosticoDeomir from "@/assets/bio/cards/diagnostico-deomir.png";
-import gestao360 from "@/assets/bio/cards/gestao-360.png";
-import dmiaCrm from "@/assets/bio/cards/dmia-crm.png";
-import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.png";
+import diagnosticoDeomir from "@/assets/bio/cards/diagnostico-deomir.jpg";
+import gestao360 from "@/assets/bio/cards/gestao-360.jpg";
+import dmiaCrm from "@/assets/bio/cards/dmia-crm.jpg";
+import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.jpg";
 import aceleracaoLojas from "@/assets/bio/cards/aceleracao-lojas.jpg";
 import aceleracaoEmpresas from "@/assets/bio/cards/aceleracao-empresas.jpg";
 
