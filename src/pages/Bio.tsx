@@ -1,10 +1,5 @@
 import { Instagram, MessageCircle } from "lucide-react";
 import avatarDigitalDM from "@/assets/bio/digitaldm-bio-avatar.jpg";
-import diagnosticoDeomir from "@/assets/bio/cards/diagnostico-deomir.png";
-import gestao360 from "@/assets/bio/cards/gestao-360.png";
-import dmiaCrm from "@/assets/bio/cards/dmia-crm.png";
-import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.png";
-import provasCases from "@/assets/bio/cards/provas-cases.png";
 
 const whatsappNumber = "554991002472";
 
@@ -22,35 +17,34 @@ const sections = [
     align: "left",
     links: [
       {
-        image: diagnosticoDeomir,
-        alt: "Diagnóstico estratégico com Deomir",
-        href: whatsappUrlFor("o Diagnóstico Estratégico com Deomir"),
+        title: "CRM",
+        subtitle: "Transforme conversas em vendas recorrentes.",
+        description: "Centralize leads, automatize follow-ups e pare de perder oportunidades.",
+        href: whatsappUrlFor("CRM"),
       },
       {
-        image: gestao360,
-        alt: "Tráfego, funil e CRM trabalhando juntos",
-        href: whatsappUrlFor("Gestão 360: tráfego pago, funil e CRM"),
+        title: "Tráfego Pago",
+        subtitle: "Campanhas que viram demanda.",
+        description: "Google e Meta Ads com estratégia, dados e escala.",
+        href: whatsappUrlFor("Tráfego Pago"),
       },
       {
-        image: dmiaCrm,
-        alt: "CRM com IA para não perder lead",
-        href: whatsappUrlFor("CRM com IA da DigitalDM"),
+        title: "E-commerce Profissional",
+        subtitle: "Sua loja pronta para vender todos os dias.",
+        description: "Design, tecnologia e jornada de compra pensados para conversão.",
+        href: whatsappUrlFor("a Criação de E-commerce Profissional"),
       },
       {
-        image: ecommerceLojistas,
-        alt: "Operação digital para vender mais",
-        href: whatsappUrlFor("Operação Digital para E-commerce"),
+        title: "Aceleração para Empresas",
+        subtitle: "Estratégia, operação e crescimento.",
+        description: "Um plano claro para destravar vendas, processos e previsibilidade.",
+        href: whatsappUrlFor("a Aceleração para Empresas"),
       },
-    ],
-  },
-  {
-    title: "Cases",
-    align: "left",
-    links: [
       {
-        image: provasCases,
-        alt: "Resultados reais, sem promessa bonita",
-        href: whatsappUrlFor("os cases e resultados da DigitalDM"),
+        title: "Aceleração para Lojas",
+        subtitle: "Mais fluxo, mais conversão, mais margem.",
+        description: "Da vitrine ao checkout: conectamos mídia, comercial e operação.",
+        href: whatsappUrlFor("a Aceleração para Donos de Loja Física e E-commerce"),
       },
     ],
   },
@@ -129,18 +123,18 @@ const Bio = () => {
 
                 return (
                   <a
-                    key={link.alt}
+                    key={link.title}
                     href={link.href}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
-                    className="group relative left-1/2 block w-[calc(100vw-8px)] max-w-[620px] -translate-x-1/2 overflow-hidden rounded-[18px] bg-[#02050c] shadow-[0_0_0_7px_rgba(255,255,255,0.028),0_21px_48px_rgba(0,0,0,0.62)] transition duration-300 hover:-translate-x-1/2 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_rgba(0,0,0,0.7)]"
+                    className="group relative left-1/2 block w-[calc(100vw-8px)] max-w-[620px] -translate-x-1/2 overflow-hidden rounded-[18px] border border-white/10 bg-[radial-gradient(circle_at_85%_0%,rgba(43,95,255,0.26),transparent_40%),linear-gradient(120deg,#101b31_0%,#070d19_55%,#02050c_100%)] px-7 py-7 shadow-[0_0_0_7px_rgba(255,255,255,0.028),0_21px_48px_rgba(0,0,0,0.62)] transition duration-300 hover:-translate-x-1/2 hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-[0_24px_54px_rgba(0,0,0,0.7)] sm:px-9 sm:py-8"
                   >
-                    <img
-                      src={link.image}
-                      alt={link.alt}
-                      className="block w-full object-contain transition duration-500 group-hover:scale-[1.01]"
-                      loading="lazy"
-                    />
+                    <span className="absolute right-6 top-6 h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_20px_rgba(71,115,255,0.8)]" />
+                    <h3 className="pr-7 text-[24px] font-black leading-tight tracking-tight text-white sm:text-[27px]">
+                      {link.title}
+                    </h3>
+                    <p className="mt-2 text-[16px] font-semibold leading-snug text-primary/95 sm:text-[17px]">{link.subtitle}</p>
+                    <p className="mt-4 max-w-[470px] text-[14px] leading-relaxed text-white/55 sm:text-[15px]">{link.description}</p>
                   </a>
                 );
               })}
