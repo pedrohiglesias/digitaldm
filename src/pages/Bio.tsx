@@ -4,6 +4,8 @@ import diagnosticoDeomir from "@/assets/bio/cards/diagnostico-deomir.png";
 import gestao360 from "@/assets/bio/cards/gestao-360.png";
 import dmiaCrm from "@/assets/bio/cards/dmia-crm.png";
 import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.png";
+import aceleracaoLojas from "@/assets/bio/cards/aceleracao-lojas.jpg";
+import aceleracaoEmpresas from "@/assets/bio/cards/aceleracao-empresas.jpg";
 
 const whatsappNumber = "554991002472";
 
@@ -39,6 +41,16 @@ const sections = [
         image: ecommerceLojistas,
         alt: "Operação digital para vender mais",
         href: whatsappUrlFor("Operação Digital para E-commerce"),
+      },
+      {
+        image: aceleracaoLojas,
+        alt: "Aceleração para lojas físicas e e-commerce",
+        href: whatsappUrlFor("a Aceleração para Lojas"),
+      },
+      {
+        image: aceleracaoEmpresas,
+        alt: "Aceleração para empresas",
+        href: whatsappUrlFor("a Aceleração para Empresas"),
       },
     ],
   },
