@@ -6,38 +6,40 @@ import dmiaCrm from "@/assets/bio/cards/dmia-crm.png";
 import ecommerceLojistas from "@/assets/bio/cards/ecommerce-lojistas.png";
 import provasCases from "@/assets/bio/cards/provas-cases.png";
 
-const whatsappUrl = "https://wa.me/554991002472";
+const whatsappNumber = "554991002472";
+
+function whatsappUrlFor(service: string) {
+  const message = `Olá! Vim pela link da bio no Instagram e quero saber mais sobre ${service}.`;
+
+  return `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+}
+
+const whatsappUrl = whatsappUrlFor("a DigitalDM");
 
 const sections = [
   {
-    title: "Produtos",
+    title: "Serviços",
     align: "left",
     links: [
       {
         image: diagnosticoDeomir,
         alt: "Diagnóstico estratégico com Deomir",
-        href: whatsappUrl,
+        href: whatsappUrlFor("o Diagnóstico Estratégico com Deomir"),
       },
       {
         image: gestao360,
         alt: "Tráfego, funil e CRM trabalhando juntos",
-        href: "/gestao",
+        href: whatsappUrlFor("Gestão 360: tráfego pago, funil e CRM"),
       },
       {
         image: dmiaCrm,
         alt: "CRM com IA para não perder lead",
-        href: "/dmia",
+        href: whatsappUrlFor("CRM com IA da DigitalDM"),
       },
-    ],
-  },
-  {
-    title: "Serviços",
-    align: "right",
-    links: [
       {
         image: ecommerceLojistas,
         alt: "Operação digital para vender mais",
-        href: "/acelera90dias",
+        href: whatsappUrlFor("Operação Digital para E-commerce"),
       },
     ],
   },
@@ -48,7 +50,7 @@ const sections = [
       {
         image: provasCases,
         alt: "Resultados reais, sem promessa bonita",
-        href: "/#resultados",
+        href: whatsappUrlFor("os cases e resultados da DigitalDM"),
       },
     ],
   },
